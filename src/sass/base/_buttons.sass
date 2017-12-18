@@ -24,15 +24,19 @@
 /* btn-default
 [class*="btn-default"]
 	position: relative
-	+font-alt-bold
-	+font(1.6rem, 24px)
+	+font-bold
+	text-transform: uppercase
 	color: $btn-text-color
 	fill: $btn-text-color
-	padding: 12px 25px
-	border: 1px solid transparent
+	padding: 14px 38px
+	border: 2px solid transparent
 	background: $btn-bg-color
 	box-shadow: none
 	margin: 0
+
+	&, & > span
+		+font(14px, 18px)
+		letter-spacing: 0.2em
 
 	@if $animation-use
 		transition:
@@ -81,37 +85,26 @@
 
 /* btn-with-icon
 .btn-with-icon
-	& > i, & > span
-		+display-inline-block-top
+	$btni-space: 10px
+	//=================
+	text-align: center
+	+clear-spacing
+	white-space: nowrap
 
-	& > i
-		margin-right: 10px
-		line-height: 1
-
-	svg
-		+display-inline-block-top
-		+size(24px)
+	svg, span
+		+display-inline-block-middle
 
 	path
 		fill: inherit
 
-		@if $animation-use
-			transition:
-				property: fill
-				duration: $animation-speed
-
-	& > span
+	span
 		text-align: left
 		white-space: normal
+		padding-right: $btni-space
 
-	.depict-send
-		svg
-			+size(40px, 16px)
-			margin-top: 4px
-			margin-bottom: -4px
-
-		& + span
-			max-width: calc(100% - 5px - 40px - 10px)
+	svg + span
+		padding-right: 0
+		padding-left: $btni-space
 
 /* btn-with-icon end
 
@@ -173,7 +166,7 @@
 				border-color: $btn-bg-color
 
 	// hover
-	.no-touchevents &.btn-default-alt:hover, .no-touchevents &.btn-default-alt:focus
+	.no-touchevents &.btn-default-alt:hover
 
 		& > i
 

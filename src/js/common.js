@@ -21,6 +21,48 @@ var MOBILE = device.mobile();
 var TABLET = device.tablet();
 
 /**
+ * !cookie
+ * */
+function setCookie(name, value, options) {
+	// https://learn.javascript.ru/cookie
+	options = options || {};
+
+	var expires = options.expires;
+
+	if (typeof expires === "number" && expires) {
+		var d = new Date();
+		d.setTime(d.getTime() + expires * 1000);
+		expires = options.expires = d;
+	}
+	if (expires && expires.toUTCString) {
+		options.expires = expires.toUTCString();
+	}
+
+	value = encodeURIComponent(value);
+
+	var updatedCookie = name + "=" + value;
+
+	for (var propName in options) {
+		updatedCookie += "; " + propName;
+		var propValue = options[propName];
+		if (propValue !== true) {
+			updatedCookie += "=" + propValue;
+		}
+	}
+
+	document.cookie = updatedCookie;
+}
+
+function getCookie(name) {
+	// https://learn.javascript.ru/cookie
+	var matches = document.cookie.match(new RegExp(
+		"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+	));
+	return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+/*cookie end*/
+
+/**
  *  Add placeholder for old browsers
  * */
 function placeholderInit() {
@@ -309,6 +351,103 @@ function slidersInit() {
 
 		});
 	}
+
+	/*gov slider*/
+	var $govSlider = $('.slider-gov-js');
+
+	if ($govSlider.length && getCookie('cecutientVersion') !== 'true') {
+
+		$govSlider.each(function () {
+			var $currentSlider = $(this);
+			var dur = 200;
+
+			$currentSlider.on('init', function (event, el) {
+				$(el.$slides).matchHeight({
+					byRow: true, property: 'height', target: null, remove: false
+				});
+			}).slick({
+				fade: false,
+				speed: dur,
+				slidesToShow: 6,
+				slidesToScroll: 6,
+				// autoplay: true,
+				// autoplaySpeed: 5000,
+				// initialSlide: 2,
+				// lazyLoad: 'ondemand',
+				infinite: false,
+				dots: false,
+				arrows: true,
+				responsive: [
+					{
+						breakpoint: 1366,
+						settings: {
+							slidesToShow: 5,
+							slidesToScroll: 5
+						}
+					},
+					{
+						breakpoint: 1280,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 960,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
+					},
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+			});
+
+		});
+	}
+}
+
+/**
+ * !simple accordion
+ * */
+function simpleAccordInit() {
+	function simpleAccordion($hand, $panel, animateSpeed) {
+		var activeClass = 'is-open';
+
+		if ($panel.hasClass(activeClass)) {
+			$panel.toggle().prev().addClass(activeClass);
+		}
+
+		$hand.on('click', function (e) {
+			e.preventDefault();
+
+			$(this).toggleClass(activeClass);
+			$panel.stop().slideToggle(animateSpeed);
+		})
+	}
+
+	var $simpleAccordionHand = $('.simple-accordion-js').children('a');
+
+	if ($simpleAccordionHand.length) {
+		$simpleAccordionHand.each(function () {
+			var $thisHand = $(this);
+
+			simpleAccordion($thisHand, $thisHand.next(), 200);
+		})
+	}
 }
 
 /**
@@ -417,6 +556,7 @@ $(document).ready(function () {
 	customSelect($('select.cselect'));
 	fileInput();
 	slidersInit();
+	simpleAccordInit();
 	objectFitImages(); // object-fit-images initial
 
 	footerBottom();

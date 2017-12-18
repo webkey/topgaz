@@ -14,7 +14,7 @@
 	cursor: pointer
 	padding: 20px
 	background: $bg-color-alt
-	border: 1px dashed $border-color
+	border: 1px dashed $border-color-light
 	@if $animation-use
 		transition:
 			property: background-color, border-color, transform
@@ -45,7 +45,7 @@
 	.jFiler-input-text strong
 		display: block
 		+font-normal
-		+font($font-size--less, $line-height--less)
+		+font($font-size--sm, $line-height--sm)
 		color: $text-color
 		text-align: center
 
@@ -89,7 +89,7 @@
 		left: 100%
 		bottom: 0
 		+size(999px, 0)
-		border-bottom: 1px dotted $border-color
+		border-bottom: 1px dotted $border-color-light
 		margin: 0 0 3px
 
 	span

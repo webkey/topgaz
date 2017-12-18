@@ -2,12 +2,15 @@
 	"title": "Типографика",
 	"pageClass": ""
 })
-<div class="wrapper">
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
 	<!--HEADER-->
 	@@include('_tpl_layout_header.html', {
 		"currentItem": "Пункт 1 (Типографика)"
 	})
 	<!--HEADER end-->
+
 	<!--MAIN-->
 	<div class="main">
 		<div class="max-wrap layout">
@@ -18,28 +21,23 @@
 
 						<div class="layout-article">
 							<!--breadcrumbs-->
-							@@include('_tpl_typography_components.html', {
-								"component": "breadcrumbs"
+							@@include('_tpl_breadcrumbs.html', {
+								"items": ["Главная", "Новости"],
+								"last": "Солдаты, солдаты, солдаты войны, примите поклон наш до самой земли"
 							})
 							<!--breadcrumbs end-->
+
+							<!--datetime-->
+							@@include('_tpl_typography_components.html', {
+							"component": "dateTime"
+							})
+							<!--datetime end-->
 
 							<!--heading-->
 							@@include('_tpl_typography_components.html', {
 								"component": "heading"
 							})
 							<!--heading end-->
-
-							<!--datetime-->
-							@@include('_tpl_typography_components.html', {
-								"component": "dateTime"
-							})
-							<!--datetime end-->
-
-							<!--entry-img-->
-							@@include('_tpl_typography_components.html', {
-								"component": "entryImage"
-							})
-							<!--entry-img end-->
 
 							<!--entry-text-->
 							@@include('_tpl_typography_components.html', {
@@ -138,6 +136,14 @@
 
 							<div class="user-spacer">&nbsp;</div>
 
+							<!--accordion-->
+							@@include('_tpl_typography_components.html', {
+							"component": "accordion"
+							})
+							<!--accordion end-->
+
+							<div class="user-spacer">&nbsp;</div>
+
 							<!--images-align-->
 							@@include('_tpl_typography_components.html', {
 								"component": "imagesAlign"
@@ -177,6 +183,29 @@
 								<!--print-button end-->
 						</div>
 
+						<div class="article-footer">
+							<div class="article-footer__cell">
+								<div class="social-networks">
+									<div class="social-networks__list">
+										@@loop('_tpl_social-networks-items.html', 'includes/json/social-networks-items.json')
+									</div>
+								</div>
+							</div>
+							<div class="article-footer__cell">
+								<a href="#" class="btn-default-alt">К списку новостей</a>
+							</div>
+							<div class="article-footer__cell">
+								<a href="#" class="btn-light">
+									@@include("includes/svg/arr-l.svg")
+									<span>Предыдущая</span>
+								</a>
+								<a href="#" class="btn-light">
+									<span>Следующая</span>
+									@@include("includes/svg/arr-r.svg")
+								</a>
+							</div>
+						</div>
+
 						@@include('_tpl_typography_nav.html')
 					</div>
 				</div>
@@ -185,13 +214,11 @@
 				<!--SIDEBAR-->
 				@@include('_tpl_layout_sidebar.html')
 				<!--SIDEBAR-->
-
-				<!--ASIDE-->
-				@@include('_tpl_layout_aside.html')
-				<!--ASIDE end-->
 			</div>
 		</div>
 	</div>
 	<!--MAIN end-->
-</div>
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
 @@include('_tpl_layout_foot.html')

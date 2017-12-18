@@ -187,13 +187,13 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		float: none
 		position: absolute
 		top: round($form-input-height*0.5)
-		margin: -#{round($this-icon-size*0.5)} 0 0 #{round(($text-layout-space-horizontal - $this-icon-size)*0.1)}
+		margin: -#{round($this-icon-size*0.5)} 0 0 #{round(($text-layout-space - $this-icon-size)*0.1)}
 
 	+media('<tab-lg')
-		margin-left: #{round(($text-layout-space-horizontal--md - $this-icon-size)*0.1)}
+		margin-left: #{round(($text-layout-space--md - $this-icon-size)*0.1)}
 
 	+media('<tab-sm')
-		margin-left: #{round(($text-layout-space-horizontal--sm - $this-icon-size)*0.1)}
+		margin-left: #{round(($text-layout-space--sm - $this-icon-size)*0.1)}
 
 	// нужно выбрать тольк ближайший элемент подтверждения формы ((нельзя использовать ~))
 	form .success + .error-note + &,

@@ -4,20 +4,88 @@
 
 /* FOOTER
 .footer
-	+font(16px, round-float(24/16, 3))
 	color: $text-color
-	border-top: 1px solid $border-color
 
-	background-color: lightgreen
+/* footer gov
+.footer-gov
+	position: relative
+	border-top: 1px solid $border-color-light
 
-.footer__holder
+.gov__list
+	// before slide load
+	white-space: nowrap
 	overflow: hidden
-	cursor: default
-	padding: $footer-grid-space 0
+	// before slide load end
+	padding-bottom: 70px
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		// after slide load end
+
+	.slick-list
+		+margin-horizontal(-#{$grid-space/2})
+
+	.slick-prev, .slick-next
+		top: auto
+		bottom: 0
+		margin-top: 0
+		transform: translate(0, 0)
+
+	.slick-prev
+		left: 0
+
+	.slick-next
+		right: 0
+
+.gov__item
+	// before slide load
+	float: none
+	+display-inline-block-top
+	// before slide load end
+	padding: 0 #{round($grid-space/2)}
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+.gov__inner
+	text-decoration: none
+	color: $text-color
+
+.gov__figure
+	height: 40px
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+	img
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(contain, $position: left center)
+
+.dov__title
+	text-decoration: underline
+
+// hover
+.gov__inner:hover
+	.dov__title
+		text-decoration: none
+
+/* footer gov end
 
 /* footer bottom
 .footer-bottom
-	color: $text-color
+	background-color: #303030
+
+	&, & a
+		color: white
 
 .footer-bottom__holder
 	position: relative
@@ -36,17 +104,32 @@
 
 .footer-bottom__col
 	+display-inline-block-top
-	+font(16px, round-float(24/16, 3))
+	+font($font-size, $line-height)
 	letter-spacing: normal
 
 	&:last-child
 		text-align: right
 
+	ul
+		li
+			display: inline-block
+			padding-right: calc(1em - 4px)
+
+			&::after
+				content: "/"
+				display: inline-block
+				position: relative
+				padding-left: 1em
+				color: $base-color
+
+			&:last-child
+				&::after
+					content: none
+
 	a
-		color: $text-color
 		text-decoration: none
 
-		.no-touchevents &:hover
+		&:hover
 			text-decoration: underline
 
 /* footer bottom end

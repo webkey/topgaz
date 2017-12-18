@@ -7,63 +7,69 @@
 	color: $text-color-light
 	margin-bottom: $bottom-space
 
-.breadcrumbs__list, .#{$user-content} .breadcrumbs__list
-	padding: 0
-	margin: 0
-
-	li
-		padding: 0 17px 0 0
-		margin: 0
-
-		&::before, &:first-child::before
-			content: none
+	&:last-child
+		margin-bottom: 0
 
 .breadcrumbs__list
+	&, .#{$user-content} &
+		padding: 0
+		margin: 0
+		list-style: none
+
+		li
+			padding: 0 6px 0 0
+			margin: 0
+
+			&::before, &:first-child::before
+				content: none
+
 	cursor: default
 	overflow: hidden
+	// add dots
+	white-space: nowrap
+	text-overflow: ellipsis
+
+	.layout-article &
+		max-width: none
 
 	li
-		display: inline-block
-		vertical-align: top
+		display: inline
 		position: relative
 
 		&::after
+			display: inline-block
+			vertical-align: baseline
 			content: '/'
-			position: absolute
-			right: 10px
-			top: 1px
-			height: 0
-			width: 0
-			line-height: 1.2
 			border: none
-			color: $text-color-light
+			color: $base-color
+			padding-left: 10px
 
 		&:last-child::after
 			content: none
 
-		span
-			display: inline-block
-			vertical-align: top
-			line-height: 1.2
-			+truncate(260px)
-
 	a
-		display: inline-block
-		vertical-align: top
-		color: $link-color
+		padding-top: 0.5em
+		color: $text-color
 		text-decoration: none
 		cursor: pointer
 
-		.no-touchevents &:hover
-			text-decoration: none
+		@if $animation-use
+			transition:
+				property: color
+				duration: $animation-speed
 
 		span
-			border-bottom: 1px solid transparent
-			transition-property: border-color, color
-			transition-duration: $animation-speed
+			border-bottom: 1px solid rgba(white, 0.3)
 
-		.no-touchevents &:hover span
-			border-color: tint($link-color, 30%)
-			color: $link-color
+			@if $animation-use
+				transition:
+					property: border-color
+					duration: $animation-speed
+
+		.no-touchevents &:hover
+			color: $base-color
+
+			span
+				border-color: rgba($base-color, 0.3)
 
 /* breadcrumbs end

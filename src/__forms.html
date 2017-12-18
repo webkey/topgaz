@@ -3,7 +3,8 @@
 	"pageClass": ""
 })
 
-<div class="wrapper">
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
 	<!--HEADER-->
 	@@include('_tpl_layout_header.html', {
 		"currentItem": ""
@@ -68,6 +69,7 @@
 		</div>
 	</div>
 	<!--MAIN end-->
-</div>
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
 
 @@include('_tpl_layout_foot.html')

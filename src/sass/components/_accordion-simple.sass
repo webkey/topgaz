@@ -1,0 +1,126 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/*accordion
+.simple-accordion
+	margin-bottom: $bottom-space--md
+	border-bottom: 2px solid $border-color
+
+	&:last-child
+		margin-bottom: 0
+
+	& > a
+		display: block
+		position: relative
+		padding: 18px 0
+		+font-bold
+		color: $text-color
+		text-decoration: none
+		border-top: 2px solid $border-color
+		transition-property: color
+		transition-duration: $animation-speed
+
+		&:hover
+			color: $base-color
+
+		& > i
+			$this-icon-lines-width: 12px
+			$this-icon-lines-height: 2px
+			$this-icon-lines-color: $text-color
+
+			position: absolute
+			right: 0
+			top: 50%
+			+size(16px, 10px)
+			margin-top: -5px
+			backface-visibility: hidden
+
+			&::before, &::after
+				+pseudo()
+				bottom: 0
+				backface-visibility: hidden
+				+size($this-icon-lines-width, $this-icon-lines-height)
+				background-color: $this-icon-lines-color
+				transition-property: background-color
+				transition-duration: $animation-speed
+
+			&::before
+				right: 50%
+				transform-origin: bottom right
+				transform: rotate(45deg)
+
+			&::after
+				left: 50%
+				transform-origin: bottom left
+				transform: rotate(-45deg)
+
+		&:hover
+			& > i
+				&::before, &::after
+					background-color: $base-color
+
+		&.is-open i
+			transform: rotate(0.5turn)
+
+		& > span
+			display: block
+			//overflow: hidden
+			//white-space: nowrap
+			//text-overflow: ellipsis
+			position: relative
+			margin-right: 25px
+
+		& + div
+			padding: 18px 0
+			display: none
+			+font(16px, round-float(24/16, 2))
+
+			& > *:last-child
+				margin-bottom: 0
+
+	h4
+		+font-bold
+		+font(14px, round-float(24/14, 2))
+		letter-spacing: 0.05em
+		text-transform: uppercase
+		color: inherit
+		margin-bottom: $bottom-space
+
+	.cols
+		+clear-spacing
+		+grid-parent($grid-space)
+		margin-bottom: $bottom-space
+
+		+media('<desk-hd')
+			+grid-parent($grid-space--sm)
+
+	.col
+		+grid-item(3, $grid-space)
+		+font(18px, round-float(32/18, 2))
+		letter-spacing: normal
+
+		+media('<desk-hd')
+			+grid-item-responsive(3, $grid-space--sm)
+
+		+media('<mob-lg')
+			+grid-item-responsive(1, $grid-space--sm)
+
+		ul
+			margin: 0 0 10px
+			padding: 0
+
+			&:last-child
+				margin-bottom: 0
+
+			li
+				padding: 0
+				margin: 0
+
+				&:last-child
+					margin-bottom: 0
+
+				&::before
+					content: none
+
+/*accordion end

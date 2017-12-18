@@ -2,7 +2,9 @@
 	"title": "Текстовая",
 	"pageClass": ""
 })
-<div class="wrapper">
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
 	<!--HEADER-->
 	@@include('_tpl_layout_header.html', {
 		"currentItem": ""
@@ -18,8 +20,9 @@
 
 						<div class="layout-article">
 							<!--breadcrumbs-->
-							@@include('_tpl_typography_components.html', {
-								"component": "breadcrumbs"
+							@@include('_tpl_breadcrumbs.html', {
+								"items": ["Главная", "Новости"],
+								"last": "Типографика в вебдизайне. Основные понятия и положения"
 							})
 							<!--breadcrumbs end-->
 
@@ -83,5 +86,7 @@
 		</div>
 	</div>
 	<!--MAIN end-->
-</div>
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
 @@include('_tpl_layout_foot.html')
