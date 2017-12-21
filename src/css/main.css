@@ -3770,6 +3770,11 @@ body {
 	min-height: 50px;
 }
 
+.home-page .content {
+	margin: 0;
+	padding-left: 0;
+}
+
 @media (max-width: 1599px) {
 	.content {
 		margin-right: 0;
@@ -3995,6 +4000,11 @@ body {
 	background-size: cover;
 }
 
+.header__top {
+	height: 104px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
 .header__holder {
 	padding: 10px 0;
 }
@@ -4026,8 +4036,17 @@ body {
 /* logo end */
 /* HEADER end */
 /* NAVIGATION */
+.nav-wrap {
+	height: 100%;
+}
+
 .nav {
 	position: relative;
+	height: 100%;
+}
+
+.nav__list {
+	height: 100%;
 }
 
 .nav__list::after {
