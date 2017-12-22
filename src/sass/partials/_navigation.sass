@@ -10,65 +10,104 @@
 	position: relative
 	height: 100%
 
+// общие стили для пунктов навигации
 .nav__list
 	height: 100%
 	+clear
 
 	li
 		position: relative
-
-		&.has-drop
-			padding-right: 2rem
-
-			.nav__angle
-				position: absolute
-				right: 0
-				top: 50%
-				transform: translate(0, -50%)
-				line-height: 0
-				pointer-events: none
+		+font-alt
+		+font(16px, 20px)
+		letter-spacing: 0.05em
 
 	a
 		display: block
+		color: $text-color
+		text-decoration: none
 
-	& > li
-		float: left
-		margin-right: 2rem
+		&:hover
+			color: $base-color
 
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(bottom, tomato, 5px, 2)
-
+// общие стили для подменю навигации
 .nav__drop
 	position: absolute
 	left: 0
 	top: 100%
 	background-color: white
-	border: 1px solid $border-color-light
-	padding: 2rem
+	border: 1px solid $border-color
+	padding: 0 20px
 	width: 320px
 	opacity: 0
 	visibility: hidden
 	z-index: 10
 
+	// no js
+	.no-js &
+		position: relative
+		left: auto
+		right: auto
+		top: auto
+		bottom: auto
+		opacity: 1
+		visibility: visible
+
 	li:hover > &
 		opacity: 1
 		visibility: visible
 
-	li
-		margin-bottom: 1rem
-		font-size: 1.4rem
-		line-height: 1.5
+	.nav__tab
+		border: solid $border-color-light
+		border-width: 1px 0 0
 
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(right, tomato, 5px, 2)
+		li:first-child > .nav__tab
+			border-width: 1px 0
 
+	a
+		display: block
+		position: relative
+		padding: 15px 20px
+		+margin-horizontal(-20px)
 
 	.nav__drop
 		top: 0
 		left: 100%
+
+// стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
+.nav__list li.has-drop > .nav__tab > a
+	padding-right: 40px
+
+// стили для пункта навигации ТЕКУЩЕЙ страницы
+.nav__list li.current > .nav__tab
+	&
+		a, a:hover
+			color: $base-color
+
+// особые стили для пунктов навигации ПЕРВОГО урованя
+.nav__list > li
+	height: 100%
+	float: left
+	margin-right: 24px
+
+	& > .nav__tab
+		height: 100%
+
+		a
+			display: table
+			table-layout: fixed
+			height: 100%
+			color: rgba(white, 0.5)
+			text-decoration: none
+
+			&:hover
+				color: rgba(white, 1)
+
+		span
+			display: table-cell
+			vertical-align: middle
+
+// СТРЕЛКИ навигации
+.nav__angle
+	display: none
 
 /* NAVIGATION end

@@ -18,10 +18,82 @@
 			<!--CONTENT-->
 			<div class="content-wrap">
 				<div class="content">
-					<section class="section">
-						<div class="section__title"><h2>Заголовок секции</h2></div>
-						<div class="section__holder">
-							Контент секции
+					<!--fast-links-->
+					<div class="fast-links">
+						<div class="fast-links__item">
+							<a href="#" class="fast-links__inner">
+								@@include("includes/svg/msg.svg")
+								<span>Электронные обращения</span>
+							</a>
+						</div>
+						<div class="fast-links__item">
+							<a href="#" class="fast-links__inner">
+								@@include("includes/svg/price.svg")
+								<span>Цены и тарифы</span>
+							</a>
+						</div>
+						<div class="fast-links__item">
+							<a href="#" class="fast-links__inner">
+								@@include("includes/svg/calc.svg")
+								<span>Портал электронных услуг</span>
+							</a>
+						</div>
+					</div>
+					<div class="main-slider main-slider-js">
+						<div class="main-slider__images">
+							<div class="main-slider__images__item">
+								<img src="img/img-main-slider-01.jpg" alt="image description" />
+							</div>
+							<div class="main-slider__images__item">
+								<img src="img/img-main-slider-02.jpg" alt="image description" />
+							</div>
+							<div class="main-slider__images__item">
+								<img src="img/img-main-slider-03.jpg" alt="image description" />
+							</div>
+						</div>
+						<div class="main-slider__titles">
+							<div class="main-slider__titles__item">
+								<div class="main-slider__titles__text">Специалисты ОАО «Газпром трансгаз Беларусь» и ГПО «Белтопгаз» координируют действия</div>
+							</div>
+							<div class="main-slider__titles__item">
+								<div class="main-slider__titles__text">Смотр-конкурс на звание «Лучшая транспортная служба газоснабжающих организаций»</div>
+							</div>
+							<div class="main-slider__titles__item">
+								<div class="main-slider__titles__text">Памятка об ответственности должностных лиц за совершение коррупционных преступлений при выполнении ими должностных обязанностей</div>
+							</div>
+						</div>
+					</div>
+					<!--fast-links end-->
+					<section class="m-section">
+						<div class="m-section__heading">
+							<h2>Новости</h2>
+							<div class="m-section__heading__text">Последние и актуальные новости государственного производственного объединения «Белтопгаз».</div>
+							<a href="#" class="btn-default">Все новости</a>
+						</div>
+						<div class="m-section__content">
+							<!--news previews-->
+							<div class="news-previews">
+								<div class="news-previews__list">
+									@@loop("_tpl_news-previews-items.html", "includes/json/news-previews-items.json")
+								</div>
+							</div>
+							<!--news previews end-->
+						</div>
+					</section>
+					<section class="m-section m-section--docs">
+						<div class="m-section__heading">
+							<h2>Документы</h2>
+							<div class="m-section__heading__text">Перечень основных локальных нормативных правовых актов, приказов, инструкций, распоряжений, разработанных ГПО «Белтопгаз».</div>
+							<a href="#" class="btn-default">все документы</a>
+						</div>
+						<div class="m-section__content">
+							<!--news previews-->
+							<div class="docs">
+								<div class="docs__list">
+									@@loop("_tpl_docs-items.html", "includes/json/docs-items.json")
+								</div>
+							</div>
+							<!--news previews end-->
 						</div>
 					</section>
 				</div>

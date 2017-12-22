@@ -418,6 +418,53 @@ function slidersInit() {
 
 		});
 	}
+
+
+	//images carousel
+	var $mainSlider = $('.main-slider-js');
+
+	if($mainSlider.length){
+
+		$mainSlider.each(function () {
+			var $currentImagesCarousel = $(this);
+			var $images = $currentImagesCarousel.find('.main-slider__images');
+			var $titles = $currentImagesCarousel.find('.main-slider__titles');
+			var dur = 200;
+
+			$images.on('init', function (event, slick) {
+
+			});
+
+			$images.slick({
+				fade: false,
+				speed: dur,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				centerMode: true,
+				variableWidth: true,
+				asNavFor: $titles,
+				// initialSlide: 2,
+				lazyLoad: 'ondemand',
+				infinite: true,
+				dots: true,
+				arrows: true
+			}).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
+
+			});
+
+			$titles.slick({
+				fade: true,
+				speed: dur,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: true,
+				asNavFor: $images,
+				dots: false,
+				arrows: false
+			});
+
+		});
+	}
 }
 
 /**
@@ -448,6 +495,209 @@ function simpleAccordInit() {
 			simpleAccordion($thisHand, $thisHand.next(), 200);
 		})
 	}
+}
+
+/**
+ * !Toggle drop (plugin)
+ * */
+;(function($){
+	var defaults = {
+		opener: '.ms-drop__opener-js',
+		openerText: 'span',
+		drop: '.ms-drop__drop-js',
+		dropOption: '.ms-drop__drop-js a',
+		dropOptionText: 'span',
+		initClass: 'ms-drop--initialized',
+		outsideClick: true, // Close all if outside click
+		clickEsc: true, // Close all if esc key click
+		closeAfterSelect: true, // Close drop after selected option
+		preventOption: false, // Add preventDefault on click to option
+		selectValue: true, // Display the selected value in the opener
+		modifiers: {
+			isOpen: 'is-open',
+			activeItem: 'active-item'
+		}
+
+		// Callback functions
+		// afterInit: function () {} // Fire immediately after initialized
+		// afterChange: function () {} // Fire immediately after added or removed an open-class
+	};
+
+	function MsDrop(element, options) {
+		var self = this;
+
+		self.config = $.extend(true, {}, defaults, options);
+
+		self.element = element;
+
+		self.callbacks();
+		self.event();
+		// close drop if clicked outside active element
+		if (self.config.outsideClick) {
+			self.clickOutside();
+		}
+		if (self.config.clickEsc) {
+			self.clickEsc();
+		}
+		self.eventDropItems();
+		self.init();
+	}
+
+	/** track events */
+	MsDrop.prototype.callbacks = function () {
+		var self = this;
+		$.each(self.config, function (key, value) {
+			if(typeof value === 'function') {
+				self.element.on(key + '.msDrop', function (e, param) {
+					return value(e, self.element, param);
+				});
+			}
+		});
+	};
+
+	MsDrop.prototype.event = function () {
+		var self = this;
+		self.element.on('click', self.config.opener, function (event) {
+			event.preventDefault();
+			var curContainer = $(this).closest(self.element);
+
+			if (curContainer.hasClass(self.config.modifiers.isOpen)) {
+				curContainer.removeClass(self.config.modifiers.isOpen);
+
+				// callback afterChange
+				self.element.trigger('afterChange.msDrop');
+				return;
+			}
+
+			self.element.removeClass(self.config.modifiers.isOpen);
+
+			curContainer.addClass(self.config.modifiers.isOpen);
+
+			// callback afterChange
+			self.element.trigger('afterChange.msDrop');
+		});
+	};
+
+	MsDrop.prototype.clickOutside = function () {
+
+		var self = this;
+		$(document).on('click', function(event){
+			if( $(event.target).closest(self.element).length ) {
+				return;
+			}
+
+			self.closeDrop();
+			event.stopPropagation();
+		});
+
+	};
+
+	MsDrop.prototype.clickEsc = function () {
+
+		var self = this;
+
+		$(document).keyup(function(e) {
+			if (self.element.hasClass(self.config.modifiers.isOpen) && e.keyCode === 27) {
+				self.closeDrop();
+			}
+		});
+	};
+
+	MsDrop.prototype.closeDrop = function (container) {
+
+		var self = this,
+			$element = $(container || self.element);
+
+		if ($element.hasClass(self.config.modifiers.isOpen)) {
+			$element.removeClass(self.config.modifiers.isOpen);
+		}
+
+	};
+
+	MsDrop.prototype.eventDropItems = function () {
+
+		var self = this;
+
+		self.element.on('click', self.config.dropOption, function (e) {
+			var cur = $(this);
+			var curParent = cur.parent();
+
+			if(curParent.hasClass(self.config.modifiers.activeItem)){
+				e.preventDefault();
+				return;
+			}
+			if(self.config.preventOption){
+				e.preventDefault();
+			}
+
+			var curContainer = cur.closest(self.element);
+
+			curContainer.find(self.config.dropOption).parent().removeClass(self.config.modifiers.activeItem);
+
+			curParent
+				.addClass(self.config.modifiers.activeItem);
+
+			if(self.config.selectValue){
+				curContainer
+					.find(self.config.opener).find(self.config.openerText)
+					.text(cur.find(self.config.dropOptionText).text());
+			}
+
+			if(self.config.closeAfterSelect) {
+				self.closeDrop();
+			}
+
+		});
+
+	};
+
+	MsDrop.prototype.init = function () {
+
+		this.element.addClass(this.config.initClass);
+
+		this.element.trigger('afterInit.msDrop');
+
+	};
+
+	$.fn.msDrop = function (options) {
+		'use strict';
+
+		return this.each(function(){
+			new MsDrop($(this), options);
+		});
+
+	};
+})(jQuery);
+
+/**
+ * !Toggle drop initial
+ * */
+function toggleDropInit() {
+	var $langContainer = $('.lang__container-js');
+	if($langContainer.length){
+		$langContainer.msDrop({
+			opener: '.lang__opener-js',
+			drop: 'lang__drop-js'
+		})
+	}
+}
+
+/**
+ * !Open popup
+ */
+function popupsInit() {
+	var btnCloseTpl = '<button title="%title%" type="button" class="mfp-close"><svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 57.2 57.2"><path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path></svg></button>';
+
+	$('.btn-popup-js').magnificPopup({
+		type: 'inline',
+		midClick: true, // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.,
+		// closeOnContentClick: false,
+		mainClass: 'mfp-zoom-in',
+		removalDelay: 500,
+		fixedContentPos: 'auto',
+		overflowY: 'auto',
+		closeMarkup: btnCloseTpl,
+	});
 }
 
 /**
@@ -558,6 +808,8 @@ $(document).ready(function () {
 	slidersInit();
 	simpleAccordInit();
 	objectFitImages(); // object-fit-images initial
+	toggleDropInit();
+	popupsInit();
 
 	footerBottom();
 	formSuccessExample();

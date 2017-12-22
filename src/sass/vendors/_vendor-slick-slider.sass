@@ -5,7 +5,7 @@
 /* slick sliders
 // arrows
 .slick-arrow
-	+size(40px)
+	+size(50px)
 	display: block
 	position: absolute
 	border: none
@@ -83,11 +83,11 @@
 				content: none
 
 		button
-			width: 12px
-			height: 12px
+			width: 8px
+			height: 8px
 			padding: 0
-			border-radius: 50%
-			background: $base-color
+			border-radius: 0
+			background: white
 			position: relative
 			transition-property: background, border, box-shadow, transform
 			transition-duration: 0.6s
@@ -95,12 +95,12 @@
 			&::before
 				content: ''
 				position: absolute
-				left: 2px
-				top: 2px
-				height: 8px
-				width: 8px
-				background: #fff
-				border-radius: 50%
+				left: 1px
+				top: 1px
+				height: 6px
+				width: 6px
+				background: black
+				border-radius: 0
 				opacity: 1
 				box-shadow: 0 2px 3px rgba(0, 0, 0, 0.20)
 				transition-property: transform, opacity

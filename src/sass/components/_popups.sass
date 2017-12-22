@@ -1,0 +1,80 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* popups
+
+// default popup
+.default-popup
+	max-width: $default-popup-width
+	padding: $default-popup-space
+	background-color: $bg-color-alt
+	+push-auto
+
+	+media('<desk-sm')
+		max-width: $default-popup-width--md
+		padding: $default-popup-space--md
+
+	+media('<mob-md')
+		+padding-horizontal($text-layout-space--sm)
+
+	.form-buttons
+		text-align: center
+
+// popup title
+.default-popup__title
+	+font-alt-bold
+	margin-bottom: $bottom-space--md
+	text-align: center
+
+	+font($font-size-h2, $line-height-h2)
+
+	+media('<desk-sm')
+		margin-bottom: $bottom-space
+
+	+media('<tab-lg')
+		+font($font-size-h2--md, $line-height-h2--md)
+
+	+media('<mob-lg')
+		+font($font-size-h2--sm, $line-height-h2--sm)
+
+	&:last-child
+		margin-bottom: 0
+
+.default-popup__content
+	max-width: 450px
+	+push-auto
+
+// popup button close
+button.mfp-close
+	$mfp-close-btn-size: 40px
+	$mfp-close-icon-size: 20px
+
+	+size($mfp-close-btn-size)
+	fill: white
+	color: white
+	opacity: 1
+	background-color: #000
+	right: auto
+	top: 0
+	left: 100%
+	margin-left: 10px
+
+	+media('<tab-lg')
+		left: auto
+		right: 0
+		top: 0
+		margin-left: 0
+
+	svg
+		position: absolute
+		left: 50%
+		top: 50%
+		+size($mfp-close-icon-size)
+		margin: -#{round($mfp-close-icon-size/2)} 0 0 -#{round($mfp-close-icon-size/2)}
+		pointer-events: none
+
+	path
+		fill: inherit
+
+/* popups end

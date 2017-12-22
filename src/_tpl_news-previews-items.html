@@ -1,0 +1,25 @@
+<article class="news-previews__item wow">
+	<a href="#" class="news-previews__inner">
+		<header class="news-previews__meta">
+			@@if (context.date) {
+			<time datetime="@@datetime" class="news-previews__date">@@date</time>
+			}
+		</header>
+		@@if (context.src) {
+		<div class="news-previews__figure add-shadow">
+			<img src="img/@@src" alt="@@title" />
+		</div>
+		}
+		<div class="news-previews__content">
+			@@if (context.title) {
+			<div class="news-previews__title">@@title</div>
+			}
+			@@if (context.text) {
+			<div class="news-previews__text">@@text</div>
+			}
+		</div>
+		<footer class="news-previews__footer">
+			<span class="btn-read">Подробнее</span>
+		</footer>
+	</a>
+</article>

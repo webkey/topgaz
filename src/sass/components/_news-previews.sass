@@ -1,0 +1,118 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* news previews
+
+$news-previews-space: $m-section-gap
+$news-previews-space--hd: 40px
+$news-previews-space--lg: 30px
+
+.news-previews
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+.news-previews__list
+	+grid-parent($news-previews-space)
+	+clear-spacing
+	margin-bottom: $bottom-space--md
+
+	+media('<desk-hd')
+		+grid-parent($news-previews-space--hd)
+
+	+media('<desk-lg')
+		+grid-parent($news-previews-space--lg)
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+.news-previews__item
+
+	position: relative
+	+grid-item(3, $news-previews-space, round($news-previews-space*0.5))
+	+font(1.5rem, round-float(18px/15px, 2))
+	letter-spacing: normal
+
+	+media('<desk-hd')
+		+grid-item-responsive(3, $news-previews-space--hd)
+
+	+media('<desk-lg')
+		+grid-item-responsive(3, $news-previews-space--lg)
+
+	+media('<1280px')
+		+grid-item-responsive(2, $news-previews-space--lg)
+
+	+media('<tab-lg')
+		+grid-item-responsive(3, $news-previews-space--lg)
+
+	+media('<tab-sm')
+		+grid-item-responsive(2, $news-previews-space--lg)
+
+	+media('<mob-md')
+		+grid-item-responsive(1, $news-previews-space--lg)
+
+.news-previews__inner
+	display: block
+	height: 100%
+	text-decoration: none
+	color: inherit
+
+.news-previews__meta
+	margin-bottom: 1rem
+	cursor: default
+
+.news-previews__date
+	display: block
+	+font(14px, round-float(20/14, 2))
+	color: $text-color-light
+
+.news-previews__content
+	position: relative
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.news-previews__title, .news-previews__text
+	$font-size: 24px
+	+font-alt-medium
+	+font($font-size, round-float(30/24, 2))
+	letter-spacing: normal
+	color: $link-color
+	margin-bottom: $bottom-space
+	overflow: hidden
+	max-height: #{4 * $font-size * round-float(24/16, 2)}
+	
+	&:last-child
+		margin-bottom: 0
+
+	//.news-previews__inner:hover &
+		color: $text-color
+
+.news-previews__text
+	+font-normal
+
+.news-previews__footer
+	position: relative
+	
+.btn-read
+	+display-inline-block-top
+	+font-alt-medium
+	+font(12px, round-float(24/16, 2))
+	letter-spacing: 0.1em
+	color: $text-color
+	text-transform: uppercase
+	padding-bottom: 2px
+	border-bottom: 2px solid $text-color
+
+	&:hover
+		color: $base-color
+		border-color: $base-color
+
+/* news previews end

@@ -1,0 +1,107 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/* lang
+.lang
+	position: relative
+	+size(80px, 40px)
+	+font-alt
+	+font(12px, 14px)
+	letter-spacing: 0.1em
+	text-transform: uppercase
+
+	& > a
+		display: block
+		height: 100%
+		position: relative
+		color: white
+		border: 1px solid rgba(white, 0.5)
+		text-align: center
+
+		& > span
+			$this-icon-lines-width: 5px
+			$this-icon-lines-height: 2px
+			$this-icon-lines-color: white
+
+			display: inline-block
+			vertical-align: middle
+			padding-right: 12px
+			position: relative
+			line-height: 40px
+
+			&::before, &::after
+				content: ""
+				display: block
+				position: absolute
+				right: 0
+				top: 50%
+				margin-top: 0
+				width: $this-icon-lines-width
+				height: $this-icon-lines-height
+				background-color: $this-icon-lines-color
+
+			&::before
+				transform: rotate(-45deg)
+
+			&::after
+				right: 3px
+				transform: rotate(45deg)
+
+		// hover
+		//&:hover
+			z-index: 1
+			color: $link-color
+
+			& > span
+				&::before, &::after
+					background-color: $link-color
+
+	&.is-open > a
+
+		& > span
+
+			&::before
+				transform: rotate(45deg)
+
+			&::after
+				transform: rotate(-45deg)
+
+.lang__list
+	list-style: none
+	position: absolute
+	top: 100%
+	left: 0
+	padding: 2px 0
+	margin-top: -1px
+	width: 100%
+	+font-alt
+	+font(12px, 14px)
+	letter-spacing: 0.1em
+	text-transform: uppercase
+	text-align: center
+	background-color: rgba($base-color, 0.85)
+	border: 1px solid rgba(white, 0.5)
+	opacity: 0
+	visibility: hidden
+
+	.is-open &
+		opacity: 1
+		visibility: visible
+
+	li
+		padding: 0
+
+		&.current
+			display: none
+
+	a
+		display: block
+		text-decoration: none
+		color: white
+		padding: 6px 10px
+
+		//.no-touchevents &:hover
+			color: $link-color
+
+/* lang end

@@ -8,29 +8,59 @@
 	background-size: cover
 
 .header__top
+	position: relative
 	height: 104px
 	border-bottom: 1px solid rgba(#fff, 0.25)
+	z-index: 10
 
 .header__holder
-	padding: 10px 0
-	+clear
+	padding: 40px 0
+	display: flex
+	justify-content: space-between
+	align-items: center
 
+	.home-page &
+		flex-wrap: wrap
 
-/* logo
 .logo
+	$logo-width: 270px
+	// ==========
+	display: block
 	position: relative
-	float: left
 	background: url(../../img/logo.png) no-repeat
-	width: 270px
+	width: $logo-width
+	min-width: $logo-width
 	height: 75px
 	text-indent: -9999px
 	overflow: hidden
-	margin: 0 2rem 0 0
+	margin-right: 40px
 	z-index: 5
 
 	a
 		display: block
 		height: 100%
 
-/* logo end
+.slogan
+	+font-alt
+	+font(24px, 29px)
+	color: white
+	margin-right: 20px
+	max-width: 480px
+
+	.home-page &
+		display: none
+		+font-alt-bold
+		+font(58px, 58px)
+		margin-right: 0
+		max-width: 1140px
+
+		&.slogan--home-page
+			display: block
+			width: 100%
+			margin-top: 30px
+
+	a
+		text-decoration: none
+		color: inherit
+
 /* HEADER end

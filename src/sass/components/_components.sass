@@ -2,3 +2,290 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+/* fast-links
+.fast-links
+	display: table
+	table-layout: fixed
+	width: 100%
+
+.fast-links__item
+	display: table-cell
+	vertical-align: middle
+	text-align: center
+	+font-alt-medium
+	+font(24px, 30px)
+	border: solid $border-color-light
+	border-width: 0 0 0 1px
+
+	&:nth-child(3n+1)
+		border-left: 0
+
+.fast-links__inner
+	display: block
+	text-decoration: none
+	color: $text-color
+	padding: 35px 20px
+
+	svg
+		+display-inline-block-middle
+		+size(30px)
+		margin-right: 16px
+
+	path
+		fill: inherit
+
+	span
+		+display-inline-block-middle
+
+	&:hover
+		color: $link-color
+		fill: $link-color
+
+/* fast-links end
+
+/* m-section
+.m-section
+	display: flex
+	justify-content: space-between
+	align-items: flex-start
+	+margin-horizontal(-#{round($m-section-gap/2)})
+	margin-bottom: $bottom-space--lg
+	+padding-vertical(30px)
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--md
+
+.m-section__heading
+	$m-section-heading-width: 330px
+	// ===========
+	padding: 0 round($m-section-gap/2)
+	min-width: $m-section-heading-width
+	max-width: $m-section-heading-width
+
+	h2, h3
+		position: relative
+		+font-alt-bold
+		+font(48px, round-float(60/48, 2))
+		margin-bottom: 0.5em
+		padding-bottom: 0.5em
+
+		&::after
+			+pseudo()
+			left: 0
+			bottom: 0
+			+size(60px, 0)
+			border-top: 2px solid #ccc
+
+	.m-section__heading__text
+		+font(14px, round-float(24/14, 2))
+		margin-bottom: $bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+	[class*="btn-"]
+		min-width: 194px
+
+.m-section__content
+	$m-section-content-width: calc(100% - 330px)
+	// ===========
+	padding: 0 round($m-section-gap/2)
+	min-width: calc(100% - 330px)
+	max-width: calc(100% - 330px)
+
+/* m-section end
+
+/* docs
+$docs-space: $m-section-gap
+$docs-space--hd: 40px
+$docs-space--lg: 30px
+
+.m-section--docs
+	+margin-horizontal(-#{round($m-section-gap/2) + 2000})
+	padding: 200px 2000px
+	background-color: #e6e6e6
+	background-repeat: repeat-x
+	background-position: center top, center bottom
+	background-image: url(../../img/bg-clouds-top.png), url(../../img/bg-clouds-bottom.png)
+
+
+.docs__list
+	+grid-parent($docs-space)
+	+clear-spacing
+	margin-bottom: $bottom-space--md
+
+	+media('<desk-hd')
+		+grid-parent($docs-space--hd)
+
+	+media('<desk-lg')
+		+grid-parent($docs-space--lg)
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+.docs__item
+
+	position: relative
+	+grid-item(3, $docs-space, round($docs-space*0.5))
+	+font(1.5rem, round-float(18px/15px, 2))
+	letter-spacing: normal
+
+	+media('<desk-hd')
+		+grid-item-responsive(3, $docs-space--hd)
+
+	+media('<desk-lg')
+		+grid-item-responsive(3, $docs-space--lg)
+
+	+media('<1280px')
+		+grid-item-responsive(2, $docs-space--lg)
+
+	+media('<tab-lg')
+		+grid-item-responsive(3, $docs-space--lg)
+
+	+media('<tab-sm')
+		+grid-item-responsive(2, $docs-space--lg)
+
+	+media('<mob-md')
+		+grid-item-responsive(1, $docs-space--lg)
+
+.docs__inner
+	display: block
+	height: 100%
+	text-decoration: none
+	color: inherit
+	fill: inherit
+	+clear
+
+	svg
+		float: left
+		margin-right: 20px
+
+.docs__text
+	overflow: hidden
+	+font-alt-bold
+	+font(12px, 24px)
+	text-transform: uppercase
+	
+	span
+		border-bottom: 1px solid $text-color
+
+// hover
+.docs__inner:hover
+	color: $link-color
+	fill: $link-color
+
+	span
+		border-color: $link-color
+
+/* docs end
+
+/* main slider
+.main-slider
+	position: relative
+	+margin-horizontal(-$page-layout-space)
+
+.main-slider__images, .main-slider__titles
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	opacity: 0
+	visibility: hidden
+	// before slide load end
+	position: relative
+	margin-bottom: 0
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		opacity: 1
+		visibility: visible
+		// after slide load end
+
+.main-slider__images__item, .main-slider__titles__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+	position: relative
+	color: inherit
+	text-decoration: none
+	height: 449px
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+.main-slider__images__item
+	background-color: $text-color
+
+	&::after
+		+pseudo()
+		left: 0
+		top: 0
+		+size(100%)
+		background-color: rgba(black, 0.25)
+
+	img
+		opacity: 0.5
+		transition: opacity $animation-speed
+
+	&.slick-current img
+		opacity: 1
+
+// images
+.main-slider__images
+	.slick-arrow
+		background: none
+		border: 1px solid white
+
+		// hover
+		.no-touchevents &:hover
+			background: none
+
+	.slick-prev
+		left: $page-layout-space
+
+		&:after
+			border-color: white
+
+	.slick-next
+		right: $page-layout-space
+
+		&:after
+			border-color: white
+
+	.slick-dots
+		bottom: 35px
+
+// titles
+.main-slider__titles
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	pointer-events: none
+
+.main-slider__titles__item
+	text-align: center
+
+	&::before
+		content: ""
+		+display-inline-block-middle
+		height: 100%
+
+.main-slider__titles__text
+	+display-inline-block-middle
+	width: 620px
+	max-width: 80%
+	+font-alt-medium
+	+font(30px, round-float(36/30, 2))
+	color: white
+	+push-auto
+
+/* main slider end
