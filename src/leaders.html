@@ -7,7 +7,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Главная</title>
+	<title>Руководство</title>
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2">
 	<!--Theme color-->
@@ -36,7 +36,7 @@
 	<script src="js/modernizr.min.js"></script>
 </head>
 
-<body class="home-page">
+<body>
 	<!--[if lt IE 9]> <div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->
 	<!-- >>> head.tpl END <<< -->
 	<div class="wrapper">
@@ -631,234 +631,453 @@
 				<div class="main__holder">
 					<!--CONTENT-->
 					<div class="content-wrap">
-						<div class="content">
-							<!--fast-links-->
-							<div class="fast-links">
-								<div class="fast-links__item">
-									<a href="#" class="fast-links__inner">
-								<svg class="svg-msg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 79 78.2" width="30" height="30">
-    <path d="M15.5 45.7h28.2v-6H15.5V45.7zM15.5 34.7h47v-6h-47V34.7zM72 0H7C3.1 0 0 3.1 0 7v49c0 3.9 3.1 7 7 7h25.2l13.2 13.7c0.8 1 1.9 1.5 3.1 1.5 1.4 0 2.6-0.7 3.4-1.9 0.2-0.2 0.3-0.5 0.4-0.8L55.8 63H72c3.9 0 7-3.1 7-7V7C79 3.1 75.9 0 72 0zM73 56.1c0 0.6-0.4 1-1 1H53.5c-1.3 0-2.5 0.9-2.9 2.2l-3.1 11L35.7 58c-0.6-0.6-1.3-0.9-2.2-0.9H7c-0.6 0-1-0.4-1-1v-49c0-0.6 0.4-1 1-1h65c0.6 0 1 0.4 1 1V56.1zM15.5 22.7h47v-6h-47V22.7z"></path>
+						<div class="content user-content">
+							<div class="layout-article">
+								<div class="article-heading">
+									<div class="article-heading__cell">
+										<!--breadcrumbs-->
+										<div class="breadcrumbs">
+											<ul class="breadcrumbs__list">
+												<li><a href="#"><span title="Главная">Главная</span></a></li>
+												<li><span title="Руководство">Руководство</span></li>
+											</ul>
+										</div>
+										<!--breadcrumbs end-->
+									</div>
+									<div class="article-heading__cell">
+										<!--<div class="pages-nav">
+									<a href="#" class="btn-light btn-with-icon">
+										<svg class="svg-arr-l" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.5 62.8" width="14" height="14">
+    <polygon points="36.5 56 13.7 31.4 36.5 6.8 29.2 0 3.2 28 0 31.4 3.2 34.8 29.2 62.8 "></polygon>
 </svg>
-								<span>Электронные обращения</span>
-							</a>
-								</div>
-								<div class="fast-links__item">
-									<a href="#" class="fast-links__inner">
-								<svg class="svg-price" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
-    <path d="M20 13h-8v2h8V13zM20 17h-8v2h8V17zM20 9h-8v2h8V9zM0 0v24h24V0H0zM22 22H2V6h20V22zM22 4H2V2h20V4zM6.9 15L6.9 15c0.4 0 0.6 0.2 0.6 0.4 0 0.2-0.1 0.4-0.3 0.5 -0.3 0.1-0.5-0.1-0.6-0.3l-1.9 0.7c0.3 0.6 0.7 1.1 1.3 1.3V19h2v-1.4c1-0.4 1.7-1.5 1.5-2.6 -0.2-1.1-1.2-1.9-2.4-1.9H7c-0.3 0-0.5-0.2-0.5-0.4 0-0.2 0.1-0.4 0.3-0.5 0.3-0.1 0.5 0.1 0.6 0.3l1.9-0.7c-0.3-0.6-0.7-1.1-1.3-1.3V9H6v1.4c-1 0.4-1.7 1.5-1.5 2.6C4.7 14.2 5.8 14.9 6.9 15z"></path>
+										<span>Предыдущая</span>
+									</a>
+									<a href="#" class="btn-light btn-with-icon">
+										<span>Следующая</span>
+										<svg class="svg-arr-r" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.5 62.8" width="14" height="14">
+    <polygon points="0 6.8 22.8 31.4 0 56 7.3 62.8 33.3 34.8 36.5 31.4 33.3 28 7.3 0 "></polygon>
 </svg>
-								<span>Цены и тарифы</span>
-							</a>
-								</div>
-								<div class="fast-links__item">
-									<a href="#" class="fast-links__inner">
-								<svg class="svg-calc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 57.6" width="30" height="30">
-    <path d="M40 28.8h-6.4c-0.9 0-1.6 0.7-1.6 1.6v6.4c0 0.9 0.7 1.6 1.6 1.6H40c0.9 0 1.6-0.7 1.6-1.6v-6.4C41.6 29.5 40.9 28.8 40 28.8zM38.4 35.2h-3.2V32h3.2V35.2zM14.4 41.6H8c-0.9 0-1.6 0.7-1.6 1.6v6.4c0 0.9 0.7 1.6 1.6 1.6h6.4c0.9 0 1.6-0.7 1.6-1.6v-6.4C16 42.3 15.3 41.6 14.4 41.6zM12.8 48H9.6v-3.2h3.2V48zM41.6 0H6.4C2.9 0 0 2.9 0 6.4v44.8c0 3.5 2.9 6.4 6.4 6.4h35.2c3.5 0 6.4-2.9 6.4-6.4V6.4C48 2.9 45.1 0 41.6 0zM44.8 51.2c0 1.8-1.4 3.2-3.2 3.2H6.4c-1.8 0-3.2-1.4-3.2-3.2V6.4c0-1.8 1.4-3.2 3.2-3.2h35.2c1.8 0 3.2 1.4 3.2 3.2V51.2zM14.4 28.8H8c-0.9 0-1.6 0.7-1.6 1.6v6.4c0 0.9 0.7 1.6 1.6 1.6h6.4c0.9 0 1.6-0.7 1.6-1.6v-6.4C16 29.5 15.3 28.8 14.4 28.8zM12.8 35.2H9.6V32h3.2V35.2zM40 41.6h-6.4c-0.9 0-1.6 0.7-1.6 1.6v6.4c0 0.9 0.7 1.6 1.6 1.6H40c0.9 0 1.6-0.7 1.6-1.6v-6.4C41.6 42.3 40.9 41.6 40 41.6zM38.4 48h-3.2v-3.2h3.2V48zM27.2 28.8h-6.4c-0.9 0-1.6 0.7-1.6 1.6v6.4c0 0.9 0.7 1.6 1.6 1.6h6.4c0.9 0 1.6-0.7 1.6-1.6v-6.4C28.8 29.5 28.1 28.8 27.2 28.8zM25.6 35.2h-3.2V32h3.2V35.2zM40 6.4H8C7.1 6.4 6.4 7.1 6.4 8v16c0 0.9 0.7 1.6 1.6 1.6h32c0.9 0 1.6-0.7 1.6-1.6V8C41.6 7.1 40.9 6.4 40 6.4zM38.4 22.4H9.6V9.6h28.8V22.4zM27.2 41.6h-6.4c-0.9 0-1.6 0.7-1.6 1.6v6.4c0 0.9 0.7 1.6 1.6 1.6h6.4c0.9 0 1.6-0.7 1.6-1.6v-6.4C28.8 42.3 28.1 41.6 27.2 41.6zM25.6 48h-3.2v-3.2h3.2V48z"></path>
-</svg>
-								<span>Портал электронных услуг</span>
-							</a>
-								</div>
-							</div>
-							<div class="main-slider main-slider-js">
-								<div class="main-slider__images">
-									<div class="main-slider__images__item">
-										<img src="img/img-main-slider-01.jpg" alt="image description" />
-									</div>
-									<div class="main-slider__images__item">
-										<img src="img/img-main-slider-02.jpg" alt="image description" />
-									</div>
-									<div class="main-slider__images__item">
-										<img src="img/img-main-slider-03.jpg" alt="image description" />
+									</a>
+								</div>-->
 									</div>
 								</div>
-								<div class="main-slider__titles">
-									<div class="main-slider__titles__item">
-										<div class="main-slider__titles__text">Специалисты ОАО «Газпром трансгаз Беларусь» и ГПО «Белтопгаз» координируют действия</div>
-									</div>
-									<div class="main-slider__titles__item">
-										<div class="main-slider__titles__text">Смотр-конкурс на звание «Лучшая транспортная служба газоснабжающих организаций»</div>
-									</div>
-									<div class="main-slider__titles__item">
-										<div class="main-slider__titles__text">Памятка об ответственности должностных лиц за совершение коррупционных преступлений при выполнении ими должностных обязанностей</div>
-									</div>
-								</div>
-							</div>
-							<!--fast-links end-->
-							<section class="m-section">
-								<div class="m-section__heading">
-									<h2>Новости</h2>
-									<div class="m-section__heading__text">Последние и актуальные новости государственного производственного объединения «Белтопгаз».</div>
-									<a href="#" class="btn-default">Все новости</a>
-								</div>
-								<div class="m-section__content">
-									<!--news previews-->
-									<div class="news-previews">
-										<div class="news-previews__list">
-											<article class="news-previews__item wow">
-												<a href="#" class="news-previews__inner">
-													<header class="news-previews__meta">
-														<time datetime="2017-07-12" class="news-previews__date">12 Ноября 2017</time>
-													</header>
-													<div class="news-previews__content">
-														<div class="news-previews__title">Смотр-конкурс на звание «Лучшая транспортная служба газоснабжающих организаций»</div>
+								<h1>Руководство</h1>
+								<hr>
+								<div class="leaders">
+									<div class="leaders__list leaders--equal-height-js">
+										<div class="leaders__item">
+											<a href="#!" class="leaders__inner">
+												<div class="leaders__figure">
+													<img src="img/img-leaders-01.png" alt="image description" />
+												</div>
+												<div class="leaders__content">
+													<div class="leaders__title">
+														<h3>Рудинский Леонид Иванович</h3>
 													</div>
-													<footer class="news-previews__footer">
-														<span class="btn-read">Подробнее</span>
-													</footer>
-												</a>
-											</article>
-											<article class="news-previews__item wow">
-												<a href="#" class="news-previews__inner">
-													<header class="news-previews__meta">
-														<time datetime="2017-07-12" class="news-previews__date">8 Ноября 2017</time>
-													</header>
-													<div class="news-previews__content">
-														<div class="news-previews__title">Вышел в свет октябрьский номер газеты «БЕЛТОПГАЗ. Газоснабжение и торфопереработка»</div>
+													<div class="leaders__text">
+														<p>Генеральный директор ГПО «Белтопгаз»</p>
 													</div>
-													<footer class="news-previews__footer">
-														<span class="btn-read">Подробнее</span>
-													</footer>
-												</a>
-											</article>
-											<article class="news-previews__item wow">
-												<a href="#" class="news-previews__inner">
-													<header class="news-previews__meta">
-														<time datetime="2017-07-07" class="news-previews__date">6 Ноября 2017</time>
-													</header>
-													<div class="news-previews__content">
-														<div class="news-previews__title">Смотр-конкурс на звание «Лучшая транспортная служба газоснабжающих организаций»</div>
+												</div>
+											</a>
+										</div>
+										<div class="leaders__item">
+											<a href="#!" class="leaders__inner">
+												<div class="leaders__figure">
+													<img src="img/img-leaders-02.png" alt="image description" />
+												</div>
+												<div class="leaders__content">
+													<div class="leaders__title">
+														<h3>Жилко Александр Владимирович</h3>
 													</div>
-													<footer class="news-previews__footer">
-														<span class="btn-read">Подробнее</span>
-													</footer>
-												</a>
-											</article>
-											<article class="news-previews__item wow">
-												<a href="#" class="news-previews__inner">
-													<header class="news-previews__meta">
-														<time datetime="2017-07-06" class="news-previews__date">5 Ноября 2017</time>
-													</header>
-													<div class="news-previews__content">
-														<div class="news-previews__title">День матери отпраздновали в УП «Витебскоблгаз»</div>
+													<div class="leaders__text">
+														<p>Первый заместитель генерального директора</p>
 													</div>
-													<footer class="news-previews__footer">
-														<span class="btn-read">Подробнее</span>
-													</footer>
-												</a>
-											</article>
-											<article class="news-previews__item wow">
-												<a href="#" class="news-previews__inner">
-													<header class="news-previews__meta">
-														<time datetime="2017-07-05" class="news-previews__date">3 Ноября 2017</time>
-													</header>
-													<div class="news-previews__content">
-														<div class="news-previews__title">Газовиками открыты новые центры обслуживания населения Минщины</div>
+												</div>
+											</a>
+										</div>
+										<div class="leaders__item">
+											<a href="#!" class="leaders__inner">
+												<div class="leaders__figure">
+													<img src="img/img-leaders-03.png" alt="image description" />
+												</div>
+												<div class="leaders__content">
+													<div class="leaders__title">
+														<h3>Киселёв Владимир Григорьевич</h3>
 													</div>
-													<footer class="news-previews__footer">
-														<span class="btn-read">Подробнее</span>
-													</footer>
-												</a>
-											</article>
-											<article class="news-previews__item wow">
-												<a href="#" class="news-previews__inner">
-													<header class="news-previews__meta">
-														<time datetime="2017-06-30" class="news-previews__date">1 Ноября 2017</time>
-													</header>
-													<div class="news-previews__content">
-														<div class="news-previews__title">День матери отпраздновали в УП «Витебскоблгаз»</div>
+													<div class="leaders__text">
+														<p>Заместитель генерального директора (экономика и финансы)</p>
 													</div>
-													<footer class="news-previews__footer">
-														<span class="btn-read">Подробнее</span>
-													</footer>
-												</a>
-											</article>
+												</div>
+											</a>
+										</div>
+										<div class="leaders__item">
+											<a href="#!" class="leaders__inner">
+												<div class="leaders__figure">
+													<img src="img/img-leaders-04.png" alt="image description" />
+												</div>
+												<div class="leaders__content">
+													<div class="leaders__title">
+														<h3>Ковалёв Валерий Владимирович</h3>
+													</div>
+													<div class="leaders__text">
+														<p>Заместитель генерального директора (торфяная промышленность)</p>
+													</div>
+												</div>
+											</a>
+										</div>
+										<div class="leaders__item">
+											<a href="#!" class="leaders__inner">
+												<div class="leaders__figure">
+													<img src="img/img-leaders-05.png" alt="image description" />
+												</div>
+												<div class="leaders__content">
+													<div class="leaders__title">
+														<h3>Петруша Дмитрий Викторович</h3>
+													</div>
+													<div class="leaders__text">
+														<p>Заместитель генерального директора - начальник управления перспективного развития и инвестиций</p>
+													</div>
+												</div>
+											</a>
+										</div>
+										<div class="leaders__item">
+											<a href="#!" class="leaders__inner">
+												<div class="leaders__figure">
+													<img src="img/img-leaders-06.png" alt="image description" />
+												</div>
+												<div class="leaders__content">
+													<div class="leaders__title">
+														<h3>Адашкевич Владимир Степанович</h3>
+													</div>
+													<div class="leaders__text">
+														<p>Заместитель генерального директора (агропромышленный комплекс)</p>
+													</div>
+												</div>
+											</a>
 										</div>
 									</div>
-									<!--news previews end-->
 								</div>
-							</section>
-							<section class="m-section m-section--docs">
-								<div class="m-section__heading">
-									<h2>Документы</h2>
-									<div class="m-section__heading__text">Перечень основных локальных нормативных правовых актов, приказов, инструкций, распоряжений, разработанных ГПО «Белтопгаз».</div>
-									<a href="#" class="btn-default">все документы</a>
-								</div>
-								<div class="m-section__content">
-									<!--news previews-->
-									<div class="docs">
-										<div class="docs__list">
-											<article class="docs__item wow">
-												<a href="#" class="docs__inner">
-		<svg class="svg-doc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.5 88.4" width="24" height="30">
-    <path d="M68.9 20.3L51.6 0.8C51.1 0.3 50.5 0 49.8 0H2.5C1.1 0 0 1.1 0 2.5v83.4c0 1.4 1.1 2.5 2.5 2.5H67c1.4 0 2.5-1.1 2.5-2.5V21.9C69.5 21.3 69.3 20.7 68.9 20.3zM52.2 9l9.3 10.5h-9.3V9zM64.5 83.4H5V5h42.2v17.1c0 1.4 1.1 2.5 2.5 2.5h14.8V83.4zM14 42.6c0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5H16.5C15.1 40.1 14 41.2 14 42.6zM53 67.1H16.5c-1.4 0-2.5 1.1-2.5 2.5 0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5C55.5 68.2 54.4 67.1 53 67.1zM53 53.6H16.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5S54.4 53.6 53 53.6z"></path>
-</svg>
-		<div class="docs__text"><span>О вопросах определения стоимости объектов приватизации – жилых домов</span></div>
-	</a>
-											</article>
-											<article class="docs__item wow">
-												<a href="#" class="docs__inner">
-		<svg class="svg-doc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.5 88.4" width="24" height="30">
-    <path d="M68.9 20.3L51.6 0.8C51.1 0.3 50.5 0 49.8 0H2.5C1.1 0 0 1.1 0 2.5v83.4c0 1.4 1.1 2.5 2.5 2.5H67c1.4 0 2.5-1.1 2.5-2.5V21.9C69.5 21.3 69.3 20.7 68.9 20.3zM52.2 9l9.3 10.5h-9.3V9zM64.5 83.4H5V5h42.2v17.1c0 1.4 1.1 2.5 2.5 2.5h14.8V83.4zM14 42.6c0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5H16.5C15.1 40.1 14 41.2 14 42.6zM53 67.1H16.5c-1.4 0-2.5 1.1-2.5 2.5 0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5C55.5 68.2 54.4 67.1 53 67.1zM53 53.6H16.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5S54.4 53.6 53 53.6z"></path>
-</svg>
-		<div class="docs__text"><span>Типичнaые нарушения в проведении подрядных торгов</span></div>
-	</a>
-											</article>
-											<article class="docs__item wow">
-												<a href="#" class="docs__inner">
-		<svg class="svg-doc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.5 88.4" width="24" height="30">
-    <path d="M68.9 20.3L51.6 0.8C51.1 0.3 50.5 0 49.8 0H2.5C1.1 0 0 1.1 0 2.5v83.4c0 1.4 1.1 2.5 2.5 2.5H67c1.4 0 2.5-1.1 2.5-2.5V21.9C69.5 21.3 69.3 20.7 68.9 20.3zM52.2 9l9.3 10.5h-9.3V9zM64.5 83.4H5V5h42.2v17.1c0 1.4 1.1 2.5 2.5 2.5h14.8V83.4zM14 42.6c0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5H16.5C15.1 40.1 14 41.2 14 42.6zM53 67.1H16.5c-1.4 0-2.5 1.1-2.5 2.5 0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5C55.5 68.2 54.4 67.1 53 67.1zM53 53.6H16.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5S54.4 53.6 53 53.6z"></path>
-</svg>
-		<div class="docs__text"><span>О вопросах определения стоимости объектов приватизации – жилых домов</span></div>
-	</a>
-											</article>
-											<article class="docs__item wow">
-												<a href="#" class="docs__inner">
-		<svg class="svg-doc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.5 88.4" width="24" height="30">
-    <path d="M68.9 20.3L51.6 0.8C51.1 0.3 50.5 0 49.8 0H2.5C1.1 0 0 1.1 0 2.5v83.4c0 1.4 1.1 2.5 2.5 2.5H67c1.4 0 2.5-1.1 2.5-2.5V21.9C69.5 21.3 69.3 20.7 68.9 20.3zM52.2 9l9.3 10.5h-9.3V9zM64.5 83.4H5V5h42.2v17.1c0 1.4 1.1 2.5 2.5 2.5h14.8V83.4zM14 42.6c0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5H16.5C15.1 40.1 14 41.2 14 42.6zM53 67.1H16.5c-1.4 0-2.5 1.1-2.5 2.5 0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5C55.5 68.2 54.4 67.1 53 67.1zM53 53.6H16.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5S54.4 53.6 53 53.6z"></path>
-</svg>
-		<div class="docs__text"><span>Закон республики беларусь «о газоснабжении»</span></div>
-	</a>
-											</article>
-											<article class="docs__item wow">
-												<a href="#" class="docs__inner">
-		<svg class="svg-doc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.5 88.4" width="24" height="30">
-    <path d="M68.9 20.3L51.6 0.8C51.1 0.3 50.5 0 49.8 0H2.5C1.1 0 0 1.1 0 2.5v83.4c0 1.4 1.1 2.5 2.5 2.5H67c1.4 0 2.5-1.1 2.5-2.5V21.9C69.5 21.3 69.3 20.7 68.9 20.3zM52.2 9l9.3 10.5h-9.3V9zM64.5 83.4H5V5h42.2v17.1c0 1.4 1.1 2.5 2.5 2.5h14.8V83.4zM14 42.6c0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5H16.5C15.1 40.1 14 41.2 14 42.6zM53 67.1H16.5c-1.4 0-2.5 1.1-2.5 2.5 0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5C55.5 68.2 54.4 67.1 53 67.1zM53 53.6H16.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5S54.4 53.6 53 53.6z"></path>
-</svg>
-		<div class="docs__text"><span>Предложения для инвесторов</span></div>
-	</a>
-											</article>
-											<article class="docs__item wow">
-												<a href="#" class="docs__inner">
-		<svg class="svg-doc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.5 88.4" width="24" height="30">
-    <path d="M68.9 20.3L51.6 0.8C51.1 0.3 50.5 0 49.8 0H2.5C1.1 0 0 1.1 0 2.5v83.4c0 1.4 1.1 2.5 2.5 2.5H67c1.4 0 2.5-1.1 2.5-2.5V21.9C69.5 21.3 69.3 20.7 68.9 20.3zM52.2 9l9.3 10.5h-9.3V9zM64.5 83.4H5V5h42.2v17.1c0 1.4 1.1 2.5 2.5 2.5h14.8V83.4zM14 42.6c0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5H16.5C15.1 40.1 14 41.2 14 42.6zM53 67.1H16.5c-1.4 0-2.5 1.1-2.5 2.5 0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5C55.5 68.2 54.4 67.1 53 67.1zM53 53.6H16.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5S54.4 53.6 53 53.6z"></path>
-</svg>
-		<div class="docs__text"><span>Закон республики беларусь «о газоснабжении»</span></div>
-	</a>
-											</article>
-											<article class="docs__item wow">
-												<a href="#" class="docs__inner">
-		<svg class="svg-doc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.5 88.4" width="24" height="30">
-    <path d="M68.9 20.3L51.6 0.8C51.1 0.3 50.5 0 49.8 0H2.5C1.1 0 0 1.1 0 2.5v83.4c0 1.4 1.1 2.5 2.5 2.5H67c1.4 0 2.5-1.1 2.5-2.5V21.9C69.5 21.3 69.3 20.7 68.9 20.3zM52.2 9l9.3 10.5h-9.3V9zM64.5 83.4H5V5h42.2v17.1c0 1.4 1.1 2.5 2.5 2.5h14.8V83.4zM14 42.6c0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5H16.5C15.1 40.1 14 41.2 14 42.6zM53 67.1H16.5c-1.4 0-2.5 1.1-2.5 2.5 0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5C55.5 68.2 54.4 67.1 53 67.1zM53 53.6H16.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5S54.4 53.6 53 53.6z"></path>
-</svg>
-		<div class="docs__text"><span>Типичные нарушения в проведении подрядных торгов</span></div>
-	</a>
-											</article>
-											<article class="docs__item wow">
-												<a href="#" class="docs__inner">
-		<svg class="svg-doc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.5 88.4" width="24" height="30">
-    <path d="M68.9 20.3L51.6 0.8C51.1 0.3 50.5 0 49.8 0H2.5C1.1 0 0 1.1 0 2.5v83.4c0 1.4 1.1 2.5 2.5 2.5H67c1.4 0 2.5-1.1 2.5-2.5V21.9C69.5 21.3 69.3 20.7 68.9 20.3zM52.2 9l9.3 10.5h-9.3V9zM64.5 83.4H5V5h42.2v17.1c0 1.4 1.1 2.5 2.5 2.5h14.8V83.4zM14 42.6c0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5H16.5C15.1 40.1 14 41.2 14 42.6zM53 67.1H16.5c-1.4 0-2.5 1.1-2.5 2.5 0 1.4 1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5C55.5 68.2 54.4 67.1 53 67.1zM53 53.6H16.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5H53c1.4 0 2.5-1.1 2.5-2.5S54.4 53.6 53 53.6z"></path>
-</svg>
-		<div class="docs__text"><span>Памятка об ответственности должностных лиц за совершение коррупционных преступлений при выполнении ими должностных обязанностей</span></div>
-	</a>
-											</article>
-										</div>
-									</div>
-									<!--news previews end-->
-								</div>
-							</section>
+							</div>
+							<script>
+								'use strict';
+
+								function get_cookie(cookie_name) {
+									var results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
+
+									if (results)
+										return (unescape(results[2]));
+									else
+										return null;
+								}
+
+								var nav = document.createElement('div');
+								var list = document.createElement('ul');
+								nav.className = "navigationByTypographyElements";
+								document.body.appendChild(nav);
+								nav.appendChild(list);
+
+								var opener = document.createElement('a');
+								opener.innerHTML = "Меню";
+								opener.className = "navigationByTypographyOpener";
+								nav.insertBefore(opener, nav.firstChild);
+
+								var toLeftBtn = document.createElement('a');
+								toLeftBtn.innerHTML = "Прикрепить слева";
+								toLeftBtn.className = "navigationByTypographyToLeft";
+								nav.insertBefore(toLeftBtn, nav.firstChild);
+
+								for (var i = 0; i < document.querySelectorAll('.hashAnchor').length; i++) {
+									var elem = document.querySelectorAll('.hashAnchor');
+									var a = document.createElement('a');
+									var li = document.createElement('li');
+
+									a.innerHTML = elem[i].closest('h4, h3').textContent.trim();
+									if (elem[i].closest('h4')) {
+										//										elem[i].closest('h4').setAttribute("class", "blah");
+										li.className = 'navigationByTypographySubItem';
+									}
+									a.setAttribute('href', '#' + elem[i].id);
+
+									li.appendChild(a);
+									list.appendChild(li);
+								}
+
+								// navigation toggle
+								var cookieNavBTIsHide = "navigationByTypographyIsHide";
+
+								if (get_cookie(cookieNavBTIsHide) === 'true') {
+									list.style.display = "none";
+									nav.setAttribute('data-toggle', 'hide');
+								}
+
+								opener.onclick = function() {
+									list.style.display = (list.style.display !== "none") ? "none" : "block";
+									if (list.style.display === "none") {
+										document.cookie = cookieNavBTIsHide + "=true";
+										nav.setAttribute('data-toggle', 'hide');
+									} else {
+										document.cookie = cookieNavBTIsHide + "=false";
+										nav.setAttribute('data-toggle', 'show')
+									}
+								};
+
+								// navigation move to left/right
+								var toLeftAttr = 'data-to-left';
+								var cookieIsLeftPos = "navigationByTypographyIsLeft";
+
+								if (get_cookie(cookieIsLeftPos) === 'true') {
+									nav.setAttribute(toLeftAttr, 'true');
+								}
+
+								toLeftBtn.onclick = function() {
+									if (!nav.hasAttribute(toLeftAttr)) {
+										document.cookie = cookieIsLeftPos + "=true";
+										nav.setAttribute(toLeftAttr, 'true');
+									} else {
+										document.cookie = cookieIsLeftPos + "=false";
+										nav.removeAttribute(toLeftAttr);
+									}
+								}
+							</script>
+							<style>
+								.navigationByTypographyElements {
+									position: fixed;
+									right: 20px;
+									top: 20px;
+									width: 240px;
+									background-color: white;
+									box-shadow: 2px 2px 35px rgba(0, 0, 0, 0.2);
+									z-index: 99999;
+									font-size: 14px;
+									line-height: 1.4;
+									/*counter-reset: items;*/
+									-webkit-transition-property: transform;
+									transition-property: transform;
+									-webkit-transition-duration: 0.2s;
+									transition-duration: 0.2s;
+									-webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+									transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+									user-select: none;
+								}
+
+								.navigationByTypographyElements[data-toggle="hide"] {
+									width: 42px;
+								}
+
+								.navigationByTypographyElements[data-to-left] {
+									transform: translateX(calc(-100vw + 240px + 60px));
+								}
+
+								.navigationByTypographyElements ul {
+									display: block;
+									list-style: none;
+									margin: 0;
+									height: calc(100vh - 100px);
+									overflow-x: hidden;
+									overflow-y: auto;
+									padding: 0 20px 18px;
+								}
+
+								.navigationByTypographyElements ul::-webkit-scrollbar {
+									width: 0.4em;
+								}
+
+								.navigationByTypographyElements ul::-webkit-scrollbar-track {
+									-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+								}
+
+								.navigationByTypographyElements ul::-webkit-scrollbar-thumb {
+									background-color: darkgrey;
+									outline: 1px solid slategrey;
+								}
+
+								.navigationByTypographyElements ul li {
+									margin-bottom: 12px;
+									/*counter-increment: items;*/
+								}
+
+								.navigationByTypographyElements ul li:last-child {
+									margin: 0;
+								}
+
+								.navigationByTypographyElements ul li::before {
+									/*content: counter(items) '. ';*/
+									color: tomato;
+									content: '';
+									display: inline-block;
+									vertical-align: top;
+									margin-top: 7px;
+									margin-right: 8px;
+									height: 6px;
+									width: 6px;
+									background-color: tomato;
+								}
+
+								.navigationByTypographyElements ul .navigationByTypographySubItem {
+									font-size: 0.8em;
+									padding-left: 15px;
+								}
+
+								.navigationByTypographyElements ul .navigationByTypographySubItem::before {
+									border-radius: 50%;
+									margin-top: 4px;
+								}
+
+								.navigationByTypographyElements ul a {
+									color: darkslategray;
+									text-decoration: none;
+									padding-top: 5px;
+								}
+
+								.navigationByTypographyElements ul a:hover {
+									text-decoration: underline;
+								}
+
+								h3,
+								h4 {
+									position: relative;
+								}
+
+								h3 a,
+								h4 a {
+									display: inline-block;
+									vertical-align: top;
+									color: inherit;
+									text-decoration: none;
+									-webkit-transition: border-color 0.2s;
+									transition: border-color 0.2s;
+								}
+
+								h3 a span,
+								h4 a span {
+									text-decoration: underline;
+								}
+
+								h4 a {
+									border-bottom-color: #909090;
+								}
+
+								h4 a .mark {
+									color: #909090;
+								}
+
+								h4 .hashAnchor::before {
+									width: 18px;
+									height: 18px;
+									top: 6px;
+								}
+
+								.hashAnchor:hover::before {
+									opacity: 0.5;
+								}
+
+								.navigationByTypographyOpener {
+									position: relative;
+									display: block;
+									padding: 18px 35px 18px 20px;
+									cursor: pointer;
+									font-size: 16px;
+									line-height: 15px;
+									font-weight: bold;
+									text-align: center;
+								}
+
+								.navigationByTypographyElements[data-toggle="hide"] .navigationByTypographyOpener {
+									font-size: 0;
+									line-height: 0;
+									padding: 11px 5px;
+								}
+
+								.navigationByTypographyOpener::after {
+									content: '-';
+									display: block;
+									position: absolute;
+									right: 20px;
+									top: 50%;
+									width: 16px;
+									height: 16px;
+									font-size: 16px;
+									line-height: 15px;
+									background-color: rgba(0, 0, 0, 0.2);
+									text-align: center;
+									-webkit-transform: translate(0, -50%);
+									-ms-transform: translate(0, -50%);
+									transform: translate(0, -50%);
+								}
+
+								.navigationByTypographyElements[data-toggle="hide"] .navigationByTypographyOpener::after {
+									right: 3px;
+								}
+
+								.navigationByTypographyOpener:hover::after {
+									background-color: rgba(0, 0, 0, 0.4);
+								}
+
+								[data-toggle*="hide"] .navigationByTypographyOpener::after {
+									content: '+';
+								}
+
+								.navigationByTypographyToLeft {
+									position: absolute;
+									top: 3px;
+									left: 3px;
+									font-size: 0;
+									line-height: 0;
+									letter-spacing: -4px;
+									text-align: center;
+									cursor: pointer;
+									width: 16px;
+									height: 16px;
+									background-color: rgba(0, 0, 0, 0.2);
+									z-index: 5;
+								}
+
+								.navigationByTypographyToLeft:hover {
+									background-color: rgba(0, 0, 0, 0.4);
+								}
+
+								.navigationByTypographyToLeft:before {
+									content: '<';
+									display: inline-block;
+									font-size: 18px;
+									line-height: 16px;
+									letter-spacing: normal;
+								}
+
+								[data-to-left] .navigationByTypographyToLeft:before {
+									content: '>';
+								}
+							</style>
 						</div>
 					</div>
 					<!--CONTENT end-->
+					<!--SIDEBAR-->
+					<aside class="sidebar sidebar--sticky-js">
+						<div class="sidebar__holder sidebar-holder--sticky-js">
+							<div class="sidebar__widget">
+								<div class="menu">
+									<ul class="menu__list">
+										<li><a href="#"><span>ГПО «Белтопгаз»</span></a></li>
+										<li class="current"><a href="#"><span>Руководство</span></a></li>
+										<li><a href="#"><span>УП «Брестоблгаз»</span></a></li>
+										<li><a href="#"><span>УП «Витебскоблгаз»</span></a></li>
+										<li><a href="#"><span>РПУП «Гомельоблгаз»</span></a></li>
+										<li><a href="#"><span>ПРУП «Гроднооблгаз»</span></a></li>
+										<li><a href="#"><span>УП «Минскоблгаз»</span></a></li>
+										<li><a href="#"><span>РУП «Могилевоблгаз»</span></a></li>
+										<li><a href="#"><span>УП «Мингаз»</span></a></li>
+										<li><a href="#"><span>СП ОАО «Брестгазоаппарат»</span></a></li>
+										<li><a href="#"><span>ОАО «Новогрудский завод газовой аппаратуры»</span></a></li>
+									</ul>
+								</div>
+							</div>
+							<!--<div class="sidebar__widget">
+			<h3>Заголовок виджета</h3>
+			<p>Контент виджета</p>
+		</div>-->
+						</div>
+					</aside>
+					<!--SIDEBAR-->
 				</div>
 			</div>
 		</div>

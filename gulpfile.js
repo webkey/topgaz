@@ -111,6 +111,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
 		, 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
 		, 'src/libs/magnific-popup/dist/jquery.magnific-popup.min.js' // Magnific Popup - v1.1.0 - 2016-02-20 http://dimsemenov.com/plugins/magnific-popup/
+		, 'src/libs/imagesloaded/imagesloaded.pkgd.min.js' // JavaScript is all like "You images done yet or what?"
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))

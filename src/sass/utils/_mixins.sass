@@ -441,12 +441,13 @@
 /// @example css - Вывод CSS
 
 =grid-parent($horizontal-space: 20px)
-	@if $horizontal-space == 0
-		left: 0
-		right: 0
-	@else
-		left: -#{round($horizontal-space/2)}
-		right: -#{round($horizontal-space/2)}
+	margin:
+		@if $horizontal-space == 0
+			left: 0
+			right: 0
+		@else
+			left: -#{round($horizontal-space/2)}
+			right: -#{round($horizontal-space/2)}
 
 =grid-item($length-in-row: 1, $horizontal-space: 20px, $bottom-space: $horizontal-space)
 	display: inline-block

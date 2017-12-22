@@ -12,11 +12,10 @@
 	margin-bottom: $bottom-space--md
 
 .user-form
-	background: $bg-color-alt
-	+padding-vertical($text-layout-space)
+	background: white
+	padding: $page-layout-space
 	margin-bottom: $bottom-space
-	border: solid $border-color-light
-	border-width: 1px 0
+	border: 1px solid $border-color
 
 	&:last-child
 		margin-bottom: 0
@@ -31,7 +30,7 @@
 		display: block
 
 	.input-wrap
-		margin-bottom: 50px
+		margin-bottom: 40px
 
 	textarea
 		height: 130px
@@ -83,7 +82,7 @@
 			float: none
 			margin: 0
 
-		.btn-submit
+		//.btn-submit
 			width: 200px
 
 	.form-note
@@ -104,5 +103,9 @@
 		width: calc(100% - 6px)
 		+font($font-size--sm, $line-height--sm)
 		letter-spacing: normal
+
+		.form-mark
+			left: auto
+			margin-left: 0
 
 /* user form end

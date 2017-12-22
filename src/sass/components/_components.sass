@@ -2,6 +2,58 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+/* article-heading
+.article-heading
+	display: flex
+	justify-content: space-between
+	align-items: center
+	clear: both
+	margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+	.btn-light
+		+margin-horizontal(10px)
+
+.article-heading__cell
+	flex: 1 1 auto
+
+	&:last-child
+		//min-width: 400px
+		flex-grow: 0
+		flex-basis: auto
+
+		.pages-nav
+			min-width: 260px
+
+/* article-footer end
+
+/* article-footer
+.article-footer
+	display: flex
+	justify-content: space-between
+	align-items: center
+	clear: both
+	margin: $bottom-space--md 0
+
+	&:last-child
+		margin-bottom: 0
+
+/* article-footer end
+
+/* pages-nav
+.pages-nav
+	margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+	.btn-light
+		+margin-horizontal(10px)
+
+/* pages-nav end
+
 /* fast-links
 .fast-links
 	display: table
@@ -289,3 +341,94 @@ $docs-space--lg: 30px
 	+push-auto
 
 /* main slider end
+
+/* leaders
+.leaders
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+.leaders__list
+	+grid-parent($leaders-gap)
+	padding-top: $leaders-gap
+	+clear-spacing
+
+.leaders__item
+	+grid-item(3, $leaders-gap, round($leaders-gap*2))
+	+font($font-size, $line-height)
+	letter-spacing: normal
+
+.leaders__inner
+	display: block
+	height: 100%
+	text-decoration: none
+	color: inherit
+	padding: $leaders-space
+	border: 1px solid $border-color
+	text-align: center
+	transition:
+		property: border-color
+		duration: $animation-speed
+
+.leaders__figure
+	position: relative
+	margin-top: -#{$leaders-space*2}
+	margin-bottom: 35px
+	background-color: #e6e6e6
+	transition:
+		property: background-color
+		duration: $animation-speed
+
+	&::before
+		content: ""
+		display: block
+		+ratio(1, 1)
+
+	&:last-child
+		margin-bottom: 0
+
+	img
+		position: absolute
+		+size(100%)
+		+position(0)
+		display: block
+		max-width: none
+		+object-fit(cover)
+
+//.leaders__content
+.leaders__title
+	+font-alt
+	+font(24px, round-float(30/24, 2))
+	color: $text-color
+	margin-bottom: 0.8em
+	transition:
+		property: color
+		duration: $animation-speed
+
+	&:last-child
+		margin-bottom: 0
+
+	& > h2, & > h3, & > h4
+		font: inherit
+		margin-bottom: 0
+		color: inherit
+
+.leaders__text
+	+font(16px, round-float(20/16, 2))
+
+	& > p, & > ul, & > ol
+		&:last-child
+			margin-bottom: 0
+
+// hover
+.leaders__inner:hover
+	border-color: $link-color
+
+	.leaders__figure
+		background-color: $link-color
+
+	.leaders__title
+		color: $link-color
+
+/* leaders end

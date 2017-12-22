@@ -1,41 +1,43 @@
-<ul class="user-options">
-	<li class="user-options__item user-options__item--map">
-		<!--<a href="#" title="Сообщения">-->
-		<a href="#" title="Карта сайта">
-			@@include("includes/svg/site-map.svg")
-			<span class="hide-text">Карта сайта</span>
-		</a>
-	</li>
-	<li class="user-options__item user-options__item--login">
-		<a href="#" title="Версия для слабовидящих">
-			@@include("includes/svg/glasses.svg")
-			<span class="hide-text">Версия для слабовидящих</span>
-		</a>
-	</li>
-	<li class="user-options__item user-options__item--search">
-		<a href="#" title="Поиск">
-			@@include("includes/svg/close.svg")
-			@@include("includes/svg/magnifier.svg")
-			<span class="hide-text">Поиск</span>
-		</a>
-	</li>
-	<li class="user-options__item user-options__item--lang">
-		<!--lang-->
-		<div class="lang lang__container-js">
-			<a href="#" class="lang__opener-js" title="Выбрать язык">
-				<span>Рус</span>
+<div class="user-options">
+	<ul class="user-options__list">
+		<li class="user-options__item user-options__item--map">
+			<!--<a href="#" title="Сообщения">-->
+			<a href="#" title="Карта сайта">
+				@@include("includes/svg/site-map.svg")
+				<span class="hide-text">Карта сайта</span>
 			</a>
-			<ul class="lang__list lang__drop-js">
-				<li><a href="#"><span>Бел</span></a></li>
-				<li class="current"><a href="#"><span>Рус</span></a></li>
-				<li><a href="#"><span>Eng</span></a></li>
-			</ul>
-		</div>
-		<!--lang end-->
-	</li>
-	<li class="user-options__item user-options__item--msg">
-		<a href="#msg-popup" class="btn-popup-js" title="Напишите нам">
-			<span>Напишите нам</span>
-		</a>
-	</li>
-</ul>
+		</li>
+		<li class="user-options__item user-options__item--login">
+			<a href="#" title="Версия для слабовидящих">
+				@@include("includes/svg/glasses.svg")
+				<span class="hide-text">Версия для слабовидящих</span>
+			</a>
+		</li>
+		<li class="user-options__item user-options__item--search">
+			<a href="#" title="Поиск">
+				@@include("includes/svg/close.svg")
+				@@include("includes/svg/magnifier.svg")
+				<span class="hide-text">Поиск</span>
+			</a>
+		</li>
+		<li class="user-options__item user-options__item--lang">
+			<!--lang-->
+			<div class="lang lang__container-js">
+				<a href="#" class="lang__opener-js" title="Выбрать язык">
+					<span>Рус</span>
+				</a>
+				<ul class="lang__list lang__drop-js">
+					<li><a href="#"><span>Бел</span></a></li>
+					<li class="current"><a href="#"><span>Рус</span></a></li>
+					<li><a href="#"><span>Eng</span></a></li>
+				</ul>
+			</div>
+			<!--lang end-->
+		</li>
+		<li class="user-options__item user-options__item--msg">
+			<a href="#msg-popup" class="btn-popup-js" title="Напишите нам">
+				<span>Напишите нам</span>
+			</a>
+		</li>
+	</ul>
+</div>

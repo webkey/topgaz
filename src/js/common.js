@@ -701,24 +701,201 @@ function popupsInit() {
 }
 
 /**
+ * !position drop menu
+ * */
+(function ($) {
+	// external js:
+	// 1) device.js 0.2.7 (widgets.js);
+	// 2) resizeByWidth (resize only width);
+
+	var PositionDropMenu = function (settings) {
+		var options = $.extend({
+			navContainer: null,
+			navList: null,
+			navMenuItem: 'li',
+			navDropMenu: '.nav-drop-js'
+		}, settings || {});
+
+		this.options = options;
+
+		var container = $(options.navContainer);
+		this.$navContainer = container;
+		this.$navList = $(options.navList);
+		this.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации.
+		this.$navDropMenu = $(options.navDropMenu, container);     // Дроп-меню всех уровней.
+
+		this.modifiers = {
+			alignRight: 'nav-align--right',
+			alignBottom: 'nav-align--bottom'
+		};
+
+		this.addAlignDropClass();
+		this.removeAlignDropClass();
+	};
+
+	PositionDropMenu.prototype.createAlignDropClass = function (item, drop) {
+		var self = this,
+			$navContainer = self.$navContainer,
+			alightRightClass = self.modifiers.alignRight,
+			alightBottomClass = self.modifiers.alignBottom;
+
+		// for align right
+		// var navContainerPosRight = $navContainer.offset().left + $navContainer.outerWidth();
+		var navContainerPosRight = $('body').outerWidth();
+		var navDropPosRight = drop.offset().left + drop.outerWidth();
+
+		if (navContainerPosRight < navDropPosRight) {
+			item.addClass(alightRightClass);
+		}
+
+		// clear js style
+		drop.attr('style', '');
+
+		// for align bottom
+		// var maxPosBottom = $(window).height() - $navContainer.outerHeight();
+		var maxPosBottom = $(window).height();
+		var dropHeight = drop.outerHeight();
+		var currentDropPosBottom = drop.offset().top - $(window).scrollTop() + dropHeight;
+
+		// console.log("==================: ", drop.children('ul').children('li').first().children('.nav__tab').find('a').text());
+
+		// console.log("drop.offset().top: ", drop.offset().top);
+		// console.log("$(window).scrollTop(): ", $(window).scrollTop());
+		// console.log("dropHeight: ", dropHeight);
+
+		// console.log("$navContainerHeight: ", $navContainer.outerHeight());
+		// console.log("drop: ", drop);
+		// console.log("maxPosBottom: ", maxPosBottom);
+		// console.log("dropHeight: ", dropHeight);
+		// console.log("currentDropPosBottom: ", currentDropPosBottom);
+		// console.log("bottomSpace: ", maxPosBottom - currentDropPosBottom);
+
+		if (maxPosBottom < currentDropPosBottom) {
+			if (maxPosBottom < 500) {
+				return;
+			}
+			item.addClass(alightBottomClass);
+			drop.css('margin-top', maxPosBottom - currentDropPosBottom);
+		}
+	};
+
+	PositionDropMenu.prototype.addAlignDropClass = function () {
+		var self = this,
+			$navContainer = self.$navContainer,
+			navMenuItem = self.options.navMenuItem;
+
+		$navContainer.on('click', '' + navMenuItem + '', function () {
+			var $this = $(this);
+			var $drop = $this.find(self.$navDropMenu).eq(0);
+
+			if (!device.desktop() && $drop.length) {
+				self.createAlignDropClass($this, $drop);
+			}
+		});
+
+		$navContainer.on('mouseenter', '' + navMenuItem + '', function () {
+			var $this = $(this);
+			var $drop = $this.find(self.$navDropMenu).eq(0);
+
+			if (device.desktop() && $drop.length) {
+				self.createAlignDropClass($this, $drop);
+			}
+		});
+	};
+
+	PositionDropMenu.prototype.removeAlignDropClass = function () {
+		var self = this,
+			alightRightClass = self.modifiers.alignRight,
+			alightBottomClass = self.modifiers.alignBottom;
+
+		$(window).on('debouncedresize', function () {
+			self.$navMenuItem.removeClass(alightRightClass);
+			self.$navMenuItem.removeClass(alightBottomClass);
+		});
+	};
+
+	window.PositionDropMenu = PositionDropMenu;
+
+}(jQuery));
+
+function addAlignClass() {
+	var $nav = $('.nav');
+
+	if ($nav.length) {
+		new PositionDropMenu({
+			navContainer: '.nav',
+			navList: '.nav__list',
+			navMenuItem: 'li',
+			navMenuAnchor: 'a',
+			navDropMenu: '.nav-drop-js'
+		});
+	}
+}
+
+/**
+ * !Equal height of blocks by maximum height of them
+ */
+function equalHeight() {
+	// example
+	var $leaders = $('.leaders--equal-height-js');
+
+	if($leaders.length) {
+		$leaders.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+}
+
+/**
+ * !Sticky element on page
+ */
+function stickyInit() {
+	var sidebarSticky = '.sidebar--sticky-js';
+	var $sidebarSticky = $(sidebarSticky);
+	if ($sidebarSticky.length) {
+
+
+
+		$('.content').imagesLoaded()
+			.always(function (instance) {
+				setTimeout(function () {
+					var cardInfoSticky = new StickySidebar(sidebarSticky, {
+						containerSelector: '.main__holder',
+						innerWrapperSelector: '.sidebar-holder--sticky-js',
+						// topSpacing: $('.header').outerHeight() + 40,
+						resizeSensor: true // recalculation sticky on change size of elements
+					});
+				}, 500)
+			});
+
+		// var cardInfoTimeout;
+		// $('.p-card').on('change.zoomImages', function () {
+		// 	clearTimeout(cardInfoTimeout);
+		//
+		// 	cardInfoTimeout = setTimeout(function () {
+		// 		cardInfoSticky.updateSticky();
+		// 	}, 500);
+		// });
+	}
+}
+
+/**
  * !Always place the footer at the bottom of the page
  * */
-function footerBottom() {
+(function () {
 	var $footer = $('.footer');
 
 	if ($footer.length) {
 		$('.main').after($('<div class="spacer"></div>'));
 
-		setTimeout(function () {
-			layoutFooter();
-		}, 50);
+		layoutFooter();
+		$($footer).addClass('isBottoming');
 
 		$(window).on('resizeByWidth', function () {
 			layoutFooter();
 		});
 
 		function layoutFooter() {
-			// var footerHeight = $('.footer__holder', $footer).outerHeight();
 			var footerHeight = $($footer).outerHeight();
 			$footer.css({
 				'margin-top': -footerHeight
@@ -729,7 +906,7 @@ function footerBottom() {
 			});
 		}
 	}
-}
+})();
 
 /**
  * !Testing form validation (for example). Do not use on release!
@@ -810,7 +987,10 @@ $(document).ready(function () {
 	objectFitImages(); // object-fit-images initial
 	toggleDropInit();
 	popupsInit();
+	addAlignClass();
+	equalHeight();
 
-	footerBottom();
+	stickyInit();
+
 	formSuccessExample();
 });

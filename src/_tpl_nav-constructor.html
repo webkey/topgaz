@@ -1,46 +1,156 @@
 <!--(1) START @@bsKey FIRST level-->
 <ul class="@@bsKey__list @@bsKey-js">
-	<!--@@bsKey item start-->
-	<li class="@@if(currentItem === 'Контакты'){ current}">
-		@@include('_tpl_nav-LINK--full.html', { "txt": "Контакты", "href": "typography.html", "key": "@@bsKey" })
-	</li>
-	<!--@@bsKey item end-->
-
-	<!--@@bsKey item start-->
-	<li class="@@if(currentItem === 'Структура'){current}">
-	@@include('_tpl_nav-LINK--full.html', { "txt": "Структура", "href": "#", "key": "@@bsKey" })
-	</li>
-	<!--@@bsKey item end-->
-
-	<!--@@bsKey item start-->
-	<li class="@@if(currentItem === 'Руководство'){current}">
-	@@include('_tpl_nav-LINK--full.html', { "txt": "Руководство", "href": "#", "key": "@@bsKey" })
-	</li>
-	<!--@@bsKey item end-->
-
-	<!--@@bsKey item start-->
-	<li class="@@if(currentItem === 'График приёма'){current}">
-	@@include('_tpl_nav-LINK--full.html', { "txt": "График приёма", "href": "#", "key": "@@bsKey" })
-	</li>
-	<!--@@bsKey item end-->
 
 	<!--@@bsKey item start-->
 	<li class="has-drop@@if(currentItem === 'ГПО «Белтопгаз»'){ current}">
-	@@include('_tpl_nav-LINK--full.html', { "txt": "ГПО «Белтопгаз»", "href": "#", "key": "@@bsKey" })
-	@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Руководство", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "УП «Брестоблгаз»", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "ГПО «Белтопгаз»", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "РПУП «Гомельоблгаз»", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "ПРУП «Гроднооблгаз»", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "УП «Минскоблгаз»", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "РУП «Могилевоблгаз»", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "УП «Мингаз»", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "СП ОАО «Брестгазоаппарат»", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "ОАО «Новогрудский завод газовой аппаратуры»", "href": "#", "key": "@@bsKey" })</li>
-	@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+		@@include('_tpl_nav-LINK--full.html', { "txt": "ГПО «Белтопгаз»", "href": "typography.html", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "О компании", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "История", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Структура", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Подведомственные предприятия (по видам деятельности)", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Лицензии", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Законодательство (о предприятии и деятельности, устав…)", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Защита информации", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Неиспользуемые объекты недвижимости", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Социальная ответственность (Профсоюз)", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
 
 	</li>
 	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="has-drop@@if(currentItem === 'Продукция'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Продукция и услуги", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Выпускаемая продукция", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Оказываемые услуги", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Портал электронных услуг", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="has-drop@@if(currentItem === 'Услуги'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Услуги", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li class="has-drop">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Юридическим лицам", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Административные процедуры", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Цены и тарифы", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Проекты", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Подключение к системе газоснабжения", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Законодательство", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Справочная информация", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Электронные обращения", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Одно окно", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+
+	<li class="has-drop">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Физическим лицам", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Административные процедуры", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Цены и тарифы", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Подключение к системе газоснабжения", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Организация обеспечения населения сжиженными углеводородными газами в 50л. баллонах", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Законодательство", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Справочная информация", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Электронные обращения", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Одно окно", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+
+	<li class="has-drop">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Портал электронных услуг", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Список электронных услуг ГПО «Белтопгаз»", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="has-drop@@if(currentItem === 'Партнерам и инвесторам'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Партнерам и инвесторам", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Административные процедуры", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Инвестиционные проекты", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Подключение к системе газоснабжения", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Законодательство", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Справочная информация", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="has-drop@@if(currentItem === 'События'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "События", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Новости", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "СМИ о предприятии", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Отраслевая пресса", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Профсоревнования", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Фотогалерея", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="has-drop@@if(currentItem === 'Партнерам и инвесторам'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Партнерам и инвесторам", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Новости", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "СМИ о предприятии", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Отраслевая пресса", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Профсоревнования", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Фотогалерея", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="has-drop@@if(currentItem === 'Документы'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Документы", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Перечень основных нормативных правовых актов, приказов, инструкций, распоряжений", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Перечень форм ведомственной отчетности ГПО «Белтопгаз» ", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Вопросы безопасности", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="has-drop@@if(currentItem === 'Международное сотрудничество'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Международное сотрудничество", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Сотрудничество с зарубежными компаниями и организациями", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Выставочно-ярмарочная деятельность", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="has-drop@@if(currentItem === 'Контакты'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Контакты", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Контактная информация", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Телефоны горячей линии", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "График приема граждан", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Одно окно", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Электронные обращения", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Часто задаваемые вопросы", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
+	</li>
+	<!--@@bsKey item end-->
+
 </ul>
 <!--(1) END @@bsKey FIRST level-->

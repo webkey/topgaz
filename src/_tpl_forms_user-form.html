@@ -1,40 +1,102 @@
 <div class="user-form">
 	<div class="layout-text">
+		@@if(context.title){
 		<div class="form-title">@@title</div>
+		}
 		<form action="#" method="post">
 			<div class="input-wrap">
 				<div class="label-holder">
-					<label for="user-form-example__name-field">Имя<span class="form-mark">*</span></label>
+					<label for="callbackForm--Org">Наименование или адрес организации либо лица, которым направляется обращение <span class="form-mark">*</span></label>
 				</div>
 				<div class="input-holder">
-					<input type="text" id="user-form-example__name-field">
-					<span class="error-note">Поле обязательное для заполнения</span>
-					<span class="success-note">&nbsp;</span>
+					<input type="text" id="callbackForm--Org">
+					@@include("_tpl_forms_validation.html")
 				</div>
 			</div>
 			<div class="input-wrap">
 				<div class="label-holder">
-					<label for="user-form-example__email-field">E-mail<span class="form-mark">*</span></label>
+					<label for="callbackForm--Name">Фамилия, имя, отчество (если таковое имеется) либо инициалы гражданина <span class="form-mark">*</span></label>
 				</div>
 				<div class="input-holder">
-					<input type="email" id="user-form-example__email-field">
-					<span class="error-note">Поле обязательное для заполнения</span>
-					<span class="success-note">&nbsp;</span>
+					<input type="text" id="callbackForm--Name">
+					@@include("_tpl_forms_validation.html")
 				</div>
 			</div>
 			<div class="input-wrap">
 				<div class="label-holder">
-					<label for="user-form-example__message-field">Сообщение<span class="form-mark">*</span></label>
+					<label for="callbackForm--Theme">Тема электронного обращения <span class="form-mark">*</span></label>
 				</div>
 				<div class="input-holder">
-					<textarea id="user-form-example__message-field"></textarea>
-					<span class="error-note">Поле обязательное для заполнения</span>
-					<span class="success-note">&nbsp;</span>
+					<input type="text" id="callbackForm--Theme">
+					@@include("_tpl_forms_validation.html")
 				</div>
 			</div>
 			<div class="input-wrap">
 				<div class="label-holder">
-					<span class="label">Прикрепить файл</span>
+					<label for="callbackForm--Adr">Ваш почтовый индекс и адрес места жительства (места пребывания) <span class="form-mark">*</span></label>
+				</div>
+				<div class="input-holder">
+					<input type="text" id="callbackForm--Adr">
+					@@include("_tpl_forms_validation.html")
+				</div>
+			</div>
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label for="callbackForm--Email">Адрес электронной почты для ответа вам <span class="form-mark">*</span></label>
+				</div>
+				<div class="input-holder">
+					<input type="email" id="callbackForm--Email">
+					@@include("_tpl_forms_validation.html")
+				</div>
+			</div>
+
+
+			<div class="input-wrap">
+				<div class="label-holder">
+					<span class="label">Ответ прислать:</span>
+				</div>
+				<div class="input-holder">
+					<ul class="radio-list reset-list">
+						<li>
+							<label class="radio-label">
+								<input type="radio" name="callbackFormAnswer" />
+								<i>&nbsp;</i>
+								<span>По почтовому адресу</span>
+							</label>
+						</li>
+						<li>
+							<label class="radio-label">
+								<input type="radio" name="callbackFormAnswer" checked />
+								<i>&nbsp;</i>
+								<span>По электронному адресу</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label for="callbackForm--Leader">Фио либо инициалы руководителя или лица, уполномоченного в установленном порядке подписывать обращения <span class="form-mark">*</span></label>
+				</div>
+				<div class="input-holder">
+					<input type="email" id="callbackForm--Leader">
+					@@include("_tpl_forms_validation.html")
+				</div>
+			</div>
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label for="callbackForm__Msg">Изложение сути обращения (до 2500 символов) <span class="form-mark">*</span></label>
+				</div>
+				<div class="input-holder">
+					<textarea id="callbackForm__Msg"></textarea>
+					@@include("_tpl_forms_validation.html")
+				</div>
+			</div>
+			<div class="input-wrap">
+				<div class="label-holder">
+					<span class="label">Прикрепить файл (pdf, docx, doc, rtf, txt, odt, zip, rar, png, tiff, jpeg, jpg) до 2mb</span>
 				</div>
 				<div class="input-holder upload-file__container">
 					<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">
@@ -42,23 +104,22 @@
 			</div>
 			<div class="input-wrap">
 				<div class="label-holder">
-					<label for="user-form-example__captcha-field">Защита от спама:<span class="form-mark">*</span></label>
+					<label for="callbackForm__captcha-field">Защита от спама: <span class="form-mark">*</span></label>
 				</div>
 				<div class="input-holder">
 					<div class="captcha">
 						<img src="img/captcha.jpg" alt="captcha" />
-						<input type="text" id="user-form-example__captcha-field">
-						<span class="error-note">Введите текст на картинке для защиты от спама</span>
-						<span class="success-note">&nbsp;</span>
+						<input type="text" id="callbackForm__captcha-field">
+						@@include("_tpl_forms_validation.html", {"error": "Введите текст на картинке для защиты от спама"})
 					</div>
 				</div>
 			</div>
 			<div class="form-footer">
 				<div class="form-buttons">
-					<button class="btn-default btn-submit" data-label="Отправить">Отправить</button>
+					<button class="btn-default btn-submit">отправить сообщение</button>
 				</div>
 				<div class="form-note">
-					<div class="form-note__item"><span class="form-mark">*</span> Поля обязательны для заполнения</div>
+					<div class="form-note__item"> <span class="form-mark">*</span> Поля обязательны для заполнения</div>
 				</div>
 			</div>
 		</form>

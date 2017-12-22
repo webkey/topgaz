@@ -4,6 +4,63 @@
 
 /* SIDEBAR
 .sidebar
-	background-color: sandybrown
+	// for sticky-sidebar js
+	will-change: min-height
+
+.sidebar-holder
+	// for sticky-sidebar js
+	transform: translate(0, 0) /* For browsers don't support translate3d. */
+	transform: translate3d(0, 0, 0)
+	will-change: position, transform
+
+// sidebar widget
+.sidebar__widget
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+// menu
+.menu
+	+font-alt
+	+font(16px, 20px)
+	padding: 0 $menu-space
+	border: 1px solid $border-color
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+		
+	li
+		position: relative
+		border: solid $border-color-light
+		border-width: 1px 0
+		margin-bottom: -1px
+
+		&:first-child
+			border-width: 0 0 1px
+
+		&:last-child
+			border-width: 1px 0 0
+			margin-bottom: 0
+
+	a
+		display: block
+		padding: 13px $menu-space
+		+margin-horizontal(-$menu-space)
+		color: inherit
+		text-decoration: none
+
+	// hover
+	a:hover
+		color: $link-color
+
+	// current
+	li.current
+		border-color: $link-color
+		z-index: 1
+
+		a
+			color: $link-color
 
 /* SIDEBAR end

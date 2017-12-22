@@ -13,7 +13,9 @@
 // общие стили для пунктов навигации
 .nav__list
 	height: 100%
-	+clear
+	display: flex
+	justify-content: space-between
+	//align-items: center
 
 	li
 		position: relative
@@ -26,14 +28,11 @@
 		color: $text-color
 		text-decoration: none
 
-		&:hover
-			color: $base-color
-
 // общие стили для подменю навигации
 .nav__drop
 	position: absolute
-	left: 0
-	top: 100%
+	left: 100%
+	top: 0
 	background-color: white
 	border: 1px solid $border-color
 	padding: 0 20px
@@ -41,6 +40,10 @@
 	opacity: 0
 	visibility: hidden
 	z-index: 10
+
+	.nav-align--right > &
+		left: auto
+		right: 100%
 
 	// no js
 	.no-js &
@@ -74,7 +77,7 @@
 		left: 100%
 
 // стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
-.nav__list li.has-drop > .nav__tab > a
+//.nav__list li.has-drop > .nav__tab > a
 	padding-right: 40px
 
 // стили для пункта навигации ТЕКУЩЕЙ страницы
@@ -84,30 +87,91 @@
 			color: $base-color
 
 // особые стили для пунктов навигации ПЕРВОГО урованя
-.nav__list > li
-	height: 100%
-	float: left
-	margin-right: 24px
-
-	& > .nav__tab
+.nav__list
+	& > li
 		height: 100%
 
-		a
-			display: table
-			table-layout: fixed
+		+media('<desk-md')
+			flex: 1 1 0
+
+		& > .nav__tab
 			height: 100%
-			color: rgba(white, 0.5)
-			text-decoration: none
 
-			&:hover
-				color: rgba(white, 1)
+			a
+				display: table
+				table-layout: fixed
+				height: 100%
+				color: white
+				text-decoration: none
+				padding: 0 round($nav-gap/2)
 
-		span
-			display: table-cell
-			vertical-align: middle
+				span
+					display: table-cell
+					vertical-align: middle
+					transition:
+						property: opacity
+						duration: $animation-speed
+
+		&:first-child
+			& > .nav__tab
+				a
+					padding-left: 0
+
+		&:last-child
+			flex-grow: 0
+			flex-basis: auto
+
+			& > .nav__tab
+				a
+					padding-right: 0
+
+		& > .nav__drop
+			left: round($nav-gap/2)
+			top: 100%
+
+			&::before
+				+pseudo()
+				left: 12px
+				bottom: 100%
+				+triangle(top, white, 14px, 1)
+				margin-bottom: -1px
+
+		&:first-child
+			& > .nav__drop
+				left: 0
+
+		&.nav-align--right
+			& > .nav__drop
+				left: auto
+				right: round($nav-gap/2)
+
+				&::before
+					left: auto
+					right: 12px
+
+			&:last-child > .nav__drop
+				right: 0
+
+	// hover
+	&:hover
+		& > li
+			& > .nav__tab
+				a
+					span
+						opacity: 0.5
+
+	& > li:hover
+		& > .nav__tab
+			a
+				span
+					opacity: 1
 
 // СТРЕЛКИ навигации
 .nav__angle
 	display: none
+
+.nav__drop
+	li:hover > .nav__tab a
+		color: $base-color
 
 /* NAVIGATION end

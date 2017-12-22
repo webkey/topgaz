@@ -20,12 +20,28 @@
 				<div class="content user-content">
 
 					<div class="layout-article">
-						<!--breadcrumbs-->
-						@@include('_tpl_breadcrumbs.html', {
-							"items": ["Главная", "Новости"],
-							"last": "Солдаты, солдаты, солдаты войны, примите поклон наш до самой земли"
-						})
-						<!--breadcrumbs end-->
+						<div class="article-heading">
+							<div class="article-heading__cell">
+								<!--breadcrumbs-->
+								@@include('_tpl_breadcrumbs.html', {
+									"items": ["Главная", "Новости"],
+									"last": "Солдаты, солдаты, солдаты войны, примите поклон наш до самой земли"
+								})
+								<!--breadcrumbs end-->
+							</div>
+							<div class="article-heading__cell">
+								<div class="pages-nav">
+									<a href="#" class="btn-light btn-with-icon">
+										@@include("includes/svg/arr-l.svg")
+										<span>Предыдущая</span>
+									</a>
+									<a href="#" class="btn-light btn-with-icon">
+										<span>Следующая</span>
+										@@include("includes/svg/arr-r.svg")
+									</a>
+								</div>
+							</div>
+						</div>
 
 						<!--datetime-->
 						@@include('_tpl_typography_components.html', {
@@ -167,36 +183,15 @@
 							})
 							<!--feature-list end-->
 
-							<div class="user-spacer">&nbsp;</div>
-
 							<!--print-button-->
 							@@include('_tpl_typography_components.html', {
 								"component": "printButton"
 							})
 							<!--print-button end-->
-					</div>
 
-					<div class="article-footer">
-						<div class="article-footer__cell">
-							<div class="social-networks">
-								<div class="social-networks__list">
-									@@loop('_tpl_social-networks-items.html', 'includes/json/social-networks-items.json')
-								</div>
-							</div>
-						</div>
-						<div class="article-footer__cell">
-							<a href="#" class="btn-default-alt">К списку новостей</a>
-						</div>
-						<div class="article-footer__cell">
-							<a href="#" class="btn-light">
-								@@include("includes/svg/arr-l.svg")
-								<span>Предыдущая</span>
-							</a>
-							<a href="#" class="btn-light">
-								<span>Следующая</span>
-								@@include("includes/svg/arr-r.svg")
-							</a>
-						</div>
+							@@include('_tpl_typography_components.html', {
+							"component": "articleFooter"
+							})
 					</div>
 
 					@@include('_tpl_typography_nav.html')

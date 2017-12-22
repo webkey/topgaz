@@ -5,22 +5,29 @@
 			<div class="nav-wrap">
 				<nav class="nav">
 					@@include('_tpl_nav-constructor.html', {
-						"currentItem": "@@currentItem",
-						"bsKey": "nav"
+					"currentItem": "@@currentItem",
+					"bsKey": "nav"
 					})
 				</nav>
 			</div>
 			<!--navigation end-->
 		</div>
 		<div class="header__holder">
-			<!--logo-->
-			<strong class="logo"><a href="index.html" title="Белтопгаз">Белтопгаз</a><img style="display: none;" src="img/logo.png" alt="Белтопгаз"></strong>
-			<!--logo end-->
-			<!--slogan-->
-			<div class="slogan">
-				<a href="#">Государственное производственное объединение по топливу и газификации</a>
+			<div class="logo-box">
+				<!--logo-->
+				<div class="logo-wrap">
+					<strong class="logo">
+						<a href="index.html" title="Белтопгаз">Белтопгаз</a>
+						<img style="display: none;" src="img/logo.png" alt="Белтопгаз">
+					</strong>
+				</div>
+				<!--logo end-->
+				<!--slogan-->
+				<div class="slogan">
+					<a href="#">Государственное производственное объединение по топливу и газификации</a>
+				</div>
+				<!--slogan end-->
 			</div>
-			<!--slogan end-->
 			<!--user options-->
 			@@include('_tpl_user-options.html')
 			<!--user options end-->

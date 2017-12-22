@@ -28,8 +28,8 @@
 	text-transform: uppercase
 	color: $btn-text-color
 	fill: $btn-text-color
-	padding: 16px 20px
-	border: 2px solid transparent
+	padding: 16px 38px
+	border: 1px solid transparent
 	background: $btn-bg-color
 	box-shadow: none
 	margin: 0
@@ -59,13 +59,14 @@
 
 /* btn-default-alt
 .btn-default-alt
-	color: $btn-bg-color
-	border: 2px solid $btn-bg-color
+	color: $text-color
+	border: 1px solid $text-color
 	background: $btn-text-color
+	padding: 11px 38px
 
 	.no-touchevents &:hover
-		background: $btn-bg-color
-		color: $btn-text-color
+		background: $text-color
+		color: white
 
 	&:disabled, &.disabled, &[data-disabled]
 		cursor: default
@@ -82,6 +83,35 @@
 				fill: $btn-disabled-color !important
 
 /* btn-default-alt end
+
+/* btn-light
+.btn-light
+	position: relative
+	color: $text-color
+	fill: $text-color
+	background: none
+	box-shadow: none
+	margin: 0
+
+	&, & > span
+		+font(14px, 24px)
+		letter-spacing: normal
+
+	// hover
+	.no-touchevents &:hover
+		color: $link-color
+		fill: $link-color
+
+	// disabled
+	&:disabled, &.disabled, &[data-disabled]
+		cursor: default
+		color: $btn-disabled-color !important
+		fill: $btn-disabled-color !important
+
+		&::before, &::after
+			display: none
+
+/* btn-light end
 
 /* btn-with-icon
 .btn-with-icon

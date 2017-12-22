@@ -1,0 +1,59 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Электронное обращение для граждан",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {
+	"currentItem": ""
+})
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<div class="main__holder">
+			<!--CONTENT-->
+			<div class="content-wrap">
+				<div class="content user-content">
+
+					<div class="layout-article">
+						<div class="article-heading">
+							<div class="article-heading__cell">
+								<!--breadcrumbs-->
+								@@include('_tpl_breadcrumbs.html', {
+								"items": ["Главная", "Электронные обращения"],
+								"last": "Электронное обращение для граждан"
+								})
+								<!--breadcrumbs end-->
+							</div>
+							<div class="article-heading__cell">
+								<!--<div class="pages-nav">...</div>-->
+							</div>
+						</div>
+
+						<h1>Электронное обращение для граждан</h1>
+						<hr>
+						@@include('_tpl_forms_user-form.html', {
+							"title": ""
+						})
+					</div>
+
+					@@include('_tpl_typography_nav.html')
+				</div>
+			</div>
+			<!--CONTENT end-->
+
+			<!--SIDEBAR-->
+			@@include('_tpl_layout_sidebar.html')
+			<!--SIDEBAR-->
+		</div>
+	</div>
+</div>
+<!--MAIN end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html')

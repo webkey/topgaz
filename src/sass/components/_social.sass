@@ -10,8 +10,8 @@ $odnoklassniki-color: #f2822e !default
 $youtube-color: #e62117 !default
 $instagram-color-start: #de4f5a !default
 $instagram-color-end: #a43b97 !default
-$social-space: 30px !default
-$social-space--lg: 20px !default
+$social-space: 0 !default
+$social-space--lg: 0 !default
 
 /* social networks
 .social-networks
@@ -25,33 +25,35 @@ $social-space--lg: 20px !default
 	position: relative
 	float: left
 	width: calc(100% + #{$social-space})
-	margin: 0 -#{round($social-space/2)} -#{round($social-space/2)}
-	font-size: 0
+	//margin: 0 -#{round($social-space/2)} -#{round($social-space/2)}
+	padding: 0 0 1px 1px
 
 	+media('<desk-lg')
 		width: calc(100% + #{$social-space--lg})
 		margin: 0 -#{round($social-space--lg/2)} -#{round($social-space--lg/2)}
 
 .social-networks__item
-	+display-inline-block-top
-	margin: 0 #{round($social-space/2)} round($social-space/2)
+	position: relative
+	float: left
+	//margin: 0 #{round($social-space/2)} round($social-space/2)
 	+font(14px, round-float(18/14, 2))
 	letter-spacing: normal
+	margin: 0 0 -1px -1px
 
-	+media('<desk-lg')
+	.no-touchevents &:hover
+		z-index: 1
+
+	//+media('<desk-lg')
 		margin: 0 #{round($social-space--lg/2)} round($social-space--lg/2)
 
 	a
 		display: block
 		position: relative
-		+size(50px)
-		border: 2px solid $text-color
+		+size(40px)
+		border: 1px solid $text-color
 		color: $text-color
 		fill: $text-color
-		border-radius: 50%
-
-		+media('<mob-lg')
-			+size(40px)
+		border-radius: 0
 
 		span
 			+hide-text
@@ -60,36 +62,42 @@ $social-space--lg: 20px !default
 			+centering-transform-abs
 			+size(20px)
 
-			+media('<mob-lg')
-				+size(16px)
-
 		path
 			fill: inherit
 
 		.no-touchevents &:hover
+			&
+				fill: white
+
 			&.fb
 				border-color: $facebook-color
-				fill: $facebook-color
+				//fill: $facebook-color
+				background-color: $facebook-color
 
 			&.vk
 				border-color: $vkontakte-color
-				fill: $vkontakte-color
+				//fill: $vkontakte-color
+				background-color: $vkontakte-color
 
 			&.twitter
 				border-color: $twitter-color
-				fill: $twitter-color
+				//fill: $twitter-color
+				background-color: $twitter-color
 
 			&.ok
 				border-color: $odnoklassniki-color
-				fill: $odnoklassniki-color
+				//fill: $odnoklassniki-color
+				background-color: $odnoklassniki-color
 
 			&.youtube
 				border-color: $youtube-color
-				fill: $youtube-color
+				//fill: $youtube-color
+				background-color: $youtube-color
 
 			&.instagram
 				border-color: $instagram-color-end
-				fill: $instagram-color-end
+				//fill: $instagram-color-end
+				background-color: $instagram-color-end
 				//+linear-gradient(to right, #{$instagram-color-start} 0%, #{$instagram-color-end} 100%)
 
 /* social networks end

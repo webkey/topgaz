@@ -1,0 +1,70 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Руководство",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {
+	"currentItem": ""
+})
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<div class="main__holder">
+			<!--CONTENT-->
+			<div class="content-wrap">
+				<div class="content user-content">
+
+					<div class="layout-article">
+						<div class="article-heading">
+							<div class="article-heading__cell">
+								<!--breadcrumbs-->
+								@@include('_tpl_breadcrumbs.html', {
+								"items": ["Главная"],
+								"last": "Руководство"
+								})
+								<!--breadcrumbs end-->
+							</div>
+							<div class="article-heading__cell">
+								<!--<div class="pages-nav">
+									<a href="#" class="btn-light btn-with-icon">
+										@@include("includes/svg/arr-l.svg")
+										<span>Предыдущая</span>
+									</a>
+									<a href="#" class="btn-light btn-with-icon">
+										<span>Следующая</span>
+										@@include("includes/svg/arr-r.svg")
+									</a>
+								</div>-->
+							</div>
+						</div>
+
+						<h1>Руководство</h1>
+						<hr>
+						<div class="leaders">
+							<div class="leaders__list leaders--equal-height-js">
+								@@loop("_tpl_leaders-items.html", "includes/json/leaders-items.json")
+							</div>
+						</div>
+					</div>
+
+					@@include('_tpl_typography_nav.html')
+				</div>
+			</div>
+			<!--CONTENT end-->
+
+			<!--SIDEBAR-->
+			@@include('_tpl_layout_sidebar.html')
+			<!--SIDEBAR-->
+		</div>
+	</div>
+</div>
+<!--MAIN end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html')

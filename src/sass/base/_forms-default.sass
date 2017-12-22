@@ -17,9 +17,10 @@
 	z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
 
 .label-holder, label
-	+font-normal
-	+font($font-size, $line-height)
+	+font-alt
+	+font(12px, 16px)
 	color: $text-color-light
+	text-transform: uppercase
 	margin-bottom: 7px
 
 label, .label
@@ -107,6 +108,7 @@ label, .label
 input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
 	display: block
 	//+display-inline-block-top
+	+font-normal
 	padding: #{$form-input-space-vt} #{$form-input-space-h} #{$form-input-space-vb}
 	+size(100%, $form-input-height)
 	@if $form-letter-spacing
@@ -125,7 +127,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		margin: 0 0 $form-bottom-space
 
 	@at-root .select2-container--default .select2-selection .select2-selection__rendered, .#{$user-content} select, .select, &
-		+font-alt
+		+font
 		+font($form-font-size, $form-line-height)
 		color: $form-text-color
 
@@ -241,7 +243,7 @@ input, textarea
 input[type="checkbox"] ~ label, input[type="radio"] ~ label, .check-label, .radio-label
 	+display-inline-block-top
 	+font-normal
-	+font(16px, 22px)
+	+font(14px, 22px)
 	letter-spacing: 0.025em
 	color: $text-color
 	text-transform: none
