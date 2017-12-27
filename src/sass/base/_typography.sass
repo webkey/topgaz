@@ -168,6 +168,32 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .hide-text
 	+hide-text
 
+.important-note
+	position: relative
+	margin: 0 auto
+	padding: 15px 0 $bottom-space
+
+.important-note__label
+	position: absolute
+	left: $grid-space
+	top: 0
+	background: #ff3300
+	padding: 4px 20px
+	font-family: 'lato-heavy', sans-serif
+	font-size: 14px
+	line-height: 22px
+	letter-spacing: 0.05em
+	text-align: center
+	color: #fff
+	cursor: default
+	text-transform: uppercase
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	user-select: none
+
+.important-note__content
+	border: 2px solid #ff3300
+	padding: $grid-space
 
 /* content img
 .imgc

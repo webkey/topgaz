@@ -21,7 +21,7 @@
 
 	<!--@@bsKey item start-->
 	<li class="has-drop@@if(currentItem === 'Продукция'){ current}">
-		@@include('_tpl_nav-LINK--full.html', { "txt": "Продукция и услуги", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Продукция", "href": "#", "key": "@@bsKey" })
 		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Выпускаемая продукция", "href": "#", "key": "@@bsKey" })</li>
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Оказываемые услуги", "href": "#", "key": "@@bsKey" })</li>
@@ -89,20 +89,6 @@
 	<!--@@bsKey item start-->
 	<li class="has-drop@@if(currentItem === 'События'){ current}">
 		@@include('_tpl_nav-LINK--full.html', { "txt": "События", "href": "#", "key": "@@bsKey" })
-		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Новости", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "СМИ о предприятии", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Отраслевая пресса", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Профсоревнования", "href": "#", "key": "@@bsKey" })</li>
-	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Фотогалерея", "href": "#", "key": "@@bsKey" })</li>
-		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
-
-	</li>
-	<!--@@bsKey item end-->
-
-	<!--@@bsKey item start-->
-	<li class="has-drop@@if(currentItem === 'Партнерам и инвесторам'){ current}">
-		@@include('_tpl_nav-LINK--full.html', { "txt": "Партнерам и инвесторам", "href": "#", "key": "@@bsKey" })
 		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Новости", "href": "#", "key": "@@bsKey" })</li>
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "СМИ о предприятии", "href": "#", "key": "@@bsKey" })</li>

@@ -3,12 +3,40 @@
 @import ../../libs/include-media/dist/include-media
 
 /* NAVIGATION
+
 .nav-wrap
 	height: 100%
+
+	// panel-is-open
+	html:not(.panel-is-open) &
+		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important
+
+	.panel-is-open &
+		position: fixed
+		left: 0
+		top: 0
+		+size(100%, 100vh)
+		background-color: rgba($base-color, 0.9)
+		z-index: 1000
+		overflow-x: visible
+		overflow-y: auto
 
 .nav
 	position: relative
 	height: 100%
+
+	// panel-is-open
+	.panel-is-open &
+		height: auto
+		max-width: 640 + $page-layout-space*2
+		+padding-horizontal($page-layout-space)
+		+push-auto
+		text-align: center
+
+		&::before
+			content: ""
+			+display-inline-block-middle
+			height: 100vh
 
 // общие стили для пунктов навигации
 .nav__list
@@ -17,16 +45,35 @@
 	justify-content: space-between
 	//align-items: center
 
+	// panel-is-open
+	.panel-is-open &
+		+display-inline-block-middle
+		height: auto
+		width: calc(100% - 5px)
+		+padding-vertical($page-layout-space)
 	li
 		position: relative
 		+font-alt
 		+font(16px, 20px)
 		letter-spacing: 0.05em
 
+		// panel-is-open
+		.panel-is-open &
+			+font(18px, 24px)
+			border: solid rgba(black, 0.2)
+			border-width: 1px 0 0
+
+			&:last-child
+				border-width: 1px 0
+
 	a
 		display: block
 		color: $text-color
 		text-decoration: none
+
+		// panel-is-open
+		.panel-is-open &
+			display: block
 
 // общие стили для подменю навигации
 .nav__drop
@@ -36,10 +83,13 @@
 	background-color: white
 	border: 1px solid $border-color
 	padding: 0 20px
-	width: 320px
 	opacity: 0
 	visibility: hidden
 	z-index: 10
+
+	.panel-is-close &
+		display: block !important
+		width: 320px
 
 	.nav-align--right > &
 		left: auto
@@ -47,6 +97,16 @@
 
 	// no js
 	.no-js &
+		position: relative
+		left: auto
+		right: auto
+		top: auto
+		bottom: auto
+		opacity: 1
+		visibility: visible
+
+	.panel-is-open &
+		display: none
 		position: relative
 		left: auto
 		right: auto
@@ -77,8 +137,11 @@
 		left: 100%
 
 // стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
-//.nav__list li.has-drop > .nav__tab > a
-	padding-right: 40px
+.nav__list li.has-drop > .nav__tab > a
+
+	// panel-is-open
+	.panel-is-open &
+		padding-right: nth($nav-angle-size, 1) + 20
 
 // стили для пункта навигации ТЕКУЩЕЙ страницы
 .nav__list li.current > .nav__tab
@@ -91,11 +154,16 @@
 	& > li
 		height: 100%
 
+		// panel-is-open
+		.panel-is-open &
+			margin-bottom: -1px
+
 		+media('<desk-md')
 			flex: 1 1 0
 
 		& > .nav__tab
 			height: 100%
+			position: relative
 
 			a
 				display: table
@@ -104,6 +172,11 @@
 				color: white
 				text-decoration: none
 				padding: 0 round($nav-gap/2)
+
+				// panel-is-open
+				.panel-is-open &
+					display: block
+					padding: 14px 0 16px
 
 				span
 					display: table-cell
@@ -117,6 +190,10 @@
 				a
 					padding-left: 0
 
+					// panel-is-open
+					//.panel-is-open &
+						padding-left: 20px
+
 		&:last-child
 			flex-grow: 0
 			flex-basis: auto
@@ -129,12 +206,21 @@
 			left: round($nav-gap/2)
 			top: 100%
 
+			// panel-is-open
+			.panel-is-open &
+				left: auto
+				top: auto
+
 			&::before
 				+pseudo()
 				left: 12px
 				bottom: 100%
 				+triangle(top, white, 14px, 1)
 				margin-bottom: -1px
+
+				// panel-is-open
+				.panel-is-open &
+					content: none
 
 		&:first-child
 			& > .nav__drop
@@ -153,14 +239,14 @@
 				right: 0
 
 	// hover
-	&:hover
+	.panel-is-close &:hover
 		& > li
 			& > .nav__tab
 				a
 					span
 						opacity: 0.5
 
-	& > li:hover
+	.panel-is-close & > li:hover
 		& > .nav__tab
 			a
 				span
@@ -169,6 +255,63 @@
 // СТРЕЛКИ навигации
 .nav__angle
 	display: none
+
+	position: absolute
+	right: -13px
+	top: 0
+	width: nth($nav-angle-size, 1)
+	height: 100%
+	//background-color: rgba(black, 0.2)
+	//border: 1px solid rgba(black, 0.2)
+	z-index: 2
+	cursor: pointer
+
+	li.has-drop > .region-menu__tab > &
+		display: block
+
+	i
+		position: absolute
+		left: 50%
+		top: 50%
+		width: 16px
+		height: 10px
+		pointer-events: none
+		margin: -5px 0 0 -8px
+		transition-property: transform
+		transition-duration: $animation-speed
+		font-size: 0
+		line-height: 0
+		//background-color: coral
+
+		&::before, &::after
+			content: ''
+			position: absolute
+			bottom: 0
+			height: 12px
+			width: 2px
+			border-radius: 2px
+			backface-visibility: hidden
+			background-color: white
+			transform-origin: center center
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		&::before
+			right: 50%
+			transform-origin: right bottom
+			transform: rotate(45deg)
+
+		&::after
+			left: 50%
+			transform-origin: left bottom
+			transform: rotate(-45deg)
+
+	// active
+
+
+	// panel-is-open
+	.panel-is-open .has-drop > .nav__tab &
+		display: block
 
 .nav__drop
 	li:hover > .nav__tab a

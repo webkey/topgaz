@@ -102,6 +102,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
 		, 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
 		, 'src/js/temp/filer.min.js' // инпут файл
+		, 'src/libs/gsap/src/minified/TweenMax.min.js' // библиотека для создания анимаций
 		// ==========sticky-sidebar==========
 		, 'src/js/temp/rAF.js' // resize-sensor for "sticky-sidebar.js"
 		, 'src/libs/resize-sensor/ResizeSensor.min.js' // resize-sensor for "sticky-sidebar.js"

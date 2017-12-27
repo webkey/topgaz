@@ -2,7 +2,7 @@
 	<div class="max-wrap layout">
 		<div class="header__top">
 			<!--navigation-->
-			<div class="nav-wrap">
+			<div class="nav-wrap nav-shutter-js">
 				<nav class="nav">
 					@@include('_tpl_nav-constructor.html', {
 					"currentItem": "@@currentItem",
@@ -12,7 +12,7 @@
 			</div>
 			<!--navigation end-->
 		</div>
-		<div class="header__holder">
+		<div class="header__common">
 			<div class="logo-box">
 				<!--logo-->
 				<div class="logo-wrap">
@@ -22,9 +22,13 @@
 					</strong>
 				</div>
 				<!--logo end-->
+				<a href="#" class="btn-menu btn-nav-js" title="Главное меню">
+					<span>Меню</span>
+					<i>&nbsp;</i>
+				</a>
 				<!--slogan-->
 				<div class="slogan">
-					<a href="#">Государственное производственное объединение по топливу и газификации</a>
+					<a href="#">Государственное производственное объединение по топливу и газификации «Белтопгаз»</a>
 				</div>
 				<!--slogan end-->
 			</div>
@@ -33,9 +37,30 @@
 			<!--user options end-->
 			<!--slogan-->
 			<div class="slogan slogan--home-page">
-				<a href="#">Государственное производственное объединение по топливу и газификации</a>
+				<a href="#">Государственное производственное объединение по топливу и газификации «Белтопгаз»</a>
 			</div>
 			<!--slogan end-->
+		</div>
+		<div class="header__panel">
+			<div class="header__panel__frame max-wrap layout">
+				<div class="logo-box">
+					<!--logo-->
+					<div class="logo-wrap">
+						<strong class="logo">
+							<a href="index.html" title="Белтопгаз">Белтопгаз</a>
+							<img style="display: none;" src="img/logo.png" alt="Белтопгаз">
+						</strong>
+					</div>
+					<!--logo end-->
+					<a href="#" class="btn-menu btn-nav-js" title="Главное меню">
+						<span>Меню</span>
+						<i>&nbsp;</i>
+					</a>
+				</div>
+				<!--user options-->
+				@@include('_tpl_user-options.html')
+				<!--user options end-->
+			</div>
 		</div>
 	</div>
 </header>

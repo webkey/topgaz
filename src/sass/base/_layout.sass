@@ -4,7 +4,7 @@
 
 body
 	height: 100%
-	min-width: 1366px
+	min-width: 320px
 	position: relative
 
 .wrapper
@@ -34,18 +34,18 @@ body
 	padding: round($page-layout-space) 0 round($page-layout-space*1.5) $page-layout-space
 	min-height: 50px
 
-	.home-page &
-		margin: 0
-		padding-left: 0
-
 	+media('<desk-lg')
 		margin-right: 0
 
 	+media('<tab-lg')
 		margin-left: 0
 
+	.home-page &
+		margin: 0
+		padding: 0
+
 // header
-.header
+//.header
 	position: relative
 	z-index: 5
 

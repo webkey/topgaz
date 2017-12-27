@@ -219,6 +219,48 @@ function inputFilledClass() {
 /*toggle class for input on focus end*/
 
 /**
+ * !Add class on scroll page
+ * */
+function addClassesOnScrollPage(){
+	// external js:
+	// 1) resizeByWidth (resize only width);
+
+	var $page = $('html'),
+		minScrollTop = $('.header').outerHeight(),
+		panelOpenClass = "panel-is-open",
+		panelCloseClass = "panel-is-close",
+		headerShowClass = 'header-show',
+		headerHideClass = 'header-hide';
+
+	var previousScrollTop = $(window).scrollTop();
+
+	addClass();
+
+	$(window).on('scroll resizeByWidth', function () {
+		addClass();
+	});
+
+	function addClass() {
+		var currentScrollTop = $(window).scrollTop();
+
+		$page.toggleClass(panelOpenClass, (currentScrollTop >= minScrollTop));
+		$page.toggleClass(panelCloseClass, (currentScrollTop < minScrollTop));
+
+		var showHeaderPanel = currentScrollTop < previousScrollTop || currentScrollTop <= minScrollTop;
+		$page.toggleClass(headerShowClass, showHeaderPanel);
+		$page.toggleClass(headerHideClass, !showHeaderPanel);
+
+		previousScrollTop = currentScrollTop;
+	}
+
+	// function setHeightPanel() {
+	// 	$('.header__panel').height($('.header__panel__frame').outerHeight());
+	// }
+	//
+	// setHeightPanel();
+}
+
+/**
  * !Initial custom select for cross-browser styling
  * */
 function customSelect(select) {
@@ -375,7 +417,7 @@ function slidersInit() {
 				// initialSlide: 2,
 				// lazyLoad: 'ondemand',
 				infinite: false,
-				dots: false,
+				dots: true,
 				arrows: true,
 				responsive: [
 					{
@@ -440,6 +482,8 @@ function slidersInit() {
 				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,
+				autoplay: true,
+				autoplaySpeed: 8000,
 				centerMode: true,
 				variableWidth: true,
 				asNavFor: $titles,
@@ -683,6 +727,748 @@ function toggleDropInit() {
 }
 
 /**
+ * !extra popup jQuery plugin
+ * */
+(function ($) {
+	// external js:
+	// 1) TweetMax VERSION: 1.19.0 (libs);
+	// 2) device.js (libs);
+	// 3) resizeByWidth (resize only width);
+
+	// add css style
+	// .before-extra-popup-open{
+	// 	width: 100%!important;
+	// 	height: 100%!important;
+	// 	max-width: 100%!important;
+	// 	max-height: 100%!important;
+	// 	margin: 0!important;
+	// 	padding: 0!important;
+	// 	overflow: hidden!important;
+	// }
+
+	// .before-extra-popup-open .wrapper{ z-index: 99; } // z-index of header must be greater than footer
+	//
+	// if nav need to hide
+	// @media only screen and (min-width: [example: 1280px]){
+	// .nav{
+	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 	}
+	// .nav-list > li{
+	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		opacity: 1 !important;
+	// 		visibility: visible !important;
+	// 	}
+	// }
+
+	var defaults = {
+		mainContainer: 'html', // container wrapping all elements
+		navContainer: null, // main navigation container
+		navMenu: null, // menu
+		btnMenu: null, // element which opens or switches menu
+		btnMenuClose: null, // element which closes a menu
+		navMenuItem: null,
+		navMenuAnchor: 'a',
+		staggerElement: null,
+		overlayClass: 'popup-overlay', // overlay's class
+		overlayAppendTo: 'body', // where to place overlay
+		overlayAlpha: 0.8,
+		overlayIndex: 997,
+		classReturn: null,
+		overlayBoolean: true,
+		animationType: 'ltr', // rtl or ltr
+		animationScale: 0.85, // default scale for animation
+		animationSpeed: 300, // animation speed of the main element
+		animationSpeedOverlay: null, // animation speed of the overlay
+		alpha: 1,
+		ease: Cubic.easeOut, // animation (gsap) https://greensock.com/customease
+		minWidthItem: 100,
+		mediaWidth: null,
+		closeOnResize: true,
+		cssScrollBlocked: false, // add class to body for blocked scroll
+		closeEsc: true, // close popup on click Esc,
+		activeClass: 'active',
+		openedClass: 'extra-popup-opened',
+		beforeOpenClass: 'extra-popup-before-open',
+		extraPopupBeforeOpen: null
+	};
+
+	var ExtraPopup = function (settings) {
+		var options = $.extend(defaults, settings || {});
+
+		var container = $(options.navContainer),
+			_animateSpeed = options.animationSpeed;
+
+		var self = this;
+		self.options = options;
+		self.$mainContainer = $(options.mainContainer);            // . по умолчанию <html></html>
+		self.$navMenu = $(options.navMenu);
+		self.$btnMenu = $(options.btnMenu);
+		self.$btnMenuClose = $(options.btnMenuClose);
+		self.$navContainer = container;
+		self.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации;
+		self.$navMenuAnchor = $(options.navMenuAnchor, container); // Элемент, по которому производится событие (клик);
+		self.$staggerElement = options.staggerElement;  //Элементы в стеке, к которым применяется анимация. По умолчанию null;
+
+		self._animationType = options.animationType;
+		self._animationScale = options.animationScale;
+		self._animateSpeed = _animateSpeed;
+		self.ease = options.ease;
+		self.alpha = options.alpha;
+
+		// overlay
+		self.overlayBoolean = options.overlayBoolean;
+		self.overlayAppendTo = options.overlayAppendTo;
+		self.$overlay = $('<div class="' + options.overlayClass.substring(0) + '"></div>'); // Темплейт оверлея;
+		self._overlayAlpha = options.overlayAlpha;
+		self._overlayIndex = options.overlayIndex;
+		self._animateSpeedOverlay = options.animationSpeedOverlay || _animateSpeed;
+		self._minWidthItem = options.minWidthItem;
+		self._mediaWidth = options.mediaWidth;
+		self.closeOnResize = options.closeOnResize;
+		self.cssScrollBlocked = options.cssScrollBlocked;
+		self.closeEsc = options.closeEsc;
+
+		self.desktop = device.desktop();
+
+		self.modifiers = {
+			active: options.activeClass,
+			opened: options.openedClass,
+			beforeOpen: options.beforeOpenClass
+		};
+
+		self.outsideClick();
+		if ( self._mediaWidth === null || window.innerWidth < self._mediaWidth ) {
+			self.preparationAnimation();
+		}
+		self.toggleMenu();
+		self.eventsBtnMenuClose();
+		self.clearStyles();
+		self.closeNavOnEsc();
+		self.closeNavMethod();
+	};
+
+	ExtraPopup.prototype.navIsOpened = false;
+
+	// overlay append to "overlayAppendTo"
+	ExtraPopup.prototype.createOverlay = function () {
+		var self = this,
+			$overlay = self.$overlay;
+
+		$overlay.appendTo(self.overlayAppendTo);
+
+		TweenMax.set($overlay, {
+			autoAlpha: 0,
+			position: 'fixed',
+			width: '100%',
+			height: '100%',
+			left: 0,
+			top: 0,
+			background: '#000',
+			'z-index': self._overlayIndex,
+			onComplete: function () {
+				TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {autoAlpha: self._overlayAlpha});
+			}
+		});
+	};
+
+	// toggle overlay
+	ExtraPopup.prototype.toggleOverlay = function (close) {
+		var self = this,
+			$overlay = self.$overlay,
+			ease = self.ease;
+
+		if (close === false) {
+			TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {
+				autoAlpha: 0,
+				ease: ease,
+				onComplete: function () {
+					$overlay.remove();
+				}
+			});
+			return false;
+		}
+
+		self.createOverlay();
+	};
+
+	// toggle menu
+	ExtraPopup.prototype.toggleMenu = function () {
+		var self = this,
+			$buttonMenu = self.$btnMenu;
+
+		// $buttonMenu.on('mousedown touchstart vmousedown', function (e) {
+		$buttonMenu.on('click', function (e) {
+
+			if (self.navIsOpened) {
+				self.closeNav();
+			} else {
+				self.openNav();
+			}
+
+			e.preventDefault();
+			e.stopPropagation();
+		});
+	};
+
+	// events btn close menu
+	ExtraPopup.prototype.eventsBtnMenuClose = function () {
+
+		var self = this;
+
+		self.$btnMenuClose.on('click', function (e) {
+			e.preventDefault();
+
+			if ( self.navIsOpened ) {
+				self.closeNav();
+			}
+
+			e.stopPropagation();
+		});
+	};
+
+	// click outside menu
+	ExtraPopup.prototype.outsideClick = function () {
+		var self = this;
+
+		$(document).on('click', function () {
+			if ( self.navIsOpened ) {
+				self.closeNav();
+			}
+		});
+
+		self.$navContainer.on('click', function (e) {
+			if ( self.navIsOpened ) {
+				e.stopPropagation();
+			}
+		})
+	};
+
+	// close popup on click to "Esc" key
+	ExtraPopup.prototype.closeNavOnEsc = function () {
+		var self = this;
+
+		$(document).keyup(function(e) {
+			if (self.navIsOpened && self.closeEsc && e.keyCode === 27) {
+				self.closeNav();
+			}
+		});
+	};
+
+	// close popup (method)
+	ExtraPopup.prototype.closeNavMethod = function () {
+		var self = this;
+
+		self.$navContainer.on('extraPopupClose', function () {
+			if (self.navIsOpened) {
+				self.closeNav();
+			}
+		})
+	};
+
+	// open nav
+	ExtraPopup.prototype.openNav = function() {
+		// console.log("openNav");
+
+		var self = this,
+			$html = self.$mainContainer,
+			$navContainer = self.$navContainer,
+			$buttonMenu = self.$btnMenu,
+			$buttonClose = self.$btnMenuClose,
+			_animationSpeed = self._animateSpeedOverlay,
+			$staggerElement = self.$staggerElement,
+			ease = self.ease;
+
+		var modifiers = self.modifiers;
+		var classBeforeOpen = modifiers.beforeOpen;
+		var classAfterOpen = modifiers.opened;
+
+		$navContainer.trigger('extraPopupBeforeOpen');
+		// self.options.extraPopupBeforeOpen(self.$navContainer);
+
+		$html.addClass(classBeforeOpen);
+		$buttonMenu.addClass(modifiers.active);
+		$buttonClose.addClass(classBeforeOpen);
+
+		if(self.cssScrollBlocked){
+			self.cssScrollFixed();
+		}
+
+		$navContainer.css({
+			'-webkit-transition-duration': '0s',
+			'transition-duration': '0s'
+		});
+
+		// animation of stagger
+		if($staggerElement) {
+			TweenMax.staggerTo($staggerElement, 0.85, {
+				autoAlpha: 1,
+				scale: 1,
+				y: 0,
+				yPercent: 0,
+				xPercent: 0,
+				ease: ease
+			}, 0.1);
+		}
+
+		TweenMax.to($navContainer, _animationSpeed / 1000, {
+			xPercent: 0,
+			scale: 1,
+			autoAlpha: 1,
+			ease: ease,
+			onComplete: function () {
+				$html.addClass(classAfterOpen);
+				$buttonClose.addClass(classAfterOpen);
+
+				// if (DESKTOP) {
+				// 	noScroll();
+				// }
+			}
+		});
+
+		if (self.overlayBoolean) {
+			self.toggleOverlay();
+		}
+
+		self.navIsOpened = true;
+	};
+
+	// close nav
+	ExtraPopup.prototype.closeNav = function() {
+		// console.log("closeNav");
+
+		var self = this,
+			$html = self.$mainContainer,
+			$navContainer = self.$navContainer,
+			$buttonMenu = self.$btnMenu,
+			$buttonClose = self.$btnMenuClose,
+			$staggerElement = self.$staggerElement,
+			_animationSpeed = self._animateSpeedOverlay,
+			_mediaWidth = self._mediaWidth,
+			_animationType = self._animationType,
+			ease = self.ease,
+			alpha = self.alpha;
+
+		var modifiers = self.modifiers;
+		var classAfterOpen = modifiers.opened;
+		var classBeforeOpen = modifiers.beforeOpen;
+
+		$html.removeClass(classAfterOpen);
+		$html.removeClass(classBeforeOpen);
+		$buttonMenu.removeClass(modifiers.active);
+		$buttonClose.removeClass(classAfterOpen);
+		$buttonClose.removeClass(classBeforeOpen);
+
+		if (self.overlayBoolean) {
+			self.toggleOverlay(false);
+		}
+
+		var duration = _animationSpeed / 1000;
+
+		// animation of stagger
+		if($staggerElement) {
+			TweenMax.staggerTo($staggerElement, 0.85, {
+				autoAlpha: alpha,
+				xPercent: -100
+			}, 0.1);
+		}
+
+		if (_animationType === 'ltr') {
+			TweenMax.to($navContainer, duration, {
+				xPercent: -100,
+				ease: ease,
+				onComplete: function () {
+					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+						self.preparationAnimation();
+					}
+
+					TweenMax.set($navContainer, {
+						autoAlpha: alpha
+					});
+
+					// if (DESKTOP) {
+					// 	canScroll();
+					// }
+
+					if(self.cssScrollBlocked){
+						self.cssScrollUnfixed();
+					}
+				}
+			});
+
+		} else if (_animationType === 'rtl') {
+			TweenMax.to($navContainer, duration, {
+				xPercent: 100,
+				ease: ease,
+				onComplete: function () {
+					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+						self.preparationAnimation();
+					}
+
+					TweenMax.set($navContainer, {
+						autoAlpha: alpha
+					});
+
+					// if (DESKTOP) {
+					// 	canScroll();
+					// }
+
+					if(self.cssScrollBlocked){
+						self.cssScrollUnfixed();
+					}
+				}
+			});
+
+		} else if (_animationType === 'surface') {
+			TweenMax.to($navContainer, duration, {
+				scale: self._animationScale,
+				autoAlpha: alpha,
+				ease: ease,
+				onComplete: function () {
+					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+						self.preparationAnimation();
+					}
+
+					// if (DESKTOP) {
+					// 	canScroll();
+					// }
+
+					if(self.cssScrollBlocked){
+						self.cssScrollUnfixed();
+					}
+				}
+			});
+
+		} else {
+			console.error('Type animation "' + _animationType + '" is wrong!');
+			return;
+		}
+
+		self.navIsOpened = false;
+	};
+
+	// preparation element before animation
+	ExtraPopup.prototype.preparationAnimation = function() {
+		var self = this;
+
+		var $navContainer = self.$navContainer,
+			$staggerElement = self.$staggerElement,
+			_animationType = self._animationType,
+			alpha = self.alpha;
+
+		// console.log('preparationAnimation: ', $navContainer);
+
+		// animation of stagger
+		if($staggerElement) {
+			TweenMax.set($staggerElement, {
+				autoAlpha: alpha,
+				xPercent: -100
+			});
+		}
+
+		if (_animationType === 'ltr') {
+			TweenMax.set($navContainer, {
+				xPercent: -100,
+				autoAlpha: alpha,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+
+		} else if (_animationType === 'rtl') {
+			TweenMax.set($navContainer, {
+				xPercent: 100,
+				autoAlpha: alpha,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+
+		} else if (_animationType === 'surface') {
+			TweenMax.set($navContainer, {
+				scale: self._animationScale,
+				autoAlpha: alpha,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+
+		} else {
+			console.error('Type animation "' + _animationType + '" is wrong!');
+		}
+	};
+
+	ExtraPopup.prototype.cssScrollFixed = function() {
+		$('html').addClass('css-scroll-fixed');
+		$(document).trigger('extraPopupScrollFixed');
+	};
+
+	ExtraPopup.prototype.cssScrollUnfixed = function() {
+		$('html').removeClass('css-scroll-fixed');
+		$(document).trigger('extraPopupScrollUnfixed');
+	};
+
+	// clearing inline styles
+	ExtraPopup.prototype.clearStyles = function() {
+		var self = this,
+			$btnMenu = self.$btnMenu,
+			$navContainer = self.$navContainer,
+			$staggerElement = self.$staggerElement;
+
+		//clear on horizontal resize
+		if (self.closeOnResize === true) {
+
+			$(window).on('resizeByWidth', function () {
+				if (self.navIsOpened) {
+					if (!$btnMenu.is(':visible')) {
+						$navContainer.attr('style', '');
+						$staggerElement.attr('style', '');
+						self.closeNav();
+					} else {
+						self.closeNav();
+					}
+				}
+			});
+
+		}
+	};
+
+	window.ExtraPopup = ExtraPopup;
+
+}(jQuery));
+
+/**
+ * !shutter initial
+ * */
+function shuttersInit(){
+
+	/*navigation*/
+	var navShutterClass = '.nav-shutter-js';
+	var $navShutter = $(navShutterClass);
+
+	if($navShutter.length){
+
+		new ExtraPopup({
+			navContainer: navShutterClass,
+			navMenu: '.nav__list',
+			btnMenu: '.btn-nav-js',
+			btnMenuClose: '.btn-shutter-close-js',
+			// staggerElement: '.nav__list > li',
+			overlayClass: 'popup-overlay--nav',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1280,
+			animationSpeed: 200,
+			overlayAlpha: 0.35,
+			overlayIndex: 999,
+			// alpha: 0,
+			cssScrollBlocked: true,
+			openedClass: 'shutter--opened',
+			beforeOpenClass: 'shutter--before-open',
+			ease: 'Power2.easeInOut'
+			// ease: 'Power0.easeNone'
+		});
+	}
+
+	/*search*/
+	var searchShutterClass = '.search-shutter-js';
+	var $searchShutter = $(searchShutterClass);
+
+	if($searchShutter.length){
+
+		new ExtraPopup({
+			navContainer: searchShutterClass,
+			// navMenu: '.nav__list',
+			btnMenu: '.btn-search-open-js',
+			btnMenuClose: '.btn-shutter-close-js',
+			// staggerElement: '.nav__list > li',
+			overlayClass: 'popup-overlay--nav',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1280,
+			animationSpeed: 200,
+			overlayAlpha: 0.35,
+			overlayIndex: 999,
+			// alpha: 0,
+			cssScrollBlocked: true,
+			openedClass: 'shutter--opened',
+			beforeOpenClass: 'shutter--before-open',
+			ease: 'Power2.easeInOut'
+			// ease: 'Power0.easeNone'
+		});
+	}
+
+	$searchShutter.on('extraPopupBeforeOpen', function () {
+		$navShutter.trigger('extraPopupClose');
+
+		$(this).find('.search-form__input').focus();
+	});
+
+	$navShutter.on('extraPopupBeforeOpen', function () {
+		$searchShutter.trigger('extraPopupClose');
+	});
+}
+
+/**
+ * !multi accordion jquery plugin
+ * */
+(function ($) {
+	var MultiAccordion = function (settings) {
+		var options = $.extend({
+			collapsibleAll: false, // если установить значение true, сворачиваются идентичные панели НА СТРАНИЦЕ, кроме текущего
+			resizeCollapsible: false, // если установить значение true, при ресайзе будут соворачиваться все элементы
+			container: null, // общий контейнер
+			item: null, // непосредственный родитель открывающегося элемента
+			handler: null, // открывающий элемента
+			handlerWrap: null, // если открывающий элемент не является непосредственным соседом открывающегося элемента, нужно указать элемент, короный является оберткой открывающего элемета и лежит непосредственно перед открывающимся элементом (условно, является табом)
+			panel: null, // открывающийся элемент
+			openClass: 'active', // класс, который добавляется при открытии
+			currentClass: 'current', // класс текущего элемента
+			animateSpeed: 300, // скорость анимации
+			collapsible: false // сворачивать соседние панели
+		}, settings || {});
+
+		this.options = options;
+		var container = $(options.container);
+		this.$container = container;
+		this.$item = $(options.item, container);
+		this.$handler = $(options.handler, container);
+		this.$handlerWrap = $(options.handlerWrap, container);
+		this._animateSpeed = options.animateSpeed;
+		this.$totalCollapsible = $(options.totalCollapsible);
+		this._resizeCollapsible = options.resizeCollapsible;
+
+		this.modifiers = {
+			active: options.openClass,
+			current: options.currentClass
+		};
+
+		this.bindEvents();
+		this.totalCollapsible();
+		this.totalCollapsibleOnResize();
+
+	};
+
+	MultiAccordion.prototype.totalCollapsible = function () {
+		var self = this;
+		self.$totalCollapsible.on('click', function () {
+			self.$panel.slideUp(self._animateSpeed, function () {
+				self.$container.trigger('accordionChange');
+			});
+			self.$item.removeClass(self.modifiers.active);
+		})
+	};
+
+	MultiAccordion.prototype.totalCollapsibleOnResize = function () {
+		var self = this;
+		$(window).on('resize', function () {
+			if (self._resizeCollapsible) {
+				self.$panel.slideUp(self._animateSpeed, function () {
+					self.$container.trigger('accordionChange');
+				});
+				self.$item.removeClass(self.modifiers.active);
+			}
+		});
+	};
+
+	MultiAccordion.prototype.bindEvents = function () {
+		var self = this;
+		var $container = this.$container;
+		var $item = this.$item;
+		var panel = this.options.panel;
+
+		$container.on('click', self.options.handler, function (e) {
+			var $currentHandler = self.options.handlerWrap ? $(this).closest(self.options.handlerWrap) : $(this);
+			// console.log("!!self.options.handlerWrap: ", self.options.handlerWrap);
+			// console.log("$currentHandler: ", $currentHandler);
+			var $currentItem = $currentHandler.closest($item);
+
+			if ($currentItem.has($(panel)).length) {
+				e.preventDefault();
+
+				if ($currentHandler.next(panel).is(':visible')) {
+					self.closePanel($currentItem);
+
+					return;
+				}
+
+				if (self.options.collapsibleAll) {
+					self.closePanel($($container).not($currentHandler.closest($container)).find($item));
+				}
+
+				if (self.options.collapsible) {
+					self.closePanel($currentItem.siblings());
+				}
+
+				self.openPanel($currentItem, $currentHandler);
+			}
+		})
+	};
+
+	MultiAccordion.prototype.closePanel = function ($currentItem) {
+		var self = this;
+		var panel = self.options.panel;
+		var openClass = self.modifiers.active;
+
+		$currentItem.removeClass(openClass).find(panel).filter(':visible').slideUp(self._animateSpeed, function () {
+			// console.log('mAccordionAfterClose');
+			self.$container.trigger('mAccordionAfterClose').trigger('mAccordionAfterChange');
+		});
+
+		$currentItem
+			.find(self.$item)
+			.removeClass(openClass);
+	};
+
+	MultiAccordion.prototype.openPanel = function ($currentItem, $currentHandler) {
+		var self = this;
+		var panel = self.options.panel;
+
+		$currentItem.addClass(self.modifiers.active);
+
+		$currentHandler.next(panel).slideDown(self._animateSpeed, function () {
+			// console.log('mAccordionAfterOpened');
+			self.$container.trigger('mAccordionAfterOpened').trigger('mAccordionAfterChange');
+		});
+	};
+
+	window.MultiAccordion = MultiAccordion;
+}(jQuery));
+
+/**
+ * !multi accordion initial
+ * */
+function multiAccordionInit() {
+
+	var navMenu = '.nav-js';
+
+	if ($(navMenu).length) {
+		new MultiAccordion({
+			container: navMenu,
+			item: 'li',
+			handler: '.nav-handler-js',
+			handlerWrap: '.nav__tab-js',
+			panel: '.nav-drop-js',
+			openClass: 'is-open',
+			animateSpeed: 200,
+			collapsible: true
+		});
+
+		// $(catalogMenu).on('mAccordionAfterChange', function () {
+		// 	clearTimeout(catalogMenuChangeTimeout);
+		//
+		// 	catalogMenuChangeTimeout = setTimeout(function () {
+		// 		$(document.body).trigger("sticky_kit:recalc");
+		// 	}, 50);
+		// })
+	}
+}
+/*multi accordion initial end*/
+
+/**
  * !Open popup
  */
 function popupsInit() {
@@ -862,7 +1648,7 @@ function stickyInit() {
 					var cardInfoSticky = new StickySidebar(sidebarSticky, {
 						containerSelector: '.main__holder',
 						innerWrapperSelector: '.sidebar-holder--sticky-js',
-						// topSpacing: $('.header').outerHeight() + 40,
+						topSpacing: $('.header__panel').outerHeight(),
 						resizeSensor: true // recalculation sticky on change size of elements
 					});
 				}, 500)
@@ -980,14 +1766,17 @@ $(document).ready(function () {
 	inputToggleFocusClass();
 	inputHasValueClass();
 	// inputFilledClass();
+	addClassesOnScrollPage();
 	customSelect($('select.cselect'));
 	fileInput();
 	slidersInit();
 	simpleAccordInit();
 	objectFitImages(); // object-fit-images initial
 	toggleDropInit();
+	shuttersInit();
+	multiAccordionInit();
 	popupsInit();
-	addAlignClass();
+	// addAlignClass();
 	equalHeight();
 
 	stickyInit();

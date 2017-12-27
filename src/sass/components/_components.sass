@@ -101,10 +101,10 @@
 	justify-content: space-between
 	align-items: flex-start
 	+margin-horizontal(-#{round($m-section-gap/2)})
-	margin-bottom: $bottom-space--lg
+	//margin-bottom: $bottom-space--lg
 	+padding-vertical(30px)
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		margin-bottom: $bottom-space--md
 
 .m-section__heading
@@ -147,6 +147,12 @@
 
 /* m-section end
 
+/* news
+.m-section--news
+	margin-bottom: -40px
+
+/* news end
+
 /* docs
 $docs-space: $m-section-gap
 $docs-space--hd: 40px
@@ -179,7 +185,7 @@ $docs-space--lg: 30px
 .docs__item
 
 	position: relative
-	+grid-item(3, $docs-space, round($docs-space*0.5))
+	+grid-item(3, $docs-space)
 	+font(1.5rem, round-float(18px/15px, 2))
 	letter-spacing: normal
 
@@ -293,7 +299,7 @@ $docs-space--lg: 30px
 .main-slider__images
 	.slick-arrow
 		background: none
-		border: 1px solid white
+		border-color: white
 
 		// hover
 		.no-touchevents &:hover
@@ -302,17 +308,27 @@ $docs-space--lg: 30px
 	.slick-prev
 		left: $page-layout-space
 
-		&:after
+		&:before, &:after
 			border-color: white
 
 	.slick-next
 		right: $page-layout-space
 
-		&:after
+		&:before, &:after
 			border-color: white
 
 	.slick-dots
 		bottom: 35px
+
+		li
+
+			button
+				width: 8px
+				height: 8px
+				background: white
+
+				&::before
+					background: black
 
 // titles
 .main-slider__titles

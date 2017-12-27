@@ -1,0 +1,156 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* shutter
+
+
+// nav shutter
+
+.shutter
+	overflow: hidden // необходим для скрытия скролла
+	position: fixed
+	//left: 0
+	bottom: 0
+	min-width: 320px
+	background: $bg-color
+	opacity: 0
+	visibility: hidden
+	z-index: 1000
+	left: #{$sidebar-width}
+	+size(100%, calc(100vh - #{$header-height}))
+
+	+media('<desk-lg')
+		left: 0
+		height: calc(100vh - #{$header-height--sm})
+
+	+media('<desk-sm')
+		left: 0
+
+.shutter__align
+	width: calc(100% + 100px)
+	overflow-x: hidden
+	overflow-y: auto
+	height: 100%
+
+	+media('<desk-sm')
+		width: 100%
+
+.shutter__holder
+	+clear
+	padding: nth($shutter-space, 1) $page-layout-space
+
+	+media('<desk-hd')
+		padding: nth($shutter-space--hd, 1) $page-layout-space--hd
+
+	+media('<desk-lg')
+		padding: nth($shutter-space--lg, 1) $page-layout-space--lg
+
+	+media('<desk-sm')
+		width: 100%
+
+.shutter__footer
+	border-top: 1px solid $border-color
+
+/* shutter content
+.shutter-content
+	float: left
+	width: calc(100% - #{$shutter-aside-width})
+	padding-right: $grid-space
+
+/* shutter content end
+
+/* shutter aside
+.shutter-aside
+	float: right
+	width: $shutter-aside-width
+
+/* shutter aside end
+
+/* button shutter close
+.shutter
+	.btn-popup-close
+		display: none
+		position: absolute
+		right: 0
+		top: 0
+
+		+media('<tab-lg')
+			display: block
+
+/* button shutter close end
+
+/* nav-shutter
+.nav-shutter
+	&, .shutter__holder
+		max-width: $shutter-width
+
+		+media('<desk-lg')
+			max-width: $shutter-width--lg
+
+		+media('<desk-sm')
+			max-width: none
+
+/* nav-shutter end
+
+/* shutter wide
+.shutter--wide
+	max-width: #{$page-layout-width - $sidebar-width}
+
+	+media('<1921')
+		max-width: calc(100%)
+
+	+media('<desk-lg')
+		max-width: calc(100%)
+
+	+media('<desk-sm')
+		max-width: none
+
+	.shutter__align
+		width: 100%
+
+	.shutter__holder
+		width: 100%
+
+/* shutter wide end
+
+/* bag shutter
+.bag-shutter
+	$bag-shutter-width: 470px
+	// ======================
+	width: $bag-shutter-width
+	max-width: 100%
+	//left: auto
+	//right: 0
+	left: $page-layout-width
+	margin-left: -#{$bag-shutter-width}
+
+	+media('<desk-hd')
+		left: 100%
+
+	.shutter__align
+		overflow-y: hidden
+
+	.shutter__holder
+		width: #{$bag-shutter-width}
+		height: 100%
+		padding: 0
+
+		&::after
+			content: none
+
+		+media('<tab-lg')
+			width: 100%
+
+	.shutter__row
+		overflow-x: hidden
+		overflow-y: auto
+
+		&.shutter__footer
+			overflow-y: hidden
+
+	.shutter__cell
+		padding: $grid-space
+
+/* bag shutter end
+/* shutter end
