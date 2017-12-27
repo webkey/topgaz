@@ -361,18 +361,14 @@
 /* button popup close
 .btn-popup-close
 	//<a href="#" class="btn-popup-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
-	$btn-bg: #f3f3f3
+	$btn-bg: transparent
 	$btn-color: $text-color
-	$btn-size: 60px
+	$btn-size: 50px
 	$btn-space: 12px
 	$btn-lines-width: 20px
-	$btn-lines-height: 3px
+	$btn-lines-height: 2px
 	$btn-lines-space: 5px
 	$btn-lines-color: $text-color
-
-	=line-style()
-		+size($btn-lines-width, $btn-lines-height)
-		border-radius: 2px
 
 	display: block
 	+size($btn-size)
@@ -381,8 +377,25 @@
 	text-decoration: none
 	+clear-spacing
 	white-space: nowrap
-	transition-property: background-color, opacity, visibility
-	transition-duration: $animation-speed
+	opacity: 0
+	visibility: hidden
+	transition:
+		property: opacity, visibility
+		duration: $animation-speed
+
+	.shutter--before-open &
+		opacity: 1
+		visibility: visible
+
+		transition:
+			delay: 0.2s
+			duration: $animation-speed
+
+	.header__top &
+		position: fixed
+		right: 20px
+		top: 20px
+		z-index: 1005
 
 	+media('<mob-lg')
 		+size(45px)
@@ -403,13 +416,15 @@
 		position: relative
 		backface-visibility: hidden
 		background-color: transparent
-		+line-style
+		+size($btn-lines-width, $btn-lines-height)
+		border-radius: 2px
 
 		&::before, &::after
 			+pseudo()
 			left: 0
 			backface-visibility: hidden
-			+line-style
+			+size($btn-lines-width, $btn-lines-height)
+			border-radius: 0
 			background: $btn-lines-color
 			transition-property: background-color
 			transition-duration: $animation-speed
@@ -425,7 +440,9 @@
 			transform: rotate(45deg)
 
 	.no-touchevents &:hover
-		background-color: $mark-color
+		i
+			&::before, &::after
+				background-color: $base-color
 
 /* button popup close end
 /* BUTTON end

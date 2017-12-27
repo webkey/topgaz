@@ -1255,7 +1255,7 @@ function shuttersInit(){
 			navContainer: navShutterClass,
 			navMenu: '.nav__list',
 			btnMenu: '.btn-nav-js',
-			btnMenuClose: '.btn-shutter-close-js',
+			btnMenuClose: '.btn-nav-close-js',
 			// staggerElement: '.nav__list > li',
 			overlayClass: 'popup-overlay--nav',
 			overlayAppendTo: 'body',
