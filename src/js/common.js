@@ -419,43 +419,43 @@ function slidersInit() {
 				infinite: false,
 				dots: true,
 				arrows: true,
-				responsive: [
-					{
-						breakpoint: 1366,
-						settings: {
-							slidesToShow: 5,
-							slidesToScroll: 5
-						}
-					},
-					{
-						breakpoint: 1280,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 2
-						}
-					},
-					{
-						breakpoint: 960,
-						settings: {
-							slidesToShow: 3,
-							slidesToScroll: 3
-						}
-					},
-					{
-						breakpoint: 768,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 2
-						}
-					},
-					{
-						breakpoint: 480,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1
-						}
-					}
-				]
+				// responsive: [
+				// 	{
+				// 		breakpoint: 1366,
+				// 		settings: {
+				// 			slidesToShow: 5,
+				// 			slidesToScroll: 5
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 1280,
+				// 		settings: {
+				// 			slidesToShow: 2,
+				// 			slidesToScroll: 2
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 960,
+				// 		settings: {
+				// 			slidesToShow: 3,
+				// 			slidesToScroll: 3
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 768,
+				// 		settings: {
+				// 			slidesToShow: 2,
+				// 			slidesToScroll: 2
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 480,
+				// 		settings: {
+				// 			slidesToShow: 1,
+				// 			slidesToScroll: 1
+				// 		}
+				// 	}
+				// ]
 			});
 
 		});
@@ -1535,26 +1535,12 @@ function popupsInit() {
 		}
 
 		// clear js style
-		drop.attr('style', '');
+		drop.css('margin-top', '');
 
 		// for align bottom
-		// var maxPosBottom = $(window).height() - $navContainer.outerHeight();
 		var maxPosBottom = $(window).height();
 		var dropHeight = drop.outerHeight();
 		var currentDropPosBottom = drop.offset().top - $(window).scrollTop() + dropHeight;
-
-		// console.log("==================: ", drop.children('ul').children('li').first().children('.nav__tab').find('a').text());
-
-		// console.log("drop.offset().top: ", drop.offset().top);
-		// console.log("$(window).scrollTop(): ", $(window).scrollTop());
-		// console.log("dropHeight: ", dropHeight);
-
-		// console.log("$navContainerHeight: ", $navContainer.outerHeight());
-		// console.log("drop: ", drop);
-		// console.log("maxPosBottom: ", maxPosBottom);
-		// console.log("dropHeight: ", dropHeight);
-		// console.log("currentDropPosBottom: ", currentDropPosBottom);
-		// console.log("bottomSpace: ", maxPosBottom - currentDropPosBottom);
 
 		if (maxPosBottom < currentDropPosBottom) {
 			if (maxPosBottom < 500) {
@@ -1629,6 +1615,37 @@ function equalHeight() {
 		$leaders.children().matchHeight({
 			byRow: true, property: 'height', target: null, remove: false
 		});
+	}
+}
+
+/**
+ * !scroll to top
+ * */
+function scrollToTop() {
+	var $btnToTop = $('.btn-to-top');
+
+	if ($btnToTop.length) {
+		var $page = $('html'),
+			minScrollTop = 300;
+
+		$(window).on('load scroll resizeByWidth', function () {
+			var currentScrollTop = $(window).scrollTop();
+
+			$page.toggleClass('to-top-show', (currentScrollTop >= minScrollTop));
+		});
+
+		$btnToTop.on('click', function (e) {
+			e.preventDefault();
+
+			scrollToTop(300)
+		});
+
+		function scrollToTop(duration) {
+			var $page = $('html,body');
+			if (!$page.is(':animated')) {
+				$page.stop().animate({scrollTop: 0}, duration);
+			}
+		}
 	}
 }
 
@@ -1776,8 +1793,9 @@ $(document).ready(function () {
 	shuttersInit();
 	multiAccordionInit();
 	popupsInit();
-	// addAlignClass();
+	addAlignClass();
 	equalHeight();
+	scrollToTop();
 
 	stickyInit();
 

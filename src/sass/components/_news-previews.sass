@@ -11,7 +11,7 @@ $news-previews-space--lg: 30px
 .news-previews
 	margin-bottom: $bottom-space--lg
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		margin-bottom: $bottom-space--ml
 
 	&:last-child
@@ -22,10 +22,10 @@ $news-previews-space--lg: 30px
 	+clear-spacing
 	margin-bottom: $bottom-space--md
 
-	+media('<desk-hd')
+	//+media('<desk-hd')
 		+grid-parent($news-previews-space--hd)
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		+grid-parent($news-previews-space--lg)
 		margin-bottom: $bottom-space--ml
 
@@ -39,22 +39,22 @@ $news-previews-space--lg: 30px
 	+font(1.5rem, round-float(18px/15px, 2))
 	letter-spacing: normal
 
-	+media('<desk-hd')
+	//+media('<desk-hd')
 		+grid-item-responsive(3, $news-previews-space--hd)
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		+grid-item-responsive(3, $news-previews-space--lg)
 
-	+media('<1280px')
+	//+media('<1280px')
 		+grid-item-responsive(2, $news-previews-space--lg)
 
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		+grid-item-responsive(3, $news-previews-space--lg)
 
-	+media('<tab-sm')
+	//+media('<tab-sm')
 		+grid-item-responsive(2, $news-previews-space--lg)
 
-	+media('<mob-md')
+	//+media('<mob-md')
 		+grid-item-responsive(1, $news-previews-space--lg)
 
 .news-previews__inner

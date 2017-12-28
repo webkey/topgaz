@@ -172,10 +172,10 @@ $docs-space--lg: 30px
 	+clear-spacing
 	margin-bottom: $bottom-space--md
 
-	+media('<desk-hd')
+	//+media('<desk-hd')
 		+grid-parent($docs-space--hd)
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		+grid-parent($docs-space--lg)
 		margin-bottom: $bottom-space--ml
 
@@ -189,22 +189,22 @@ $docs-space--lg: 30px
 	+font(1.5rem, round-float(18px/15px, 2))
 	letter-spacing: normal
 
-	+media('<desk-hd')
+	//+media('<desk-hd')
 		+grid-item-responsive(3, $docs-space--hd)
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		+grid-item-responsive(3, $docs-space--lg)
 
-	+media('<1280px')
+	//+media('<1280px')
 		+grid-item-responsive(2, $docs-space--lg)
 
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		+grid-item-responsive(3, $docs-space--lg)
 
-	+media('<tab-sm')
+	//+media('<tab-sm')
 		+grid-item-responsive(2, $docs-space--lg)
 
-	+media('<mob-md')
+	//+media('<mob-md')
 		+grid-item-responsive(1, $docs-space--lg)
 
 .docs__inner
@@ -448,3 +448,57 @@ $docs-space--lg: 30px
 		color: $link-color
 
 /* leaders end
+
+/*btn to top
+
+.btn-to-top
+	position: fixed
+	right: 0
+	bottom: 0
+	+size(60px)
+	background: #000
+	font-size: 0
+	line-height: 0
+	z-index: 996
+	opacity: 0
+	visibility: hidden
+	transform: translate(100px, 0)
+	transition-property: opacity, visibility, transform
+	transition-duration: 0.2s
+
+	.to-top-show &
+		opacity: 0.18
+		visibility: visible
+		transform: translate(0, 0)
+
+	.no-touchevents &:hover
+		opacity: 0.45
+
+	i
+		position: absolute
+		right: 50%
+		top: 50%
+		height: 10px
+		width: 18px
+		margin: -5px -10px 0 0
+		z-index: 1
+
+		&:before, &:after
+			content: ''
+			position: absolute
+			left: 50%
+			top: 50%
+			height: 2px
+			width: 12px
+			border-radius: 5px
+			background: #fff
+
+		&:before
+			transform: rotate(-45deg)
+			margin: -2px 0 0 -9px
+
+		&:after
+			transform: rotate(45deg)
+			margin: -2px 0 0 -2px
+
+/*btn to top end
