@@ -109,12 +109,22 @@
 	+display-inline-block-top
 	+font($font-size, $line-height)
 	letter-spacing: normal
+	text-align: center
+	width: 33.28%
+
+	&:first-child
+		text-align: left
 
 	&:last-child
 		text-align: right
 
 	ul
 		li
+			em
+				+display-inline-block-top
+				margin-right: 4px
+				+font-normal
+				color: $text-color-light
 			//display: inline-block
 			//padding-right: calc(1em - 4px)
 

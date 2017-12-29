@@ -80,14 +80,15 @@ $news-previews-space--lg: 30px
 		margin-bottom: 0
 
 .news-previews__title, .news-previews__text
+	$line-height: round-float(30/24, 2)
 	$font-size: 24px
 	+font-alt-medium
-	+font($font-size, round-float(30/24, 2))
+	+font($font-size, $line-height)
 	letter-spacing: normal
 	color: $link-color
 	margin-bottom: $bottom-space
 	overflow: hidden
-	max-height: #{4 * $font-size * round-float(24/16, 2)}
+	max-height: #{4 * $font-size * $line-height}
 	
 	&:last-child
 		margin-bottom: 0

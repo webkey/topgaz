@@ -4,7 +4,8 @@
 
 body
 	height: 100%
-	min-width: 1446px
+	min-width: 320px
+	//min-width: 1446px
 	position: relative
 
 .wrapper
@@ -34,11 +35,8 @@ body
 	padding: round($page-layout-space) 0 round($page-layout-space*1.5) $page-layout-space
 	min-height: 50px
 
-	+media('<desk-lg')
-		margin-right: 0
-
-	+media('<tab-lg')
-		margin-left: 0
+	+media('<desk-sm')
+		padding: round($page-layout-space--lg) 0 round($page-layout-space--lg*1.5) $page-layout-space--lg
 
 	.home-page &
 		margin: 0
@@ -56,6 +54,12 @@ body
 	width: $logo-wrap-width
 	min-width: $logo-wrap-width
 
+	+media('<desk-sm')
+		$logo-wrap-width--lg: $sidebar-width + $page-layout-space--lg
+		// ===============
+		width: $logo-wrap-width--lg
+		min-width: $logo-wrap-width--lg
+
 // sidebar
 .sidebar
 	display: inline
@@ -69,6 +73,9 @@ body
 .sidebar__holder
 	+padding-vertical(round($page-layout-space), round($page-layout-space*1.5))
 
+	+media('<desk-sm')
+		+padding-vertical(round($page-layout-space--lg), round($page-layout-space--lg*1.5))
+
 // footer
 .footer
 	margin: 0 auto
@@ -79,13 +86,15 @@ body
 .max-wrap
 	max-width: $page-layout-width + $page-layout-space*2
 
+	+media('<desk-lg')
+		max-width: none
+
 .layout
 	+padding-horizontal($page-layout-space)
 	+push-auto
 
-	//+media('<tab-lg')
-		.main &
-			+padding-horizontal(0)
+	+media('<desk-sm')
+		+padding-horizontal($page-layout-space--lg)
 
 // выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
 // и их максимальная ширина
@@ -188,10 +197,16 @@ body
 .footer-gov
 	+padding-vertical($page-layout-space)
 
+	+media('<desk-sm')
+		+padding-vertical($page-layout-space)
+
 /* footer gov (layout) end
 
 /* footer bottom (layout)
 .footer-bottom
 	+padding-vertical($page-layout-space)
+
+	+media('<desk-sm')
+		+padding-vertical($page-layout-space)
 
 /* footer bottom (layout) end

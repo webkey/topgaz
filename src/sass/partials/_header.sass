@@ -18,14 +18,20 @@
 	border-bottom: 1px solid rgba(#fff, 0.25)
 	z-index: 10
 
+	+media('<desk-sm')
+		height: $header-top-height--sm
+
 	.panel-is-open &
 		z-index: auto
 
 .header__common
-	+padding-vertical(40px)
+	+padding-vertical($page-layout-space)
 	display: flex
 	justify-content: space-between
 	align-items: center
+
+	+media('<desk-sm')
+		+padding-vertical($page-layout-space--lg)
 
 	.home-page &
 		flex-wrap: wrap
@@ -41,21 +47,32 @@
 
 .logo
 	$logo-size: 270px, 75px // width, height
+	$logo-size--lg: 210px // width
 	// ==========
 	display: block
 	position: relative
 	width: nth($logo-size, 1)
 	max-width: 100%
-	height: nth($logo-size, 2)
 	text-indent: -9999px
 	overflow: hidden
 	background: url(../../img/logo.png) no-repeat
 	background-size: contain
 	z-index: 5
 
+	+media('<desk-sm')
+		width: nth($logo-size--lg, 1)
+
+	&::before
+		content: ""
+		display: block
+		+ratio(nth($logo-size, 1), nth($logo-size, 2))
+
 	a
 		display: block
-		height: 100%
+		position: absolute
+		left: 0
+		top: 0
+		+size(100%)
 
 .slogan
 	+font-alt
@@ -70,15 +87,24 @@
 	.home-page &
 		display: none
 		+font-alt-bold
-		+font(52px, 58px)
+		+font(52px, round-float(58/52, 2))
 		margin-right: 0
 		max-width: 100%
 		padding-right: 15%
+
+		+media('<desk-sm')
+			font-size: 38px
+
+		+media('<tab-lg')
+			padding-right: 0
 
 		&.slogan--home-page
 			display: block
 			width: 100%
 			margin-top: 30px
+
+			+media('<desk-sm')
+				margin-top: 20px
 
 	a
 		text-decoration: none
@@ -198,6 +224,9 @@
 			border: solid #ccc
 			border-width: 1px 0 0
 
+			+media('<desk-sm')
+				font-size: 14px
+
 	.nav__tab
 		.panel-is-open &
 			position: relative
@@ -310,7 +339,8 @@
 			&:last-child
 				border-width: 1px 0
 
-		//+media('<desk-md')
+		// <1200px
+		+media('<desk-lg')
 			flex: 1 1 0
 
 		& > .nav__tab

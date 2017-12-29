@@ -73,6 +73,8 @@
 		border-left: 0
 
 .fast-links__inner
+	$fast-links-icon-size: 30px, 30px // width, height
+	$fast-links-icon-space: 16px
 	display: block
 	text-decoration: none
 	color: $text-color
@@ -80,14 +82,16 @@
 
 	svg
 		+display-inline-block-middle
-		+size(30px)
-		margin-right: 16px
+		+size(nth($fast-links-icon-size, 1), nth($fast-links-icon-size, 2))
+		margin-right: $fast-links-icon-space
 
 	path
 		fill: inherit
 
 	span
 		+display-inline-block-middle
+		max-width: calc(100% - #{nth($fast-links-icon-size, 1) + $fast-links-icon-space} - 10px)
+		text-align: left
 
 	&:hover
 		color: $link-color
@@ -243,6 +247,9 @@ $docs-space--lg: 30px
 	position: relative
 	+margin-horizontal(-$page-layout-space)
 
+	+media('<desk-sm')
+		+margin-horizontal(-$page-layout-space--lg)
+
 .main-slider__images, .main-slider__titles
 	// before slide load
 	white-space: nowrap
@@ -271,6 +278,7 @@ $docs-space--lg: 30px
 	color: inherit
 	text-decoration: none
 	height: 449px
+	width: 800px
 
 	.slick-initialized &
 		// after slide load
@@ -279,7 +287,13 @@ $docs-space--lg: 30px
 		// after slide load end
 
 .main-slider__images__item
+	position: relative
 	background-color: $text-color
+
+	//&::before
+		content: ""
+		display: block
+		+ratio(800, 449)
 
 	&::after
 		+pseudo()
@@ -291,6 +305,16 @@ $docs-space--lg: 30px
 	img
 		opacity: 0.5
 		transition: opacity $animation-speed
+
+		position: absolute
+		+size(100%)
+		left: 0
+		top: 0
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(cover)
 
 	&.slick-current img
 		opacity: 1
@@ -308,11 +332,17 @@ $docs-space--lg: 30px
 	.slick-prev
 		left: $page-layout-space
 
+		+media('<desk-sm')
+			left: $page-layout-space--lg
+
 		&:before, &:after
 			border-color: white
 
 	.slick-next
 		right: $page-layout-space
+
+		+media('<desk-sm')
+			right: $page-layout-space--lg
 
 		&:before, &:after
 			border-color: white
@@ -351,6 +381,8 @@ $docs-space--lg: 30px
 	+display-inline-block-middle
 	width: 620px
 	max-width: 80%
+	overflow: hidden
+	max-height: 90%
 	+font-alt-medium
 	+font(30px, round-float(36/30, 2))
 	color: white

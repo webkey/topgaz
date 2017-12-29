@@ -419,48 +419,19 @@ function slidersInit() {
 				infinite: false,
 				dots: true,
 				arrows: true,
-				// responsive: [
-				// 	{
-				// 		breakpoint: 1366,
-				// 		settings: {
-				// 			slidesToShow: 5,
-				// 			slidesToScroll: 5
-				// 		}
-				// 	},
-				// 	{
-				// 		breakpoint: 1280,
-				// 		settings: {
-				// 			slidesToShow: 2,
-				// 			slidesToScroll: 2
-				// 		}
-				// 	},
-				// 	{
-				// 		breakpoint: 960,
-				// 		settings: {
-				// 			slidesToShow: 3,
-				// 			slidesToScroll: 3
-				// 		}
-				// 	},
-				// 	{
-				// 		breakpoint: 768,
-				// 		settings: {
-				// 			slidesToShow: 2,
-				// 			slidesToScroll: 2
-				// 		}
-				// 	},
-				// 	{
-				// 		breakpoint: 480,
-				// 		settings: {
-				// 			slidesToShow: 1,
-				// 			slidesToScroll: 1
-				// 		}
-				// 	}
-				// ]
+				responsive: [
+					{
+						breakpoint: 1366,
+						settings: {
+							slidesToShow: 5,
+							slidesToScroll: 5
+						}
+					}
+				]
 			});
 
 		});
 	}
-
 
 	//images carousel
 	var $mainSlider = $('.main-slider-js');
