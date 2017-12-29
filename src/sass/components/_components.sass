@@ -58,16 +58,24 @@
 .fast-links
 	display: table
 	table-layout: fixed
-	width: 100%
+	width: calc(100% + #{$page-layout-space}*2)
+	+margin-horizontal(-$page-layout-space)
+
+	+media('<desk-sm')
+		width: calc(100% + #{$page-layout-space--lg}*2)
+		+margin-horizontal(-$page-layout-space--lg)
 
 .fast-links__item
 	display: table-cell
 	vertical-align: middle
 	text-align: center
 	+font-alt-medium
-	+font(24px, 30px)
+	+font(24px, round-float(30/24, 1))
 	border: solid $border-color-light
 	border-width: 0 0 0 1px
+
+	+media('<desk-sm')
+		font-size: 20px
 
 	&:nth-child(3n+1)
 		border-left: 0
@@ -78,7 +86,10 @@
 	display: block
 	text-decoration: none
 	color: $text-color
-	padding: 35px 20px
+	padding: round($page-layout-space*0.875) $page-layout-space
+
+	+media('<desk-sm')
+		padding: round($page-layout-space--lg*0.875) $page-layout-space--lg
 
 	svg
 		+display-inline-block-middle
@@ -112,11 +123,14 @@
 		margin-bottom: $bottom-space--md
 
 .m-section__heading
-	$m-section-heading-width: 330px
-	// ===========
 	padding: 0 round($m-section-gap/2)
-	min-width: $m-section-heading-width
-	max-width: $m-section-heading-width
+	min-width: $m-section-header-size
+	max-width: $m-section-header-size
+
+	+media('<desk-sm')
+		padding: 0 round($m-section-gap--lg/2)
+		min-width: $m-section-header-size--lg
+		max-width: $m-section-header-size--lg
 
 	h2, h3
 		position: relative
@@ -143,11 +157,17 @@
 		min-width: 194px
 
 .m-section__content
-	$m-section-content-width: calc(100% - 330px)
+	$m-section-content-width: calc(100% - #{$m-section-header-size})
+	$m-section-content-width--lg: calc(100% - #{$m-section-header-size--lg})
 	// ===========
 	padding: 0 round($m-section-gap/2)
-	min-width: calc(100% - 330px)
-	max-width: calc(100% - 330px)
+	min-width: $m-section-content-width
+	max-width: $m-section-content-width
+
+	+media('<desk-sm')
+		padding: 0 round($m-section-gap--lg/2)
+		min-width: $m-section-content-width--lg
+		max-width: $m-section-content-width--lg
 
 /* m-section end
 
@@ -280,6 +300,10 @@ $docs-space--lg: 30px
 	height: 449px
 	width: 800px
 
+	+media('<desk-sm')
+		height: 360px
+		width: 640px
+
 	.slick-initialized &
 		// after slide load
 		float: left
@@ -387,6 +411,10 @@ $docs-space--lg: 30px
 	+font(30px, round-float(36/30, 2))
 	color: white
 	+push-auto
+
+	+media('<desk-sm')
+		width: 580px
+		font-size: 26px
 
 /* main slider end
 

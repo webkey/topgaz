@@ -4005,7 +4005,17 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 .fast-links {
 	display: table;
 	table-layout: fixed;
-	width: 100%;
+	width: calc(100% + 40px*2);
+	margin-right: -40px;
+	margin-left: -40px;
+}
+
+@media (max-width: 1199px) {
+	.fast-links {
+		width: calc(100% + 30px*2);
+		margin-right: -30px;
+		margin-left: -30px;
+	}
 }
 
 .fast-links__item {
@@ -4016,9 +4026,15 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	font-weight: 500;
 	font-style: normal;
 	font-size: 24px;
-	line-height: 30px;
+	line-height: 1.3;
 	border: solid #eaeaea;
 	border-width: 0 0 0 1px;
+}
+
+@media (max-width: 1199px) {
+	.fast-links__item {
+		font-size: 20px;
+	}
 }
 
 .fast-links__item:nth-child(3n+1) {
@@ -4029,7 +4045,13 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	display: block;
 	text-decoration: none;
 	color: #212121;
-	padding: 35px 20px;
+	padding: 35px 40px;
+}
+
+@media (max-width: 1199px) {
+	.fast-links__inner {
+		padding: 26px 30px;
+	}
 }
 
 .fast-links__inner svg {
@@ -4080,6 +4102,14 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	max-width: 330px;
 }
 
+@media (max-width: 1199px) {
+	.m-section__heading {
+		padding: 0 15px;
+		min-width: 300px;
+		max-width: 300px;
+	}
+}
+
 .m-section__heading h2, .m-section__heading h3 {
 	position: relative;
 	font-family: "Oswald", sans-serif;
@@ -4120,6 +4150,14 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	padding: 0 21px;
 	min-width: calc(100% - 330px);
 	max-width: calc(100% - 330px);
+}
+
+@media (max-width: 1199px) {
+	.m-section__content {
+		padding: 0 15px;
+		min-width: calc(100% - 300px);
+		max-width: calc(100% - 300px);
+	}
 }
 
 /* m-section end */
@@ -4256,6 +4294,13 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	width: 800px;
 }
 
+@media (max-width: 1199px) {
+	.main-slider__images__item, .main-slider__titles__item {
+		height: 360px;
+		width: 640px;
+	}
+}
+
 .slick-initialized .main-slider__images__item, .slick-initialized .main-slider__titles__item {
 	float: left;
 	display: block;
@@ -4384,6 +4429,13 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	color: white;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+@media (max-width: 1199px) {
+	.main-slider__titles__text {
+		width: 580px;
+		font-size: 26px;
+	}
 }
 
 /* main slider end */
