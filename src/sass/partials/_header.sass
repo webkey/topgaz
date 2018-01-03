@@ -20,6 +20,10 @@
 
 	+media('<desk-sm')
 		height: $header-top-height--sm
+		z-index: auto
+
+	+media('<tab-lg')
+		//height: 0
 
 	.panel-is-open &
 		z-index: auto
@@ -40,6 +44,10 @@
 	display: flex
 	justify-content: flex-start
 	align-items: center
+
+	+media('<tab-lg')
+		.header__common &
+			display: none
 
 .logo-wrap
 	width: $sidebar-width
@@ -84,8 +92,6 @@
 	&.slogan--home-page
 		display: none
 
-	.home-page &
-		display: none
 		+font-alt-bold
 		+font(52px, round-float(58/52, 2))
 		margin-right: 0
@@ -99,12 +105,20 @@
 			padding-right: 0
 
 		&.slogan--home-page
-			display: block
 			width: 100%
 			margin-top: 30px
 
 			+media('<desk-sm')
 				margin-top: 20px
+
+			+media('<tab-lg')
+				margin-top: 0
+
+	.home-page &
+		display: none
+
+		&.slogan--home-page
+			display: block
 
 	a
 		text-decoration: none
@@ -128,6 +142,12 @@
 		duration: $animation-speed
 
 	.panel-is-open &
+		transform: translate(0, 0)
+		transform: translate3d(0, 0, 0)
+		opacity: 1
+
+	+media('<tab-lg')
+		height: $header-top-height--sm
 		transform: translate(0, 0)
 		transform: translate3d(0, 0, 0)
 		opacity: 1
@@ -167,10 +187,21 @@
 	height: 100%
 
 	// panel-is-open
-	html:not(.panel-is-open) &
-		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important
+	+media('>=tab-lg')
+		html:not(.panel-is-open) &
+			transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important
 
 	.panel-is-open &
+		position: fixed
+		left: 0
+		top: 0
+		+size(100%, 100vh)
+		background-color: rgba($bg-color-alt, 1)
+		z-index: 1000
+		overflow-x: visible
+		overflow-y: auto
+
+	+media('<tab-lg')
 		position: fixed
 		left: 0
 		top: 0
@@ -352,7 +383,6 @@
 				height: 100%
 				color: white
 				text-decoration: none
-				padding: 0 round($nav-gap/2)
 
 				// panel-is-open
 				.panel-is-open &
@@ -367,6 +397,7 @@
 				span
 					display: table-cell
 					vertical-align: middle
+					padding: 0 round($nav-gap/2)
 					transition:
 						property: opacity
 						duration: $animation-speed
@@ -374,7 +405,8 @@
 		&:first-child
 			& > .nav__tab
 				a
-					padding-left: 0
+					span
+						padding-left: 0
 
 		// panel-is-open
 		//.panel-is-open &
@@ -541,6 +573,11 @@
 				+font-normal
 				//padding-left: 20px
 				font-size: 14px
+
+
+	.nav-align--right .nav__drop
+		left: auto
+		right: 100%
 
 
 /* NAVIGATION end

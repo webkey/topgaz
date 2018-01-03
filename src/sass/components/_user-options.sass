@@ -11,6 +11,10 @@ $uo-text-color: white
 .user-options
 	position: relative
 
+	+media('<tab-lg')
+		.header__common &
+			display: none
+
 .user-options__list
 	position: relative
 	list-style: none

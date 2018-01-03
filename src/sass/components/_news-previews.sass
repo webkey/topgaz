@@ -39,6 +39,9 @@ $news-previews-space--lg: 30px
 	+font(1.5rem, round-float(18px/15px, 2))
 	letter-spacing: normal
 
+	+media('<desk-sm')
+		+grid-item-responsive(2, $news-previews-space)
+
 	//+media('<desk-hd')
 		+grid-item-responsive(3, $news-previews-space--hd)
 

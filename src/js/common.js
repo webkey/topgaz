@@ -221,7 +221,7 @@ function inputFilledClass() {
 /**
  * !Add class on scroll page
  * */
-function addClassesOnScrollPage(){
+(function () {
 	// external js:
 	// 1) resizeByWidth (resize only width);
 
@@ -230,28 +230,48 @@ function addClassesOnScrollPage(){
 		panelOpenClass = "panel-is-open",
 		panelCloseClass = "panel-is-close",
 		headerShowClass = 'header-show',
-		headerHideClass = 'header-hide';
+		headerHideClass = 'header-hide',
+		widthLayout = 992;
 
 	var previousScrollTop = $(window).scrollTop();
 
-	addClass();
+	addClassByScroll();
 
 	$(window).on('scroll resizeByWidth', function () {
-		addClass();
+		addClassByScroll();
 	});
 
-	function addClass() {
-		var currentScrollTop = $(window).scrollTop();
+	addClassByLoad();
 
-		$page.toggleClass(panelOpenClass, (currentScrollTop >= minScrollTop));
-		$page.toggleClass(panelCloseClass, (currentScrollTop < minScrollTop));
+	$(window).on('load resizeByWidth', function () {
+		addClassByLoad();
+	});
 
-		var showHeaderPanel = currentScrollTop < previousScrollTop || currentScrollTop <= minScrollTop;
-		$page.toggleClass(headerShowClass, showHeaderPanel);
-		$page.toggleClass(headerHideClass, !showHeaderPanel);
+	function addClassByScroll() {
+		if (window.innerWidth >= widthLayout) {
+			var currentScrollTop = $(window).scrollTop();
 
-		previousScrollTop = currentScrollTop;
+			$page.toggleClass(panelOpenClass, (currentScrollTop >= minScrollTop));
+			$page.toggleClass(panelCloseClass, (currentScrollTop < minScrollTop));
+
+			var showHeaderPanel = currentScrollTop < previousScrollTop || currentScrollTop <= minScrollTop;
+			$page.toggleClass(headerShowClass, showHeaderPanel);
+			$page.toggleClass(headerHideClass, !showHeaderPanel);
+
+			previousScrollTop = currentScrollTop;
+		}
 	}
+
+	function addClassByLoad() {
+		if (window.innerWidth < widthLayout) {
+
+			$page.addClass(panelOpenClass);
+		}
+	}
+})();
+
+function addClassesOnScrollPage(){
+
 
 	// function setHeightPanel() {
 	// 	$('.header__panel').height($('.header__panel__frame').outerHeight());
@@ -425,6 +445,13 @@ function slidersInit() {
 						settings: {
 							slidesToShow: 5,
 							slidesToScroll: 5
+						}
+					},
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
 						}
 					}
 				]
