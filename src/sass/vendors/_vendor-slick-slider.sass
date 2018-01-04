@@ -18,6 +18,9 @@
 	transition-property: background, opacity, visibility
 	transition-duration: 0.2s
 
+	+media('<tab-lg')
+		+size(40px)
+
 	&::before
 		+pseudo()
 		+size(50px, 0)
@@ -30,6 +33,9 @@
 		transition:
 			property: opacity, transform
 			duration: $animation-speed
+
+		+media('<tab-lg')
+			content: none
 
 	&::after
 		top: 50%

@@ -42,6 +42,13 @@
 	.slick-dots
 		bottom: 17px
 
+		+media('<tab-lg')
+			bottom: 12px
+
+.gov__list
+	&, &.slick-dotted
+		margin-bottom: 0
+
 .gov__item
 	// before slide load
 	float: none
@@ -56,6 +63,7 @@
 		// after slide load end
 
 .gov__inner
+	display: block
 	text-decoration: none
 	color: $text-color
 
@@ -107,6 +115,7 @@
 
 .footer-bottom__col
 	+display-inline-block-top
+	+padding-horizontal(round($grid-space/2))
 	+font($font-size, $line-height)
 	letter-spacing: normal
 	text-align: center
@@ -114,9 +123,11 @@
 
 	&:first-child
 		text-align: left
+		padding-left: 0
 
 	&:last-child
 		text-align: right
+		padding-right: 0
 
 	ul
 		li

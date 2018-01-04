@@ -77,12 +77,16 @@
 	+media('<desk-sm')
 		font-size: 20px
 
+	+media('<tab-lg')
+		font-size: 16px
+
 	&:nth-child(3n+1)
 		border-left: 0
 
 .fast-links__inner
 	$fast-links-icon-size: 30px, 30px // width, height
 	$fast-links-icon-space: 16px
+	// ==========
 	display: block
 	text-decoration: none
 	color: $text-color
@@ -112,25 +116,42 @@
 
 /* m-section
 .m-section
-	display: flex
-	justify-content: space-between
-	align-items: flex-start
+	//display: flex
+	//justify-content: space-between
+	//align-items: flex-start
 	+margin-horizontal(-#{round($m-section-gap/2)})
-	//margin-bottom: $bottom-space--lg
 	+padding-vertical(30px)
+	+clear
 
-	//+media('<desk-lg')
-		margin-bottom: $bottom-space--md
+	+media('<desk-sm')
+		+margin-horizontal(-#{round($m-section-gap--lg/2)})
 
-.m-section__heading
+	+media('<tab-lg')
+		display: block
+		padding-top: 0
+
+.m-section__heading, .m-section__more
+	float: left
 	padding: 0 round($m-section-gap/2)
-	min-width: $m-section-header-size
-	max-width: $m-section-header-size
+	//min-width: $m-section-header-size
+	//max-width: $m-section-header-size
+	width: $m-section-header-size
 
 	+media('<desk-sm')
 		padding: 0 round($m-section-gap--lg/2)
-		min-width: $m-section-header-size--lg
-		max-width: $m-section-header-size--lg
+		//min-width: $m-section-header-size--lg
+		//max-width: $m-section-header-size--lg
+		width: $m-section-header-size--lg
+
+	+media('<tab-lg')
+		float: none
+		width: auto
+
+.m-section__heading
+	margin-bottom: 2.4rem
+
+	+media('<tab-lg')
+		margin-bottom: 4rem
 
 	h2, h3
 		position: relative
@@ -139,12 +160,19 @@
 		margin-bottom: 0.5em
 		padding-bottom: 0.5em
 
+		+media('<tab-lg')
+			padding-bottom: 0
+			font-size: 36px
+
 		&::after
 			+pseudo()
 			left: 0
 			bottom: 0
 			+size(60px, 0)
 			border-top: 2px solid #ccc
+
+			+media('<tab-lg')
+				content: none
 
 	.m-section__heading__text
 		+font(14px, round-float(24/14, 2))
@@ -153,6 +181,7 @@
 		&:last-child
 			margin-bottom: 0
 
+.m-section__more
 	[class*="btn-"]
 		min-width: 194px
 
@@ -160,14 +189,22 @@
 	$m-section-content-width: calc(100% - #{$m-section-header-size})
 	$m-section-content-width--lg: calc(100% - #{$m-section-header-size--lg})
 	// ===========
+	float: right
 	padding: 0 round($m-section-gap/2)
-	min-width: $m-section-content-width
-	max-width: $m-section-content-width
+	//min-width: $m-section-content-width
+	//max-width: $m-section-content-width
+	width: $m-section-content-width
 
 	+media('<desk-sm')
 		padding: 0 round($m-section-gap--lg/2)
-		min-width: $m-section-content-width--lg
-		max-width: $m-section-content-width--lg
+		//min-width: $m-section-content-width--lg
+		//max-width: $m-section-content-width--lg
+		width: $m-section-content-width--lg
+
+	+media('<tab-lg')
+		float: none
+		width: auto
+		margin-bottom: 5rem
 
 /* m-section end
 
@@ -175,13 +212,12 @@
 .m-section--news
 	margin-bottom: -40px
 
+	+media('<tab-lg')
+		margin-bottom: -160px
+
 /* news end
 
 /* docs
-$docs-space: $m-section-gap
-$docs-space--hd: 40px
-$docs-space--lg: 30px
-
 .m-section--docs
 	+margin-horizontal(-#{round($m-section-gap/2) + 2000})
 	padding: 200px 2000px
@@ -190,6 +226,9 @@ $docs-space--lg: 30px
 	background-position: center top, center bottom
 	background-image: url(../../img/bg-clouds-top.png), url(../../img/bg-clouds-bottom.png)
 
+	+media('<desk-sm')
+		+margin-horizontal(-#{round($m-section-gap--lg/2) + 2000})
+		margin-bottom: -100px
 
 .docs__list
 	+grid-parent($docs-space)
@@ -300,12 +339,16 @@ $docs-space--lg: 30px
 	position: relative
 	color: inherit
 	text-decoration: none
-	height: 449px
-	width: 800px
+	width: nth($main-slider-image-size, 1)
+	height: nth($main-slider-image-size, 2)
 
 	+media('<desk-sm')
-		height: 360px
-		width: 640px
+		width: nth($main-slider-image-size--lg, 1)
+		height: round(nth($main-slider-image-size, 2)/nth($main-slider-image-size, 1)*nth($main-slider-image-size--lg, 1))
+
+	+media('<tab-lg')
+		width: nth($main-slider-image-size--md, 1)
+		height: round(nth($main-slider-image-size, 2)/nth($main-slider-image-size, 1)*nth($main-slider-image-size--md, 1))
 
 	.slick-initialized &
 		// after slide load
@@ -406,7 +449,7 @@ $docs-space--lg: 30px
 
 .main-slider__titles__text
 	+display-inline-block-middle
-	width: 620px
+	width: nth($main-slider-image-size, 1) - 180
 	max-width: 80%
 	overflow: hidden
 	max-height: 90%
@@ -416,8 +459,12 @@ $docs-space--lg: 30px
 	+push-auto
 
 	+media('<desk-sm')
-		width: 580px
+		width: nth($main-slider-image-size--lg, 1) - 100
 		font-size: 26px
+
+	+media('<tab-lg')
+		width: nth($main-slider-image-size--md, 1) - 80
+		font-size: 22px
 
 /* main slider end
 

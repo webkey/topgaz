@@ -77,7 +77,7 @@ $news-previews-space--lg: 30px
 
 .news-previews__content
 	position: relative
-	margin-bottom: $bottom-space
+	margin-bottom: 1.3em
 
 	&:last-child
 		margin-bottom: 0
@@ -85,13 +85,20 @@ $news-previews-space--lg: 30px
 .news-previews__title, .news-previews__text
 	$line-height: round-float(30/24, 2)
 	$font-size: 24px
+	// ===========
 	+font-alt-medium
 	+font($font-size, $line-height)
 	letter-spacing: normal
 	color: $link-color
-	margin-bottom: $bottom-space
+	margin-bottom: 1.3em
 	overflow: hidden
 	max-height: #{4 * $font-size * $line-height}
+
+	+media('<tab-lg')
+		$font-size: 20px
+		// ===========
+		+font($font-size, $line-height)
+		max-height: #{4 * $font-size * $line-height}
 	
 	&:last-child
 		margin-bottom: 0

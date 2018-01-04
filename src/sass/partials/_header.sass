@@ -20,10 +20,10 @@
 
 	+media('<desk-sm')
 		height: $header-top-height--sm
-		z-index: auto
 
 	+media('<tab-lg')
 		//height: 0
+		z-index: auto
 
 	.panel-is-open &
 		z-index: auto
@@ -94,25 +94,20 @@
 
 		+font-alt-bold
 		+font(52px, round-float(58/52, 2))
-		margin-right: 0
 		max-width: 100%
 		padding-right: 15%
+		width: 100%
+		margin-top: 30px
+		margin-right: 0
 
 		+media('<desk-sm')
 			font-size: 38px
+			margin-top: 20px
 
 		+media('<tab-lg')
 			padding-right: 0
-
-		&.slogan--home-page
-			width: 100%
-			margin-top: 30px
-
-			+media('<desk-sm')
-				margin-top: 20px
-
-			+media('<tab-lg')
-				margin-top: 0
+			margin-top: 0
+			font-size: 22px
 
 	.home-page &
 		display: none
@@ -168,6 +163,9 @@
 		min-width: 0
 		padding-right: 40px
 
+		+media('<desk-sm')
+			padding-right: 30px
+
 	.logo
 		$logo-size: 60px, 60px
 		// ==========
@@ -200,6 +198,8 @@
 		z-index: 1000
 		overflow-x: visible
 		overflow-y: auto
+		opacity: 0
+		visibility: hidden
 
 	+media('<tab-lg')
 		position: fixed
@@ -210,6 +210,8 @@
 		z-index: 1000
 		overflow-x: visible
 		overflow-y: auto
+		opacity: 0
+		visibility: hidden
 
 .nav
 	position: relative
@@ -349,7 +351,10 @@
 
 	// panel-is-open
 	.panel-is-open &
-		padding-right: nth($nav-angle-size, 1) + 20
+		padding-right: nth($nav-angle-size, 1)
+
+		span
+			padding: 0
 
 // стили для пункта навигации ТЕКУЩЕЙ страницы
 .nav__list li.current > .nav__tab
