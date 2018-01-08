@@ -454,6 +454,13 @@ function slidersInit() {
 							slidesToShow: 3,
 							slidesToScroll: 3
 						}
+					},
+					{
+						breakpoint: 640,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					}
 				]
 			});
@@ -1690,8 +1697,10 @@ function stickyInit() {
 	if ($footer.length) {
 		$('.main').after($('<div class="spacer"></div>'));
 
-		layoutFooter();
-		$($footer).addClass('isBottoming');
+		setTimeout(function () {
+			layoutFooter();
+			$($footer).addClass('isBottoming');
+		}, 1000);
 
 		$(window).on('resizeByWidth', function () {
 			layoutFooter();

@@ -19,11 +19,14 @@
 	z-index: 10
 
 	+media('<desk-sm')
-		height: $header-top-height--sm
+		height: $header-top-height--md
 
 	+media('<tab-lg')
 		//height: 0
 		z-index: auto
+
+	+media('<mob-lg')
+		height: $header-top-height--sm
 
 	.panel-is-open &
 		z-index: auto
@@ -36,6 +39,9 @@
 
 	+media('<desk-sm')
 		+padding-vertical($page-layout-space--lg)
+
+	+media('<mob-lg')
+		+padding-vertical($page-layout-space--md)
 
 	.home-page &
 		flex-wrap: wrap
@@ -109,6 +115,9 @@
 			margin-top: 0
 			font-size: 22px
 
+		+media('<mob-lg')
+			font-size: 18px
+
 	.home-page &
 		display: none
 
@@ -142,10 +151,13 @@
 		opacity: 1
 
 	+media('<tab-lg')
-		height: $header-top-height--sm
+		height: $header-top-height--md
 		transform: translate(0, 0)
 		transform: translate3d(0, 0, 0)
 		opacity: 1
+
+	+media('<mob-lg')
+		height: $header-top-height--sm
 
 .header__panel__frame
 	+padding-vertical(5px)
@@ -164,7 +176,10 @@
 		padding-right: 40px
 
 		+media('<desk-sm')
-			padding-right: 30px
+			padding-right: $page-layout-space--lg
+
+		+media('<mob-lg')
+			padding-right: 0
 
 	.logo
 		$logo-size: 60px, 60px
@@ -172,6 +187,12 @@
 		width: nth($logo-size, 1)
 		height: nth($logo-size, 2)
 		background-size: auto 100%
+
+		+media('<mob-lg')
+			$logo-size--sm: 40px, 40px
+			// ==========
+			width: nth($logo-size--sm, 1)
+			height: nth($logo-size--sm, 2)
 
 	.slogan
 		display: none !important

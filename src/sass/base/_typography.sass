@@ -30,12 +30,12 @@ h1, h2, h3, h4, h5, h6
 		margin-bottom: 0
 
 	a
-		text-decoration: none
+		text-decoration: underline
 		color: inherit
 
 		.no-touchevents &:hover
-			color: $base-color
-			text-decoration: underline
+			//color: $base-color
+			text-decoration: none
 
 h1
 	color: $base-color
@@ -447,6 +447,7 @@ table
 .datetime
 	display: block
 	margin-bottom: $bottom-space
+	+font(1.4rem, round-float(18/14, 1))
 	
 	time
 		display: inline-block

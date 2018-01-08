@@ -55,6 +55,7 @@
 	+display-inline-block-top
 	// before slide load end
 	padding: 0 #{round($grid-space/2)}
+	+font(1.4rem, round-float(24/14, 1))
 
 	.slick-initialized &
 		// after slide load
@@ -113,21 +114,37 @@
 		height: 1px
 		overflow: hidden
 
+		+media('<tab-lg')
+			content: none
+
 .footer-bottom__col
 	+display-inline-block-top
 	+padding-horizontal(round($grid-space/2))
-	+font($font-size, $line-height)
+	+font(1.4rem, round-float(24/14, 1))
 	letter-spacing: normal
 	text-align: center
 	width: 33.28%
+
+	+media('<tab-lg')
+		display: block
+		width: 100%
+		margin-bottom: round($grid-space/2)
+		+padding-horizontal(0)
 
 	&:first-child
 		text-align: left
 		padding-left: 0
 
+		+media('<tab-lg')
+			text-align: center
+
 	&:last-child
 		text-align: right
 		padding-right: 0
+
+		+media('<tab-lg')
+			text-align: center
+			margin-bottom: 0
 
 	ul
 		li

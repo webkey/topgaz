@@ -5,6 +5,7 @@
 /* user options
 $uo-size: 50px
 $uo-space: 30px
+$uo-space--sm: 12px
 $uo-icon-size: 20px
 $uo-text-color: white
 
@@ -31,6 +32,9 @@ $uo-text-color: white
 	+font($font-size, 1)
 	letter-spacing: normal
 	padding: 0 round($uo-space/2)
+
+	+media('<mob-lg')
+		padding: 0 round($uo-space--sm/2)
 
 	& > a
 		position: relative
@@ -102,10 +106,17 @@ $uo-text-color: white
 	text-align: center
 	color: $uo-text-color
 
+	+media('<mob-lg')
+		+font(10px, 12px)
+		letter-spacing: 0.05em
+
 	& > a
 		color: $text-color
 		fill: $text-color
 		background-color: white
 		padding: 13px 20px
+
+		+media('<mob-lg')
+			padding: 10px 6px
 
 /* user options

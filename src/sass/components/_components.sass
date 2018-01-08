@@ -65,6 +65,10 @@
 		width: calc(100% + #{$page-layout-space--lg}*2)
 		+margin-horizontal(-$page-layout-space--lg)
 
+	+media('<mob-lg')
+		width: calc(100% + #{$page-layout-space--md}*2)
+		+margin-horizontal(-$page-layout-space--md)
+
 .fast-links__item
 	display: table-cell
 	vertical-align: middle
@@ -94,6 +98,9 @@
 
 	+media('<desk-sm')
 		padding: round($page-layout-space--lg*0.875) $page-layout-space--lg
+
+	+media('<mob-lg')
+		padding: round($page-layout-space--md*0.875) $page-layout-space--md
 
 	svg
 		+display-inline-block-middle
@@ -312,6 +319,9 @@
 	+media('<desk-sm')
 		+margin-horizontal(-$page-layout-space--lg)
 
+	+media('<mob-lg')
+		+margin-horizontal(-$page-layout-space--md)
+
 .main-slider__images, .main-slider__titles
 	// before slide load
 	white-space: nowrap
@@ -405,6 +415,9 @@
 		+media('<desk-sm')
 			left: $page-layout-space--lg
 
+		+media('<mob-lg')
+			left: $page-layout-space--md
+
 		&:before, &:after
 			border-color: white
 
@@ -413,6 +426,9 @@
 
 		+media('<desk-sm')
 			right: $page-layout-space--lg
+
+		+media('<mob-lg')
+			right: $page-layout-space--md
 
 		&:before, &:after
 			border-color: white

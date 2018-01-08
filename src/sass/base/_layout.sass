@@ -38,6 +38,9 @@ body
 	+media('<desk-sm')
 		padding: round($page-layout-space--lg) 0 round($page-layout-space--lg*1.5) $page-layout-space--lg
 
+	+media('<mob-lg')
+		padding: round($page-layout-space--md) 0 round($page-layout-space--md*1.5) $page-layout-space--md
+
 	.home-page &
 		margin: 0
 		padding: 0
@@ -95,6 +98,9 @@ body
 
 	+media('<desk-sm')
 		+padding-horizontal($page-layout-space--lg)
+
+	+media('<mob-lg')
+		+padding-horizontal($page-layout-space--md)
 
 // выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
 // и их максимальная ширина
@@ -207,6 +213,9 @@ body
 	+padding-vertical($page-layout-space)
 
 	+media('<desk-sm')
-		+padding-vertical($page-layout-space)
+		+padding-vertical($page-layout-space--lg)
+
+	+media('<mob-lg')
+		+padding-vertical($page-layout-space--md)
 
 /* footer bottom (layout) end
