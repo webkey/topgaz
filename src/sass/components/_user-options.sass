@@ -5,6 +5,7 @@
 /* user options
 $uo-size: 50px
 $uo-space: 30px
+$uo-space--md: 20px
 $uo-space--sm: 12px
 $uo-icon-size: 20px
 $uo-text-color: white
@@ -24,14 +25,21 @@ $uo-text-color: white
 	line-height: 1
 	+margin-horizontal(-#{round($uo-space/2)})
 
+	+media('<tab-sm')
+		+margin-horizontal(-#{round($uo-space--md/2)})
+
+	+media('<mob-lg')
+		+margin-horizontal(-#{round($uo-space--sm/2)})
+
 .user-options__item
 	position: relative
 	+display-inline-block-middle
-	//+padding-horizontal(round($uo-space/2))
-	//padding: round($uo-space/2)
 	+font($font-size, 1)
 	letter-spacing: normal
 	padding: 0 round($uo-space/2)
+
+	+media('<tab-sm')
+		padding: 0 round($uo-space--md/2)
 
 	+media('<mob-lg')
 		padding: 0 round($uo-space--sm/2)

@@ -5,8 +5,7 @@
 /* news previews
 
 $news-previews-space: $m-section-gap
-$news-previews-space--hd: 40px
-$news-previews-space--lg: 30px
+$news-previews-space--sm: $m-section-gap--lg
 
 .news-previews
 	margin-bottom: $bottom-space--lg
@@ -22,12 +21,8 @@ $news-previews-space--lg: 30px
 	+clear-spacing
 	margin-bottom: $bottom-space--md
 
-	//+media('<desk-hd')
-		+grid-parent($news-previews-space--hd)
-
-	//+media('<desk-lg')
-		+grid-parent($news-previews-space--lg)
-		margin-bottom: $bottom-space--ml
+	+media('<tab-sm')
+		+grid-parent($news-previews-space--sm)
 
 	&:last-child
 		margin-bottom: 0
@@ -41,6 +36,9 @@ $news-previews-space--lg: 30px
 
 	+media('<desk-sm')
 		+grid-item-responsive(2, $news-previews-space)
+
+	+media('<tab-sm')
+		+grid-item-responsive(1, $news-previews-space--sm)
 
 	//+media('<desk-hd')
 		+grid-item-responsive(3, $news-previews-space--hd)
@@ -56,9 +54,6 @@ $news-previews-space--lg: 30px
 
 	//+media('<tab-sm')
 		+grid-item-responsive(2, $news-previews-space--lg)
-
-	//+media('<mob-md')
-		+grid-item-responsive(1, $news-previews-space--lg)
 
 .news-previews__inner
 	display: block

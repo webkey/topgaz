@@ -18,6 +18,9 @@
 	// before slide load end
 	padding-bottom: 70px
 
+	+media('<mob-md')
+		padding-bottom: 55px
+
 	&.slick-initialized, .no-js &
 		// after slide load
 		white-space: normal
@@ -63,6 +66,9 @@
 		display: block
 		// after slide load end
 
+	+media('<mob-md')
+		font-size: 1.3rem
+
 .gov__inner
 	display: block
 	text-decoration: none
@@ -71,6 +77,9 @@
 .gov__figure
 	height: 40px
 	margin-bottom: $bottom-space
+
+	+media('<mob-md')
+		margin-bottom: 0
 
 	&:last-child
 		margin-bottom: 0
@@ -82,8 +91,14 @@
 		max-width: none
 		+object-fit(contain, $position: left center)
 
+		+media('<mob-md')
+			+object-fit(contain, $position: center center)
+
 .dov__title
 	text-decoration: underline
+
+	+media('<mob-md')
+		display: none
 
 // hover
 .gov__inner:hover

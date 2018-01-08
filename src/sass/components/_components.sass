@@ -56,6 +56,13 @@
 
 /* fast-links
 .fast-links
+
+	+media('<mob-lg')
+		overflow: hidden
+		text-align: center
+		+margin-horizontal(-$page-layout-space--md)
+
+.fast-links__list
 	display: table
 	table-layout: fixed
 	width: calc(100% + #{$page-layout-space}*2)
@@ -66,26 +73,31 @@
 		+margin-horizontal(-$page-layout-space--lg)
 
 	+media('<mob-lg')
-		width: calc(100% + #{$page-layout-space--md}*2)
-		+margin-horizontal(-$page-layout-space--md)
+		display: inline-block
+		vertical-align: top
+		width: auto
+		+margin-horizontal(0)
 
 .fast-links__item
 	display: table-cell
 	vertical-align: middle
 	text-align: center
-	+font-alt-medium
-	+font(24px, round-float(30/24, 1))
 	border: solid $border-color-light
 	border-width: 0 0 0 1px
+	line-height: 1
 
-	+media('<desk-sm')
-		font-size: 20px
+	+media('<mob-lg')
+		display: block
+		border-width: 1px 0 0
+		text-align: left
+		+margin-horizontal(-999px)
+		+padding-horizontal(999px)
 
-	+media('<tab-lg')
-		font-size: 16px
+		&:first-child
+			border: none
 
 	&:nth-child(3n+1)
-		border-left: 0
+		border-left: none
 
 .fast-links__inner
 	$fast-links-icon-size: 30px, 30px // width, height
@@ -95,12 +107,15 @@
 	text-decoration: none
 	color: $text-color
 	padding: round($page-layout-space*0.875) $page-layout-space
+	+font-alt-medium
+	+clear-spacing
 
 	+media('<desk-sm')
 		padding: round($page-layout-space--lg*0.875) $page-layout-space--lg
 
 	+media('<mob-lg')
-		padding: round($page-layout-space--md*0.875) $page-layout-space--md
+		padding: round($page-layout-space--md*0.875) $page-layout-space--md + 999
+		+margin-horizontal(-999px)
 
 	svg
 		+display-inline-block-middle
@@ -112,8 +127,16 @@
 
 	span
 		+display-inline-block-middle
-		max-width: calc(100% - #{nth($fast-links-icon-size, 1) + $fast-links-icon-space} - 10px)
+		max-width: calc(100% - #{nth($fast-links-icon-size, 1) + $fast-links-icon-space})
 		text-align: left
+		+font(24px, round-float(30/24, 1))
+		letter-spacing: normal
+
+		+media('<desk-sm')
+			font-size: 20px
+
+		+media('<tab-lg')
+			font-size: 16px
 
 	&:hover
 		color: $link-color
@@ -135,7 +158,9 @@
 
 	+media('<tab-lg')
 		display: block
-		padding-top: 0
+
+	+media('<mob-lg')
+		+padding-vertical(15px)
 
 .m-section__heading, .m-section__more
 	float: left
@@ -154,11 +179,17 @@
 		float: none
 		width: auto
 
+	+media('<mob-md')
+		text-align: center
+
 .m-section__heading
 	margin-bottom: 2.4rem
 
 	+media('<tab-lg')
 		margin-bottom: 4rem
+
+	+media('<mob-lg')
+		margin-bottom: 3rem
 
 	h2, h3
 		position: relative
@@ -242,12 +273,8 @@
 	+clear-spacing
 	margin-bottom: $bottom-space--md
 
-	//+media('<desk-hd')
-		+grid-parent($docs-space--hd)
-
-	//+media('<desk-lg')
-		+grid-parent($docs-space--lg)
-		margin-bottom: $bottom-space--ml
+	+media('<mob-md')
+		+grid-parent($docs-space--sm)
 
 	&:last-child
 		margin-bottom: 0
@@ -262,23 +289,8 @@
 	+media('<desk-sm')
 		+grid-item-responsive(2, $docs-space)
 
-	//+media('<desk-hd')
-		+grid-item-responsive(3, $docs-space--hd)
-
-	//+media('<desk-lg')
-		+grid-item-responsive(3, $docs-space--lg)
-
-	//+media('<1280px')
-		+grid-item-responsive(2, $docs-space--lg)
-
-	//+media('<tab-lg')
-		+grid-item-responsive(3, $docs-space--lg)
-
-	//+media('<tab-sm')
-		+grid-item-responsive(2, $docs-space--lg)
-
-	//+media('<mob-md')
-		+grid-item-responsive(1, $docs-space--lg)
+	+media('<tab-sm')
+		+grid-item-responsive(1, $docs-space--sm)
 
 .docs__inner
 	display: block
@@ -330,7 +342,9 @@
 	visibility: hidden
 	// before slide load end
 	position: relative
-	margin-bottom: 0
+
+	&.slick-dotted
+		margin-bottom: 0
 
 	&.slick-initialized, .no-js &
 		// after slide load
@@ -359,6 +373,16 @@
 	+media('<tab-lg')
 		width: nth($main-slider-image-size--md, 1)
 		height: round(nth($main-slider-image-size, 2)/nth($main-slider-image-size, 1)*nth($main-slider-image-size--md, 1))
+
+	+media('<mob-lg')
+		width: auto
+		height: auto
+
+	&::before
+		+media('<mob-lg')
+			content: ""
+			display: block
+			+ratio(800, 449)
 
 	.slick-initialized &
 		// after slide load
@@ -396,6 +420,9 @@
 		max-width: none
 		+object-fit(cover)
 
+		+media('<mob-lg')
+			opacity: 1
+
 	&.slick-current img
 		opacity: 1
 
@@ -404,6 +431,11 @@
 	.slick-arrow
 		background: none
 		border-color: white
+
+		+media('<mob-md')
+			top: auto
+			bottom: -1px
+			transform: translate(0, 0)
 
 		// hover
 		.no-touchevents &:hover
@@ -418,6 +450,9 @@
 		+media('<mob-lg')
 			left: $page-layout-space--md
 
+		+media('<mob-md')
+			left: -1px
+
 		&:before, &:after
 			border-color: white
 
@@ -430,13 +465,21 @@
 		+media('<mob-lg')
 			right: $page-layout-space--md
 
+		+media('<mob-md')
+			right: -1px
+
 		&:before, &:after
 			border-color: white
 
 	.slick-dots
 		bottom: 35px
 
+		+media('<mob-md')
+			bottom: 11px
+
 		li
+			+media('<mob-md')
+				+padding-horizontal(8px)
 
 			button
 				width: 8px
@@ -481,6 +524,16 @@
 	+media('<tab-lg')
 		width: nth($main-slider-image-size--md, 1) - 80
 		font-size: 22px
+
+	+media('<mob-lg')
+		width: 100%
+		max-width: 96%
+		+padding-horizontal($page-layout-space--md + 40)
+
+	+media('<mob-md')
+		font-size: 16px
+		letter-spacing: 0.05em
+		padding: 0 0 30px
 
 /* main slider end
 
@@ -591,6 +644,9 @@
 	transform: translate(100px, 0)
 	transition-property: opacity, visibility, transform
 	transition-duration: 0.2s
+
+	+media('<mob-lg')
+		+size(50px)
 
 	.to-top-show &
 		opacity: 0.18

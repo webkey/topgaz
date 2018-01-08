@@ -135,6 +135,7 @@
 	height: $header-height
 	+position(0)
 	width: 100%
+	min-width: 320px
 	z-index: 50
 	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.18)
 	transform: translate(0, -100%)
@@ -177,6 +178,9 @@
 
 		+media('<desk-sm')
 			padding-right: $page-layout-space--lg
+
+		+media('<tab-sm')
+			padding-right: 20px
 
 		+media('<mob-lg')
 			padding-right: 0

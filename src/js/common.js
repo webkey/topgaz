@@ -479,10 +479,6 @@ function slidersInit() {
 			var $titles = $currentImagesCarousel.find('.main-slider__titles');
 			var dur = 200;
 
-			$images.on('init', function (event, slick) {
-
-			});
-
 			$images.slick({
 				fade: false,
 				speed: dur,
@@ -497,8 +493,16 @@ function slidersInit() {
 				lazyLoad: 'ondemand',
 				infinite: true,
 				dots: true,
-				arrows: true
-			}).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
+				arrows: true,
+				responsive: [
+					{
+						breakpoint: 640,
+						settings: {
+							centerMode: false,
+							variableWidth: false
+						}
+					}
+				]
 
 			});
 
