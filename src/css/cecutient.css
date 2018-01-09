@@ -1,0 +1,25 @@
+/*======================================================*/
+/*CECUTIENT VERSION*/
+/*======================================================*/
+/*=========== CECUTIENT COMMON style ===========*/
+body {
+	-webkit-filter: saturate(0);
+	        filter: saturate(0);
+}
+
+img {
+	-webkit-filter: grayscale(1) contrast(2);
+	        filter: grayscale(1) contrast(2);
+}
+
+[class*="depict-"] {
+	-webkit-filter: grayscale(1) contrast(0);
+	        filter: grayscale(1) contrast(0);
+}
+
+/*=========== CECUTIENT COMMON style end ===========*/
+/*======================================================*/
+/*CECUTIENT VERSION end*/
+/*======================================================*/
+
+/*# sourceMappingURL=cecutient.css.map */

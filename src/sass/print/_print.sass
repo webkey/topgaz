@@ -10,6 +10,10 @@
 		color: black !important
 		box-shadow: none !important
 		text-shadow: none !important
+		font-family: Arial, Helvetica, sans-serif !important
+
+	body
+		min-width: 1024px
 
 	a, a:visited
 		text-decoration: underline
@@ -112,6 +116,9 @@
 	.breadcrumbs, .breadcrumbs__list,
 	[class*="btn-"],
 	form,
+	.header__top, .header__panel,
+	.user-options,
+	.slogan--home-page,
 	.class
 		display: none !important
 
@@ -121,6 +128,10 @@
 	.imgl, .imgr, .imgc,
 	table, blockquote, q, cite,
 	[class*="feature-list"],
+	.logo-box,
+	.logo-wrap,
+	.logo,
+	.slogan,
 	.class
 		+print-reset
 
@@ -138,8 +149,26 @@
 	.class
 		+prints-space-bottom-md
 
+	.logo-wrap, .slogan
+		display: inline-block !important
+		vertical-align: top !important
+		font-size: 16pt !important
+		line-height: 1.4 !important
+
+	.logo-wrap
+		margin-right: 1cm !important
+
+	.slogan
+		width: 15cm !important
+
+	.slogan--home-page
+		display: none !important
+
 	.logo
 		background: none !important
+
+		&::before
+			content: none !important
 
 		& > *
 			display: none !important

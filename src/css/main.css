@@ -4054,7 +4054,7 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 
 @media (max-width: 639px) {
 	.user-options__item--msg > a {
-		padding: 10px 6px;
+		padding: 11px 6px 10px;
 	}
 }
 
@@ -7695,6 +7695,10 @@ li.has-drop > .region-menu__tab > .nav__angle {
 		color: black !important;
 		box-shadow: none !important;
 		text-shadow: none !important;
+		font-family: Arial, Helvetica, sans-serif !important;
+	}
+	body {
+		min-width: 1024px;
 	}
 	a, a:visited {
 		text-decoration: underline;
@@ -7797,6 +7801,9 @@ li.has-drop > .region-menu__tab > .nav__angle {
 	.breadcrumbs, .breadcrumbs__list,
 	[class*="btn-"],
 	form,
+	.header__top, .header__panel,
+	.user-options,
+	.slogan--home-page,
 	.class {
 		display: none !important;
 	}
@@ -7806,6 +7813,10 @@ li.has-drop > .region-menu__tab > .nav__angle {
 	.imgl, .imgr, .imgc,
 	table, blockquote, q, cite,
 	[class*="feature-list"],
+	.logo-box,
+	.logo-wrap,
+	.logo,
+	.slogan,
 	.class {
 		display: block !important;
 		float: none !important;
@@ -7851,8 +7862,26 @@ li.has-drop > .region-menu__tab > .nav__angle {
 		margin-bottom: 1cm !important;
 		padding-bottom: 0 !important;
 	}
+	.logo-wrap, .slogan {
+		display: inline-block !important;
+		vertical-align: top !important;
+		font-size: 16pt !important;
+		line-height: 1.4 !important;
+	}
+	.logo-wrap {
+		margin-right: 1cm !important;
+	}
+	.slogan {
+		width: 15cm !important;
+	}
+	.slogan--home-page {
+		display: none !important;
+	}
 	.logo {
 		background: none !important;
+	}
+	.logo::before {
+		content: none !important;
 	}
 	.logo > * {
 		display: none !important;

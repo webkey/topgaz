@@ -1,3 +1,5 @@
+var $documentBody = $('body');
+
 /**
  * !resize only width
  * */
@@ -64,6 +66,76 @@ function getCookie(name) {
 	return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 /*cookie end*/
+
+/**
+ * !Switch cecutient version
+ * */
+function switchCecutientVersion() {
+	$('.cecutient-version-toggle-js').on('click', function (e) {
+		e.preventDefault();
+		$documentBody.hide(); // hide content
+
+		toggleCecutientVersion();
+
+		location.reload();
+	});
+}
+
+/**
+ * !Check cecutient version cookie
+ */
+function checkCecutientVersionCookie() {
+	if (getCookie('cecutientVersion') === 'true' && !$('#cecutient-css-link').length) {
+		toggleCecutientVersion();
+	}
+}
+
+/**
+ * !Toggle cecutient version
+ * */
+function toggleCecutientVersion() {
+
+	var $cecutientCssLink = $('#cecutient-css-link');
+	var path = cssPath || 'css/';
+
+	// console.log("path: ", path);
+
+	if ($cecutientCssLink.length) {
+
+		$cecutientCssLink.remove();
+
+		setCookie('cecutientVersion', false, {
+			// expires: expiresValue,
+			// domain: "localhost:3000",
+			path: "/"
+		});
+
+		$documentBody.removeClass('cecutient-version');
+		// $documentBody.removeClass('color-scheme-bw');
+		// $documentBody.removeClass('images-bw');
+
+		$(document).trigger('specialVersionOff');
+
+	} else {
+		setCookie('cecutientVersion', true, {
+			// expires: expiresValue,
+			// domain: "localhost:3000",
+			path: "/"
+		});
+
+		$('<link/>', {
+			id: 'cecutient-css-link',
+			rel: 'stylesheet',
+			href: path + 'cecutient.css'
+		}).appendTo('head');
+
+		$documentBody.addClass('cecutient-version');
+		// $documentBody.addClass('color-scheme-bw');
+		// $documentBody.addClass('images-bw');
+
+		$(document).trigger('specialVersionOn');
+	}
+}
 
 /**
  *  Add placeholder for old browsers
@@ -471,7 +543,7 @@ function slidersInit() {
 	//images carousel
 	var $mainSlider = $('.main-slider-js');
 
-	if($mainSlider.length){
+	if($mainSlider.length && getCookie('cecutientVersion') !== 'true'){
 
 		$mainSlider.each(function () {
 			var $currentImagesCarousel = $(this);
@@ -1795,6 +1867,8 @@ $(window).on('debouncedresize', function () {
 });
 
 $(document).ready(function () {
+	switchCecutientVersion();
+	checkCecutientVersionCookie();
 	placeholderInit();
 	printShow();
 	inputToggleFocusClass();
