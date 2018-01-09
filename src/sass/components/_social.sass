@@ -24,13 +24,14 @@ $social-space--lg: 0 !default
 .social-networks__list
 	position: relative
 	float: left
-	width: calc(100% + #{$social-space})
+	//width: calc(100% + #{$social-space})
+	width: 100%
 	//margin: 0 -#{round($social-space/2)} -#{round($social-space/2)}
 	padding: 0 0 1px 1px
 
 	+media('<desk-lg')
-		width: calc(100% + #{$social-space--lg})
-		margin: 0 -#{round($social-space--lg/2)} -#{round($social-space--lg/2)}
+		//width: calc(100% + #{$social-space--lg})
+		//margin: 0 -#{round($social-space--lg/2)} -#{round($social-space--lg/2)}
 
 .social-networks__item
 	position: relative

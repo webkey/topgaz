@@ -1706,8 +1706,13 @@ function stickyInit() {
 			$($footer).addClass('isBottoming');
 		}, 1000);
 
+		var timeout;
 		$(window).on('resizeByWidth', function () {
-			layoutFooter();
+			clearTimeout(timeout);
+
+			timeout = setTimeout(function () {
+				layoutFooter();
+			}, 500);
 		});
 
 		function layoutFooter() {

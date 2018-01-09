@@ -15,6 +15,9 @@ body
 	color: $text-color
 	background: $bg-color url(../../img/empty.png) no-repeat left top fixed
 
+	+media('<mob-lg')
+		+font($font-size--sm, $line-height--sm)
+
 	// выделение текста
 	*::selection
 		background-color: $base-color
@@ -25,6 +28,9 @@ h1, h2, h3, h4, h5, h6
 	+font-alt-bold
 	color: $title-color
 	margin: 0 0 $bottom-space--ml
+
+	+media('<mob-lg')
+		margin-bottom: 2rem
 
 	&:last-child
 		margin-bottom: 0
@@ -43,11 +49,17 @@ h1
 h1
 	+font($font-size-h1, $line-height-h1)
 
+	+media('<desk-sm')
+		+font($font-size-h1--md, $line-height-h1--md)
+
 	+media('<mob-lg')
 		+font($font-size-h1--sm, $line-height-h1--sm)
 
 h2
 	+font($font-size-h2, $line-height-h2)
+
+	+media('<desk-sm')
+		+font($font-size-h2--md, $line-height-h2--md)
 
 	+media('<mob-lg')
 		+font($font-size-h2--sm, $line-height-h2--sm)
@@ -55,19 +67,36 @@ h2
 h3
 	+font($font-size-h3, $line-height-h3)
 
+	+media('<desk-sm')
+		+font($font-size-h3--md, $line-height-h3--md)
+
+	+media('<mob-lg')
+		+font($font-size-h3--sm, $line-height-h3--sm)
+
 h4
 	+font($font-size-h4, $line-height-h4)
 
+	+media('<desk-sm')
+		+font($font-size-h4--md, $line-height-h4--md)
+
+	+media('<mob-lg')
+		+font($font-size-h4--sm, $line-height-h4--sm)
+
 h5
 	+font($font-size-h5, $line-height-h5)
+	margin-bottom: 1em
 
 h6
 	+font($font-size-h6, $line-height-h6)
+	margin-bottom: 1em
 	text-transform: uppercase
 
 p
 	padding: 0
 	margin: 0 0 $bottom-space
+
+	+media('<mob-lg')
+		margin-bottom: 1.5rem
 
 hr
 	line-height: 1px
@@ -76,6 +105,9 @@ hr
 	background: none
 	border-bottom: 1px solid $border-color-light
 	margin-bottom: 40px
+
+	+media('<mob-lg')
+		margin-bottom: 20px
 
 a
 	color: $link-color
@@ -122,6 +154,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	letter-spacing: 0.1em
 	color: black
 	margin-bottom: $bottom-space
+
+	+media('<mob-md')
+		line-height: round-float(24/12, 2)
 
 	b, strong
 		+font-bold
@@ -191,9 +226,15 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	-moz-osx-font-smoothing: grayscale
 	user-select: none
 
+	+media('<mob-lg')
+		left: 15px
+
 .important-note__content
 	border: 2px solid #ff3300
 	padding: $grid-space
+
+	+media('<mob-lg')
+		padding: 25px 15px 15px
 
 /* content img
 .imgc
@@ -243,12 +284,12 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 .columnize--3, .columnize--4
 
-	+media('<tab-lg')
+	+media('<tab-sm')
 		column-count: 2
 
 .columnize, .columnize--3, .columnize--4
 
-	+media('<tab-sm')
+	+media('<mob-lg')
 		column-count: 1
 
 /* columnize end
@@ -269,18 +310,22 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		list-style: none
 
 		li
-			padding-left: $grid-space
+			padding-left: 0
 			margin: 0 0 round($bottom-space*0.5)
 			position: relative
+
+			li
+				padding-left: $grid-space
 
 	ul > li::before
 		content: ""
 		position: relative
 		+display-inline-block-top
-		left: -#{($grid-space - 8)}
-		top: 0.6em
+		//left: -#{($grid-space - 8)}
+		top: 0.5em
 		+size(8px)
-		margin-left: -8px
+		//margin-left: -8px
+		margin-right: 15px
 		border: 4px solid $base-color
 
 	ol
@@ -300,7 +345,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 				content: counter(section)
 				padding: 0 4px 0 0
 				min-width: $grid-space
-				margin-left: -#{$grid-space}
+				//margin-left: -#{$grid-space}
 
 	ul, ol
 		ul, ol
@@ -332,10 +377,14 @@ table
 	width: auto
 
 	td, th
-		+font($font-size, $line-height)
+		+font(1.4rem, round-float(20/14, 1))
 		color: inherit
 		padding: 8px 15px
 		border-color: $text-color-base
+
+		+media('<tab-lg')
+			font-size: 1.3rem
+			padding: 6px 10px
 
 .table-auto
 	position: relative
@@ -362,8 +411,23 @@ table
 		td, th
 			color: $text-color
 			background-color: $bg-color-base
-			border: 0 solid $base-color
-			+font(1.4rem, 1.5)
+			border: 0 solid tint($base-color, 15%)
+			+font-alt
+			letter-spacing: 0.025em
+			+font(1.4rem, round-float(20/14, 1))
+
+			b, strong
+				+font-alt-medium
+
+			i, em
+				+font-alt
+
+			strong i, strong em, b i, strong i,
+			i strong, em strong, i b, i strong
+				+font-alt-medium
+
+			+media('<tab-lg')
+				font-size: 1.3rem
 
 			&:first-child, &:first-child
 				border-left-width: 1px
@@ -378,22 +442,23 @@ table
 		td
 			border-top-width: 1px
 
-		tbody tr:first-child td
-			border-top-width: 0
+		tbody tr:last-child td
+			border-bottom-width: 1px
 
 		tbody tr:nth-child(even) td
-			background: $base-color
-			color: $bg-color-base
+			background: tint($base-color, 15%)
 
 		th, thead td
-			+font-bold
-			font-size: 1.6rem
+			+font-alt-medium
+			font-size: 1.5rem
 			text-align: left
 
+			+media('<tab-lg')
+				font-size: 1.3rem
+
 		th, thead td, tfoot td
-			background: $base-color
-			color: $bg-color-base
-			border-color: $base-color
+			background: tint($base-color, 15%)
+			border-color: tint($base-color, 15%)
 			border-top-width: 0
 
 /* table end
@@ -419,6 +484,9 @@ table
 
 			&::before, &::after
 				content: none
+
+			+media('<desk-sm')
+				font-size: 1.8rem
 
 		cite
 			+display-inline-block-top

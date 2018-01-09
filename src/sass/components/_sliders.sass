@@ -8,13 +8,16 @@
 	margin-bottom: $bottom-space
 
 	+media('<tab-lg')
-		margin-bottom: $bottom-space--lg
+		margin-bottom: $bottom-space--ml
 
 .images-slider__list, .slick-dotted.images-slider__list
-	padding-bottom: $bottom-space
+	padding-bottom: 25px
 	margin-bottom: 0
 	position: relative
 	z-index: 2
+
+	+media('<mob-md')
+		padding-bottom: 30px
 
 .images-slider__item
 	float: none
@@ -51,6 +54,7 @@
 		height: 100%
 		+object-fit(contain)
 
+
 .images-slider
 
 	.slick-arrow
@@ -59,8 +63,22 @@
 		top: 100%
 		transform: translate(0, 0)
 
+		&::before
+			content: none
+
 	.slick-prev
-		right: 40px
+		right: 70px
+
+		+media('<desk-sm')
+			right: 50px
+
+		+media('<mob-md')
+			right: 0
+			margin-top: 5px
+
+	.slick-next
+		+media('<mob-md')
+			margin-top: 55px
 
 	// slider counter
 	.slider-counter
@@ -69,12 +87,20 @@
 		top: 100%
 		color: $text-color-light
 
+		+media('<mob-md')
+			left: auto
+			right: 0
+			margin-top: -1.5em
+
 		.slide-curr
 			color: $text-color
 
 	.slick-dots, .#{$user-content} & .slick-dots
 		position: absolute
 		bottom: $bottom-space + 1
+
+		+media('<mob-md')
+			bottom: 5px
 
 		li
 			+padding-horizontal(7px)
@@ -87,6 +113,9 @@
 				opacity: 0.5
 				transition-property: opacity, transform
 				transition-duration: $animation-speed
+
+				+media('<mob-md')
+					background-color: black
 
 				&::before
 					content: none
@@ -102,7 +131,16 @@
 
 /* flashes
 .flashes
-	padding: 0 90px
+	padding: 0 140px 0 90px
+	min-height: 40px
+
+	+media('<desk-sm')
+		padding: 0 100px 0 50px
+		
+	+media('<mob-md')
+		padding-left: 0
+		padding-right: 50px
+		min-height: 100px
 
 .flashes__item
 	+font(1.4rem, 1.5)

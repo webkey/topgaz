@@ -6,9 +6,15 @@
 .article-heading
 	display: flex
 	justify-content: space-between
-	align-items: center
+	align-items: flex-start
 	clear: both
 	margin-bottom: $bottom-space--ml
+
+	+media('<tab-sm')
+		display: block
+
+	+media('<mob-lg')
+		margin-bottom: 2rem
 
 	&:last-child
 		margin-bottom: 0
@@ -18,16 +24,30 @@
 
 .article-heading__cell
 	flex: 1 1 auto
+	padding-left: 20px
+
+	+media('<tab-sm')
+		margin-bottom: 10px
+		margin-left: 0
+
+		&:last-child
+			margin-bottom: 0
+
+	&:first-child
+		padding-left: 0
 
 	&:last-child
 		//min-width: 400px
 		flex-grow: 0
 		flex-basis: auto
 
-		.pages-nav
-			min-width: 260px
+		+media('<tab-sm')
+			display: none
 
-/* article-footer end
+		.pages-nav
+			text-align: right
+
+/* article-heading end
 
 /* article-footer
 .article-footer
@@ -37,14 +57,47 @@
 	clear: both
 	margin: $bottom-space--md 0
 
+	+media('<tab-sm')
+		flex-wrap: wrap
+
+	+media('<mob-md')
+		display: block
+
 	&:last-child
 		margin-bottom: 0
+
+	& .pages-nav
+		text-align: right
+
+		+media('<tab-sm')
+			text-align: center
+
+.article-footer__cell
+	+media('<mob-md')
+		margin-top: 20px
+		text-align: center
+
+		.social-networks
+			display: inline-block
+			vertical-align: top
+
+	&:first-child
+		+media('<mob-md')
+			margin-top: 0
+
+	&:last-child
+		+media('<tab-sm')
+			display: block
+			width: 100%
+			min-width: 100%
+			margin-top: 20px
 
 /* article-footer end
 
 /* pages-nav
 .pages-nav
-	margin-bottom: $bottom-space--ml
+	margin: 0 0 $bottom-space--ml
+	min-width: 280px
 
 	&:last-child
 		margin-bottom: 0
@@ -549,10 +602,28 @@
 	padding-top: $leaders-gap
 	+clear-spacing
 
+	+media('<mob-lg')
+		+grid-parent($leaders-gap--md)
+
 .leaders__item
 	+grid-item(3, $leaders-gap, round($leaders-gap*2))
 	+font($font-size, $line-height)
 	letter-spacing: normal
+
+	+media('<desk-sm')
+		+grid-item-responsive(2, $leaders-gap, round($leaders-gap*2))
+
+	+media('<tab-lg')
+		+grid-item-responsive(3, $leaders-gap, round($leaders-gap*2))
+
+	+media('<860px')
+		+grid-item-responsive(2, $leaders-gap, round($leaders-gap*2))
+
+	+media('<mob-lg')
+		+grid-item-responsive(2, $leaders-gap--md, round($leaders-gap--md*2))
+
+	+media('<mob-md')
+		+grid-item-responsive(1, $leaders-gap--md, round($leaders-gap--md*2))
 
 .leaders__inner
 	display: block
@@ -566,14 +637,27 @@
 		property: border-color
 		duration: $animation-speed
 
+	+media('<desk-lg')
+		padding: $leaders-space--lg
+
+	+media('<mob-lg')
+		padding: $leaders-space--lg $leaders-space--md
+
 .leaders__figure
 	position: relative
-	margin-top: -#{$leaders-space*2}
-	margin-bottom: 35px
+	margin-top:
+	margin: -#{$leaders-space*2} auto 35px
+	max-width: 240px
 	background-color: #e6e6e6
 	transition:
 		property: background-color
 		duration: $animation-speed
+
+	+media('<desk-lg')
+		margin-top: -#{$leaders-space--lg*2}
+
+	+media('<mob-lg')
+		margin-bottom: 20px
 
 	&::before
 		content: ""
@@ -601,6 +685,9 @@
 		property: color
 		duration: $animation-speed
 
+	+media('<mob-lg')
+		font-size: 18px
+
 	&:last-child
 		margin-bottom: 0
 
@@ -611,6 +698,9 @@
 
 .leaders__text
 	+font(16px, round-float(20/16, 2))
+
+	+media('<mob-lg')
+		font-size: 14px
 
 	& > p, & > ul, & > ol
 		&:last-child
