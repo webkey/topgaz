@@ -53,7 +53,8 @@
 	hr
 		border-color: black
 
-	body
+	body,
+	.news-previews__item
 		font-family: Arial, Helvetica, sans-serif !important
 		font-size: 10pt !important
 		line-height: 1.5 !important
@@ -78,7 +79,8 @@
 		font-size: 16pt !important
 		line-height: 1.5 !important
 
-	h4, blockquote q
+	h4, blockquote q,
+	.fast-links__inner span
 		font-size: 14pt !important
 		line-height: 1.5 !important
 
@@ -110,6 +112,16 @@
 		& > *
 			padding: 0!important
 
+	p, ul, ol, h2, h3, h4, h5, h6, hr, .layout-text,
+	.layout-flood,
+	.max-wrap-text,
+	.max-wrap-flood,
+	.layout-wide,
+	.layout-full-width,
+	.news-previews__footer,
+	.class
+		max-width: none !important
+
 	.sidebar, .footer, .spacer,
 	.print-hidden, .view-print,
 	.nav, .nav-list,
@@ -119,19 +131,67 @@
 	.header__top, .header__panel,
 	.user-options,
 	.slogan--home-page,
+	.article-heading,
+	.images-slider,
+	.article-footer,
+	.footer-gov,
+	.developer,
+	.user-form,
+	.main-slider__titles,
+	.fast-links__inner svg,
+	.m-section__more,
+	.main-slider,
+	.docs__inner svg,
+	.leaders__figure::before,
 	.class
 		display: none !important
 
-	.main, .content, .header, .header__common,
+	.main, .content, .header, .header__common, .footer,
 	.layout, .layout-text, .layout-flood,
 	.blockquote, .blockquote *, blockquote,
 	.imgl, .imgr, .imgc,
 	table, blockquote, q, cite,
 	[class*="feature-list"],
+	.datetime,
+	.datetime time,
 	.logo-box,
 	.logo-wrap,
 	.logo,
 	.slogan,
+	.main__holder,
+	.content-wrap,
+	.layout-article,
+	.entry-text,
+	.footer-bottom,
+	.footer-bottom__holder,
+	.footer-bottom__col,
+	.important-note,
+	.important-note__label,
+	.important-note__content,
+	.fast-links,
+	.fast-links__list,
+	.fast-links__item,
+	.fast-links__inner,
+	.m-section,
+	.m-section__heading,
+	.m-section__content,
+	.news-previews,
+	.news-previews__list,
+	.news-previews__item,
+	.docs,
+	.docs__list,
+	.docs__item,
+	.docs__inner,
+	.docs__text,
+	.leaders,
+	.leaders__list,
+	.leaders__item,
+	.leaders__inner,
+	.leaders__figure,
+	.leaders__figure img,
+	.leaders__content,
+	.leaders__title,
+	.leaders__text,
 	.class
 		+print-reset
 
@@ -142,6 +202,13 @@
 	.feature-list__item,
 	.feature-list__img,
 	.datetime,
+	.important-note,
+	.important-note__label,
+	.fast-links__item,
+	.m-section,
+	.m-section__heading,
+	.leaders__item,
+	.leaders__figure,
 	.class
 		+prints-space-bottom-sm
 
@@ -152,7 +219,7 @@
 	.logo-wrap, .slogan
 		display: inline-block !important
 		vertical-align: top !important
-		font-size: 16pt !important
+		font-size: 14pt !important
 		line-height: 1.4 !important
 
 	.logo-wrap
@@ -177,6 +244,9 @@
 			display: block !important
 			float: left !important
 
+	.datetime time
+		font-style: italic !important
+
 	blockquote q::before,
 	blockquote q::after
 		padding: 0 !important
@@ -186,3 +256,42 @@
 
 	table
 		width: 100% !important
+
+	.divider-d
+		max-width: none !important
+
+	.entry-text
+		font-family: Arial, Helvetica, sans-serif !important
+		font-size: 12pt !important
+		line-height: 1.5 !important
+
+	.important-note
+		padding: 0.5cm !important
+		border: 1px solid #000 !important
+
+	.leaders__figure img
+		width: 8cm
+
+	// sliders
+	//.main-slider__images
+		.slick-list,
+		.slick-track,
+		.slick-slide,
+		.slick-slide a,
+		.main-slider__images__item img
+			+print-reset
+
+	//.main-slider__images
+		.slick-dots,
+		.slick-arrow
+			display: none !important
+
+	//.main-slider__images .main-slider__images__item img
+		width: 8cm !important
+
+	//.main-slider__images
+		.slick-slide
+			+prints-space-bottom-sm
+
+	.slick-slider .slick-cloned
+		display: none !important
