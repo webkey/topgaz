@@ -48,7 +48,7 @@
 		flex-wrap: wrap
 
 	& .user-options
-		min-width: 360px
+		min-width: 400px
 		text-align: right
 
 		.user-options__item
@@ -76,7 +76,8 @@
 	max-width: 100%
 	text-indent: -9999px
 	overflow: hidden
-	background: url(../../img/logo.png) no-repeat
+	background-image: url(../../img/logo.png)
+	background-repeat: no-repeat
 	background-size: contain
 	z-index: 5
 
@@ -379,8 +380,8 @@
 		.panel-is-open &
 			border: none
 
-		li:first-child > .nav__tab
-			border-width: 1px 0
+	& > ul > li:first-child > .nav__tab
+		border-top: none
 
 	a
 		display: block

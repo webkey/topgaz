@@ -6,7 +6,8 @@
 $uo-size: 50px
 $uo-space: 30px
 $uo-space--md: 20px
-$uo-space--sm: 12px
+$uo-space--sm: 10px
+$uo-space--mob: 6px
 $uo-icon-size: 20px
 $uo-text-color: white
 
@@ -31,6 +32,9 @@ $uo-text-color: white
 	+media('<mob-lg')
 		+margin-horizontal(-#{round($uo-space--sm/2)})
 
+	+media('<mob-sm')
+		+margin-horizontal(-#{round($uo-space--mob/2)})
+
 .user-options__item
 	position: relative
 	+display-inline-block-middle
@@ -43,6 +47,9 @@ $uo-text-color: white
 
 	+media('<mob-lg')
 		padding: 0 round($uo-space--sm/2)
+
+	+media('<mob-sm')
+		padding: 0 round($uo-space--mob/2)
 
 	& > a
 		position: relative

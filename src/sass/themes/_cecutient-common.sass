@@ -11,3 +11,262 @@ img
 
 [class*="depict-"]
 	filter: grayscale(1) contrast(0)
+
+body
+	color: #000
+	+font(1.6rem, 1.7)
+
+h1, h2, h3, h4, h5, h6, a, .mark, .text-color-alt
+	color: #000
+
+hr
+	border-color: #000
+
+.#{$user-content}
+	blockquote
+		q, cite
+			color: #000
+
+.datetime time
+	border: 1px solid #000
+	background-color: #fff
+	color: #000
+	font-size: 1.6rem
+
+.title-d
+	font-size: 1.4rem
+	color: #000
+
+[class*="btn-default"]
+	color: #fff
+	fill: #fff
+	background-color: #000
+
+.btn-default-alt
+	color: #000
+	fill: #000
+	background-color: #fff
+
+.flashes__item
+	color: #000
+
+.view-print
+	border: 1px solid #000
+	background-color: #fff
+	color: #000
+	fill: #000
+
+.breadcrumbs
+	&, & a
+		color: #000
+
+	& a
+		text-decoration: underline
+
+		span
+			border-bottom: none
+
+// forms
+.label-holder, label
+	color: #000
+
+.jFiler-input-dragDrop
+	background-color: #fff
+	border-color: #000
+
+// header
+.header, .header__panel
+	background: #fff
+	box-shadow: none
+
+.header, .header__panel
+	border-bottom: 2px solid #000
+	
+.nav__list li
+	& a,
+	&:hover a
+		color: #000 !important
+
+.nav__drop
+	border-width: 2px
+
+.nav__drop .nav__tab
+	border-color: #000
+
+.panel-is-close .nav__list:hover > li > .nav__tab a span
+	opacity: 1
+
+.nav__list > li > .nav__drop::before
+	content: none
+
+.header__top
+	border-color: #000
+
+.logo
+	background-image: url(../../img/logo--chb.png)
+
+.slogan
+	color: #000
+
+.user-options__item > a
+	color: #000
+	fill: #000
+
+.user-options__item--msg > a
+	box-shadow: inset 0 0 0 1px #000
+
+.lang > a
+	color: #000
+	border-color: #000
+
+.lang > a > span::before, .lang > a > span::after
+	background-color: #000
+
+.lang__list
+	background-color: #fff
+	border-color: #000
+
+	a
+		color: #000
+
+.btn-menu
+	border-color: #000
+	color: #000
+
+	&::before, &::after
+		background-color: #000
+
+	& > i
+		&, &::before, &::after
+			background-color: #000
+
+// sidebar
+.menu li
+	border-color: #000
+
+.menu li.current a
+	color: #fff
+	background-color: #000
+	box-shadow: 0 0 0 1px #000
+
+.menu a:hover
+	color: #000
+
+// content
+.leaders__figure
+	background-color: #fff !important
+	border: 1px solid #000
+
+.main-slider__images .slick-arrow
+	+media('<mob-lg')
+		top: auto
+		bottom: 0
+
+.main-slider__titles__text
+	background-color: #fff
+	border: 2px solid #000
+	color: #000
+	padding: 5px 10px
+
+.fast-links__item
+	border-color: #000
+
+.fast-links__inner
+	color: #000 !important
+	fill: #000 !important
+
+.news-previews__inner:hover
+	.news-previews__title
+		text-decoration: underline
+
+.news-previews__title, .news-previews__text, .news-previews__date
+	color: #000
+
+.btn-read
+	color: #000 !important
+
+	&:hover
+		border-color: transparent
+
+.m-section
+	margin-bottom: 2rem
+
+.m-section__heading h2
+	&::after, &::after
+		border-color: #000
+
+.m-section--news
+	margin-bottom: 2rem
+
+.m-section--docs
+	background: #fff
+	+padding-vertical(30px)
+
+	+media('<mob-lg')
+		+padding-vertical(15px)
+
+.docs__inner:hover
+	color: #000
+	fill: #000
+
+	.docs__text span
+		border-color: transparent
+
+// footer
+.footer
+	color: #000
+
+.footer-gov
+	border-top: 2px solid #000
+
+.gov__item
+	display: block
+	font-size: 1.6rem
+	margin-bottom: 0.5em
+	white-space: normal
+	+padding-horizontal(0)
+
+.gov__inner
+	display: inline
+
+.gov__figure
+	display: none
+
+.dov__title
+	display: inline
+
+.footer-bottom
+	background-color: #fff
+	border-top: 1px solid #000
+
+	&, & a
+		color: #000
+
+.footer-bottom__col ul li em
+	color: #000
+
+.developer__logo::after
+	background-color: #fff
+	box-shadow: inset 0 0 0 1px #000
+
+// popups
+.default-popup
+	background-color: #fff
+
+// nav mob
+.nav-wrap
+
+	.panel-is-open &
+		background-color: white
+
+	+media('<tab-lg')
+		background-color: white
+
+.nav__list
+	li
+		.panel-is-open &
+			border-color: #000
+
+// btn-to-top
+.to-top-show .btn-to-top
+	opacity: 1

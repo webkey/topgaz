@@ -543,7 +543,7 @@ function slidersInit() {
 	//images carousel
 	var $mainSlider = $('.main-slider-js');
 
-	if($mainSlider.length && getCookie('cecutientVersion') !== 'true'){
+	if($mainSlider.length){
 
 		$mainSlider.each(function () {
 			var $currentImagesCarousel = $(this);

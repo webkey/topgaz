@@ -51,9 +51,10 @@ body
 		padding: 0
 
 // header
-//.header
-	position: relative
-	z-index: 5
+.header__panel
+	.layout
+		+media('<mob-sm')
+			+padding-horizontal(4px)
 
 // logo
 .logo-wrap

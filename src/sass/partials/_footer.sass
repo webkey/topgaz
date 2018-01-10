@@ -16,16 +16,16 @@
 	white-space: nowrap
 	overflow: hidden
 	// before slide load end
-	padding-bottom: 70px
-
-	+media('<mob-lg')
-		padding-bottom: 75px
 
 	&.slick-initialized, .no-js &
 		// after slide load
 		white-space: normal
 		overflow: visible
 		// after slide load end
+		padding-bottom: 70px
+
+		+media('<mob-lg')
+			padding-bottom: 75px
 
 	.slick-list
 		+margin-horizontal(-#{$grid-space/2})
