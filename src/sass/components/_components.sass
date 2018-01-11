@@ -775,3 +775,37 @@
 			margin: -2px 0 0 -2px
 
 /*btn to top end
+
+/*card
+.card
+	+clear
+
+.card-heading
+	display: none
+
+.card-figure
+	float: right
+	width: 50%
+
+.card-figure--sticky-js
+	will-change: min-height
+
+.card-figure__holder--sticky-js
+	position: relative
+	transform: translate(0, 0) /* For browsers don't support translate3d. */
+	transform: translate3d(0, 0, 0)
+	will-change: position, transform
+
+.card-figure__img
+	width: 600px
+	position: relative
+	top: round($page-layout-space*1.5)
+
+.card-content
+	width: 50%
+	padding-right: round($page-layout-space)
+
+	+media('<desk-sm')
+		padding-right: round($page-layout-space--lg)
+
+/*card end

@@ -1,0 +1,90 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Адашкевич Владимир Степанович",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {
+	"currentItem": ""
+})
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<div class="main__holder">
+			<!--CONTENT-->
+			<div class="content-wrap">
+				<div class="content user-content">
+
+					<div class="layout-article">
+						<div class="article-heading">
+							<div class="article-heading__cell">
+								<!--breadcrumbs-->
+								@@include('_tpl_breadcrumbs.html', {
+									"items": ["Главная","Руководство"],
+									"last": "Адашкевич Владимир Степанович"
+								})
+								<!--breadcrumbs end-->
+							</div>
+							<div class="article-heading__cell">&nbsp;</div>
+						</div>
+
+						<div class="card">
+							<div class="card-heading">
+								<div class="heading">Адашкевич Владимир Степанович</div>
+							</div>
+							<div class="card-figure card-figure--sticky-js">
+								<div class="card-figure__holder card-figure__holder--sticky-js">
+									<div class="card-figure__img">
+										<img src="img/img-leader-01.jpg" alt="image description" />
+									</div>
+								</div>
+							</div>
+							<div class="card-content">
+								<h1>Адашкевич Владимир Степанович</h1>
+								<h2>Координирует деятельность организаций агропромышленного комплекса:</h2>
+								<ul>
+									<li>СПУ «Доманово» УП «Брестоблгаз»;</li>
+									<li>СХП «Мазолово» УП «Витебскоблгаз»;</li>
+									<li>СПУ «Антоновка-Агро» РПУП «Гомельоблгаз»;</li>
+									<li>СПУ «Протасовщина» УП «Гроднооблгаз»;</li>
+									<li>Филиал по производству сельскохозяйственной продукции «Бубны» УП «Мингаз»;</li>
+									<li>СХУ «Бобровичи» УП «Минскоблгаз»;</li>
+									<li>СПК «Газовик-Сипакова» РУП «Могилевоблгаз».</li>
+								</ul>
+								<h2>Курирует вопросы:</h2>
+								<ul>
+									<li>организации деятельности сельскохозяйственных подразделений, направленной на производство сельскохозяйственной и животноводческой продукции и обеспечение населения продуктами питания, иными товарами, сельскохозяйственным сырьем, а также создание условий для экономического развития и получения прибыли;</li>
+									<li>организации выполнения экономических, производственно-технических финансовых и других показателей сельскохозяйственными подразделениями;</li>
+									<li>технического перевооружения и модернизации в сельскохозяйственных подразделениях;</li>
+									<li>контроля за реализацией требований Директивы Президента Республики Беларусь № 1, № 2, № 3 в пределах распределения функциональных обязанностей.</li>
+								</ul>
+								<h2>Осуществляет непосредственное руководство:</h2>
+								<ul>
+									<li>Сектором агропромышленного комплекса.</li>
+								</ul>
+								<h2>Контакты</h2>
+								<p>Электронная почта: <a href="mailto:mail@topgas.by">mail@topgas.by</a></p>
+								<p>Прием граждан: пятница с 14-30 до 20 часов, кабинет 102 А</p>
+								<p>Запись на прием по телефону 8 (017) 288-23-93</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--CONTENT end-->
+
+			<!--SIDEBAR-->
+			@@include('_tpl_layout_sidebar.html')
+			<!--SIDEBAR-->
+		</div>
+	</div>
+</div>
+<!--MAIN end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html')

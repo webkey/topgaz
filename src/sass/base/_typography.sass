@@ -23,7 +23,7 @@ body
 		background-color: $base-color
 		color: white
 
-h1, h2, h3, h4, h5, h6
+h1, h2, h3, h4, h5, h6, .heading
 	padding: 0
 	+font-alt-bold
 	color: $title-color
@@ -43,10 +43,10 @@ h1, h2, h3, h4, h5, h6
 			//color: $base-color
 			text-decoration: none
 
-h1
+h1, .heading
 	color: $base-color
 
-h1
+h1, .heading
 	+font($font-size-h1, $line-height-h1)
 
 	+media('<desk-sm')

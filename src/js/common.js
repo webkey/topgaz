@@ -1739,8 +1739,6 @@ function stickyInit() {
 	var $sidebarSticky = $(sidebarSticky);
 	if ($sidebarSticky.length) {
 
-
-
 		$('.content').imagesLoaded()
 			.always(function (instance) {
 				setTimeout(function () {
@@ -1761,6 +1759,23 @@ function stickyInit() {
 		// 		cardInfoSticky.updateSticky();
 		// 	}, 500);
 		// });
+	}
+
+	var cardFigure = '.card-figure--sticky-js';
+	var $cardFigure = $(cardFigure);
+	if ($cardFigure.length) {
+
+		$('.card').imagesLoaded()
+			.always(function (instance) {
+				setTimeout(function () {
+					var cardInfoSticky = new StickySidebar(cardFigure, {
+						containerSelector: '.card',
+						innerWrapperSelector: '.card-figure__holder--sticky-js',
+						topSpacing: $('.header__panel').outerHeight(),
+						resizeSensor: true // recalculation sticky on change size of elements
+					});
+				}, 500)
+			});
 	}
 }
 
