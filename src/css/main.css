@@ -1867,7 +1867,7 @@ table td, table th {
 	background-color: white;
 	top: 50%;
 	left: 30px;
-	margin-top: -1px;
+	margin-top: -2px;
 	margin-left: -13px;
 	will-change: opacity, transform;
 	opacity: 0;
@@ -1901,7 +1901,7 @@ table td, table th {
 	width: 26px;
 	height: 3px;
 	background-color: white;
-	margin-top: -1px;
+	margin-top: -2px;
 	margin-left: -13px;
 	-webkit-backface-visibility: hidden;
 	        backface-visibility: hidden;
@@ -1955,7 +1955,7 @@ table td, table th {
 
 @media (max-width: 1599px) {
 	.btn-menu > i::before {
-		top: -7px;
+		top: -6px;
 	}
 }
 
@@ -5470,11 +5470,40 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 
 .card-heading {
 	display: none;
+	margin-bottom: 3.6rem;
+}
+
+@media (max-width: 991px) {
+	.card-heading {
+		display: block;
+	}
+}
+
+@media (max-width: 639px) {
+	.card-heading {
+		margin-bottom: 2rem;
+	}
 }
 
 .card-figure {
 	float: right;
 	width: 50%;
+}
+
+@media (max-width: 991px) {
+	.card-figure {
+		float: none;
+		width: auto;
+		max-width: 320px;
+		margin-bottom: 3.6rem;
+		border: 1px solid #eaeaea;
+	}
+}
+
+@media (max-width: 639px) {
+	.card-figure {
+		margin-bottom: 2rem;
+	}
 }
 
 .card-figure--sticky-js {
@@ -5497,6 +5526,20 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	top: 60px;
 }
 
+@media (max-width: 1199px) {
+	.card-figure__img {
+		width: 480px;
+		top: 45px;
+	}
+}
+
+@media (max-width: 991px) {
+	.card-figure__img {
+		top: auto;
+		width: auto;
+	}
+}
+
 .card-content {
 	width: 50%;
 	padding-right: 40px;
@@ -5505,6 +5548,19 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 @media (max-width: 1199px) {
 	.card-content {
 		padding-right: 30px;
+	}
+}
+
+@media (max-width: 991px) {
+	.card-content {
+		width: auto;
+		padding-right: 0;
+	}
+}
+
+@media (max-width: 1199px) {
+	.card-content__heading {
+		display: none;
 	}
 }
 
@@ -7478,9 +7534,9 @@ li.has-drop > .region-menu__tab > .nav__angle {
 	padding-bottom: 70px;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1199px) {
 	.gov__list.slick-initialized, .no-js .gov__list {
-		padding-bottom: 75px;
+		padding-bottom: 60px;
 	}
 }
 
@@ -7536,7 +7592,7 @@ li.has-drop > .region-menu__tab > .nav__angle {
 
 @media (max-width: 479px) {
 	.gov__item {
-		font-size: 1.3rem;
+		font-size: 1.2rem;
 	}
 }
 
@@ -7551,9 +7607,9 @@ li.has-drop > .region-menu__tab > .nav__angle {
 	margin-bottom: 2.4rem;
 }
 
-@media (max-width: 479px) {
+@media (max-width: 639px) {
 	.gov__figure {
-		margin-bottom: 0;
+		margin-bottom: 1rem;
 	}
 }
 
@@ -7573,24 +7629,8 @@ li.has-drop > .region-menu__tab > .nav__angle {
 	font-family: "object-fit: contain; object-position: left center";
 }
 
-@media (max-width: 479px) {
-	.gov__figure img {
-		-o-object-fit: contain;
-		   object-fit: contain;
-		-o-object-position: center center;
-		   object-position: center center;
-		font-family: "object-fit: contain; object-position: center center";
-	}
-}
-
 .dov__title {
 	text-decoration: underline;
-}
-
-@media (max-width: 479px) {
-	.dov__title {
-		display: none;
-	}
 }
 
 .gov__inner:hover .dov__title {
@@ -7824,7 +7864,7 @@ li.has-drop > .region-menu__tab > .nav__angle {
 		font-style: normal !important;
 	}
 	h1 {
-		font-size: 20pt !important;
+		font-size: 24pt !important;
 		line-height: 1.3 !important;
 	}
 	h2 {
@@ -7878,7 +7918,7 @@ li.has-drop > .region-menu__tab > .nav__angle {
 	.class {
 		max-width: none !important;
 	}
-	.sidebar, .footer, .spacer,
+	.sidebar, .spacer,
 	.print-hidden, .view-print,
 	.nav, .nav-list,
 	.breadcrumbs, .breadcrumbs__list,
@@ -7899,6 +7939,8 @@ li.has-drop > .region-menu__tab > .nav__angle {
 	.main-slider,
 	.docs__inner svg,
 	.leaders__figure::before,
+	.footer a::after,
+	.card-content__heading,
 	.class {
 		display: none !important;
 	}
@@ -7918,6 +7960,9 @@ li.has-drop > .region-menu__tab > .nav__angle {
 	.content-wrap,
 	.layout-article,
 	.entry-text,
+	.footer,
+	.footer ul,
+	.footer ul li,
 	.footer-bottom,
 	.footer-bottom__holder,
 	.footer-bottom__col,
@@ -7948,6 +7993,11 @@ li.has-drop > .region-menu__tab > .nav__angle {
 	.leaders__content,
 	.leaders__title,
 	.leaders__text,
+	.card,
+	.card-heading,
+	.card-figure,
+	.card-figure__holder,
+	.card-figure__img,
 	.class {
 		display: block !important;
 		float: none !important;
@@ -7989,6 +8039,8 @@ li.has-drop > .region-menu__tab > .nav__angle {
 	.m-section__heading,
 	.leaders__item,
 	.leaders__figure,
+	.card-heading,
+	.card-figure,
 	.class {
 		margin-top: 0 !important;
 		margin-bottom: 0.5cm !important;
@@ -8055,7 +8107,11 @@ li.has-drop > .region-menu__tab > .nav__angle {
 		border: 1px solid #000 !important;
 	}
 	.leaders__figure img {
-		width: 8cm;
+		width: 8cm !important;
+	}
+	.card-figure__img {
+		width: 8cm !important;
+		border: none !important;
 	}
 	.slick-slider .slick-cloned {
 		display: none !important;

@@ -259,7 +259,7 @@
 		+size($user-options-cross-width, $user-options-cross-height)
 		background-color: $user-options-cross-color
 		+position(nth($btn-menu-space, 1), nth($btn-menu-space, 2))
-		+margin($top: -#{floor($user-options-cross-height*0.5)}, $left: -#{floor($user-options-cross-width*0.5)})
+		+margin($top: -#{round($user-options-cross-height*0.5)}, $left: -#{round($user-options-cross-width*0.5)})
 		will-change: opacity, transform
 		opacity: 0
 		transition:
@@ -270,7 +270,7 @@
 
 		+media('<desk-lg')
 			+size($user-options-cross-width--lg, $user-options-cross-height--lg)
-			+margin($top: -#{floor($user-options-cross-height--lg*0.5)}, $left: -#{floor($user-options-cross-width--lg*0.5)})
+			+margin($top: -#{round($user-options-cross-height--lg*0.5)}, $left: -#{round($user-options-cross-width--lg*0.5)})
 
 		+media('<mob-lg')
 			left: 50%
@@ -282,7 +282,7 @@
 		left: nth($btn-menu-space, 2)
 		+size(nth($btn-menu-lines, 1), nth($btn-menu-lines, 2))
 		background-color: $btn-menu-lines-color
-		+margin($top: -#{floor(nth($btn-menu-lines, 2)*0.5)}, $left: -#{floor(nth($btn-menu-lines, 1)*0.5)})
+		+margin($top: -#{round(nth($btn-menu-lines, 2)*0.5)}, $left: -#{round(nth($btn-menu-lines, 1)*0.5)})
 		backface-visibility: hidden
 		transition:
 			property: opacity
@@ -291,7 +291,7 @@
 
 		+media('<desk-lg')
 			+size(nth($btn-menu-lines--lg, 1), nth($btn-menu-lines--lg, 2))
-			+margin($top: -#{floor(nth($btn-menu-lines--lg, 2)*0.5)}, $left: -#{floor(nth($btn-menu-lines--lg, 1)*0.5)})
+			+margin($top: -#{round(nth($btn-menu-lines--lg, 2)*0.5)}, $left: -#{round(nth($btn-menu-lines--lg, 1)*0.5)})
 
 		+media('<mob-lg')
 			left: 50%
@@ -315,7 +315,7 @@
 			top: -#{nth($btn-menu-lines, 2) + nth($btn-menu-lines, 3)}
 
 			+media('<desk-lg')
-				top: -#{nth($btn-menu-lines--lg, 2) + nth($btn-menu-lines, 3)}
+				top: -#{nth($btn-menu-lines--lg, 2) + nth($btn-menu-lines--lg, 3)}
 
 		//third line menu
 		&::after

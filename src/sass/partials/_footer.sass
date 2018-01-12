@@ -24,8 +24,8 @@
 		// after slide load end
 		padding-bottom: 70px
 
-		+media('<mob-lg')
-			padding-bottom: 75px
+		+media('<desk-sm')
+			padding-bottom: 60px
 
 	.slick-list
 		+margin-horizontal(-#{$grid-space/2})
@@ -67,7 +67,7 @@
 		// after slide load end
 
 	+media('<mob-md')
-		font-size: 1.3rem
+		font-size: 1.2rem
 
 .gov__inner
 	display: block
@@ -78,8 +78,8 @@
 	height: 40px
 	margin-bottom: $bottom-space
 
-	+media('<mob-md')
-		margin-bottom: 0
+	+media('<mob-lg')
+		margin-bottom: 1rem
 
 	&:last-child
 		margin-bottom: 0
@@ -91,13 +91,13 @@
 		max-width: none
 		+object-fit(contain, $position: left center)
 
-		+media('<mob-md')
+		//+media('<mob-md')
 			+object-fit(contain, $position: center center)
 
 .dov__title
 	text-decoration: underline
 
-	+media('<mob-md')
+	//+media('<mob-md')
 		display: none
 
 // hover

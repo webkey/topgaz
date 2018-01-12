@@ -1772,7 +1772,8 @@ function stickyInit() {
 						containerSelector: '.card',
 						innerWrapperSelector: '.card-figure__holder--sticky-js',
 						topSpacing: $('.header__panel').outerHeight(),
-						resizeSensor: true // recalculation sticky on change size of elements
+						resizeSensor: true, // recalculation sticky on change size of elements
+						minWidth: 992
 					});
 				}, 500)
 			});

@@ -783,9 +783,27 @@
 .card-heading
 	display: none
 
+	margin-bottom: $bottom-space--ml
+
+	+media('<tab-lg')
+		display: block
+
+	+media('<mob-lg')
+		margin-bottom: 2rem
+
 .card-figure
 	float: right
 	width: 50%
+
+	+media('<tab-lg')
+		float: none
+		width: auto
+		max-width: 320px
+		margin-bottom: $bottom-space--ml
+		border: 1px solid $border-color-light
+
+	+media('<mob-lg')
+		margin-bottom: 2rem
 
 .card-figure--sticky-js
 	will-change: min-height
@@ -801,11 +819,27 @@
 	position: relative
 	top: round($page-layout-space*1.5)
 
+	+media('<desk-sm')
+		width: 480px
+		top: round($page-layout-space--lg*1.5)
+
+	+media('<tab-lg')
+		top: auto
+		width: auto
+
 .card-content
 	width: 50%
 	padding-right: round($page-layout-space)
 
 	+media('<desk-sm')
 		padding-right: round($page-layout-space--lg)
+
+	+media('<tab-lg')
+		width: auto
+		padding-right: 0
+
+.card-content__heading
+	+media('<desk-sm')
+		display: none
 
 /*card end
