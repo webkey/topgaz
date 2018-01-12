@@ -33,9 +33,6 @@
 		&:last-child
 			margin-bottom: 0
 
-	&:first-child
-		padding-left: 0
-
 	&:last-child
 		//min-width: 400px
 		flex-grow: 0
@@ -46,6 +43,15 @@
 
 		.pages-nav
 			text-align: right
+
+	&:first-child
+		padding-left: 0
+
+		+media('<tab-sm')
+			display: block
+
+		.pages-nav
+			text-align: left
 
 /* article-heading end
 
